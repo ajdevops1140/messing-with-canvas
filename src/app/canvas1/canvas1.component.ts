@@ -15,23 +15,42 @@ export class Canvas1Component implements OnInit {
   constructor(){}
 
   ngOnInit() {
-    
+    this.ctx = this.cv.nativeElement.getContext('2d');    
+    this.animate();
   }
 
   ngAfterViewInit()
   {
-    this.ctx = this.cv.nativeElement.getContext('2d');    
-    this.draw();
+    
   }
+
+  animate()
+  {
+    //this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
+    this.ctx.save();    
+    this.draw();    
+  }
+
+  deg;number = 2;
+  rotate:number = 0;
 
   draw()
   {
-    //this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
+    this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
+    let time = new Date();
+    this.ctx.save();
+    this.ctx.translate(20,20);
+    this.rotate = time.getMilliseconds() * (Math.PI/180);
+    this.ctx.rotate(this.rotate);
+    
     this.ctx.beginPath();
-    //this.ctx.moveTo(50,50);
-    this.ctx.arc(50,50,20,0,2 * Math.PI,true);
+    this.ctx.moveTo(0,0);
+    this.ctx.arc(0,0,20,0,2 * Math.PI,true);
     this.ctx.stroke();
     
+    this.ctx.restore();
+    this.deg += 50;
+    window.requestAnimationFrame(()=>{this.draw()});
   }
 
 }
