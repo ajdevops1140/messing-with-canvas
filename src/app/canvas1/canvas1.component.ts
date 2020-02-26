@@ -33,7 +33,7 @@ export class Canvas1Component implements OnInit {
     this.draw();    
   }
 
-  speed:number = 100;
+  speed:number = 0.5;
   deg:number = 0;
   rotate:number = 0;
   prevTime;
