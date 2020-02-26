@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, Input,ElementRef} from '@angular/core';
+import { Basic } from './Basic';
 
 @Component({
   selector: 'app-canvas1',
@@ -11,12 +12,15 @@ export class Canvas1Component implements OnInit {
   cvHeight:number = 300;
   @ViewChild('cv',{static:true}) cv:ElementRef;
   ctx:CanvasRenderingContext2D;
+  b:Basic;
 
   constructor(){}
 
   ngOnInit() {
-    this.ctx = this.cv.nativeElement.getContext('2d');    
-    this.animate();
+    this.ctx = this.cv.nativeElement.getContext('2d');
+    this.b = new Basic();
+    this.b.draw(this.ctx);
+    //this.animate();
   }  
 
   animate()
