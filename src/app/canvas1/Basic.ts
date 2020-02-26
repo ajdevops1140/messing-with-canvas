@@ -9,20 +9,20 @@ export class Basic{
   timeDiff:number;
   
 
-  constructor(){}
+  constructor(private ctx:CanvasRenderingContext2D){}
 
-  draw(ctx:CanvasRenderingContext2D)
+  draw()
   {
-    //ctx.save();
-    ctx.translate(0,0);
-    ctx.rotate(this.r);
-    ctx.scale(this.sx, this.sy);
+    this.ctx.save();
+    //this.ctx.translate(0,0);
+    //this.rotate(this.r);
+    //this.scale(this.sx, this.sy);
     
-    ctx.beginPath();
+    this.ctx.beginPath();
     console.log('In Basic draw');
-    ctx.moveTo(10,10);
-    ctx.lineTo(50,10);
-    ctx.stroke();
-    //ctx.restore();
+    this.ctx.moveTo(150,150);
+    this.ctx.lineTo(50,10);
+    this.ctx.stroke();
+    this.ctx.restore();
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input,ElementRef} from '@angular/core';
+import { Component, OnInit, ViewChild, Input,ElementRef,AfterViewInit} from '@angular/core';
 import { Basic } from './Basic';
 
 @Component({
@@ -16,14 +16,16 @@ export class Canvas1Component implements OnInit {
 
   constructor(){}
 
-  ngOnInit() {
-    this.ctx = this.cv.nativeElement.getContext('2d');
-    this.b = new Basic();
-    this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
-    //this.ctx.save();
-    this.b.draw(this.ctx);
-    //this.animate();
+  ngOnInit() { 
+  
   }  
+
+  ngAfterViewInit(){
+    this.ctx = this.cv.nativeElement.getContext('2d');
+    this.b = new Basic(this.ctx);
+    this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
+    this.b.draw();
+  }
 
   animate()
   {
