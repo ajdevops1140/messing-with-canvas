@@ -26,6 +26,7 @@ export class Canvas1Component implements OnInit {
     this.ctx = this.cv.nativeElement.getContext('2d'); 
     this.cvh = new CanvasHandler(this.ctx);    
     this.b = new Basic(this.ctx);
+    this.animate();
   }
 
   animate()
@@ -33,8 +34,8 @@ export class Canvas1Component implements OnInit {
     //this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);    
     this.ctx.save();    
     this.b.setPos(20,20);
-    this.b.adjustRot(90 * Math.PI/180);
-    
+    this.b.adjustRot(90);
+    this.b.color ='green';
     this.draw();    
   }
 
@@ -44,7 +45,11 @@ export class Canvas1Component implements OnInit {
   {
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);   
     this.ctx.save();
-    
+    this.b.draw();
+    this.b.adjustSpeed(0.1,0,0,0);
+    this.b.adjustPos();
+    this.b.adjustRot(1);
+    this.b.checkBounds(this.cvWidth,this.cvHeight);
     this.ctx.restore();
     window.requestAnimationFrame(()=>{this.draw()});
   }

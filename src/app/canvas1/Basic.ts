@@ -20,25 +20,39 @@ export class Basic{
     this.y = y;
   }
 
-  adjustPos(speedX,speedY)
+  adjustPos()
   {
-    this.x += speedX;
-    this.y += speedY;
+    this.x += this.vx;
+    this.y += this.vy;
   }
 
   adjustRot(r)
   {
-    this.r = r;
+    this.r += r * Math.PI/180;
   }
 
   adjustSpeed(vx,vy,ax,ay)
-  {
-    this.vx = vx;
-    this.vy = vy;
-    this.ax = ax;
-    this.ay = ay;
+  {    
     this.vx += (vx + ax);
     this.vy += (vy + ay);
+  }
+
+  adjustSpeedWithBounds(vx,vy,cvWidth,cvHeight)
+  {
+    if(this.x < 0 || this.x > cvWidth)
+    {
+       this.vx += (vx + this.ax) * -1;
+       this.vy += (vy + this.ay) * -1;
+    }
+  }
+
+  checkBounds(cvWidth,cvHeight)
+  {
+    if(this.x < 0 || this.x > cvWidth)
+    {
+      this.vx *= -1;
+      this.ax *= -1;
+    }
   }
 
   draw()
