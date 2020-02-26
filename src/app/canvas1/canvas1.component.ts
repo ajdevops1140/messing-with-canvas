@@ -19,6 +19,8 @@ export class Canvas1Component implements OnInit {
   ngOnInit() {
     this.ctx = this.cv.nativeElement.getContext('2d');
     this.b = new Basic();
+    this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
+    //this.ctx.save();
     this.b.draw(this.ctx);
     //this.animate();
   }  
