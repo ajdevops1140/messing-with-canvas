@@ -1,6 +1,6 @@
 export class Basic{
-  x:number = 50;
-  y:number = 50;
+  x:number = 0;
+  y:number = 0;
   vx:number = 1;
   ax:number = 0;
   r:number = 0;
@@ -18,12 +18,8 @@ export class Basic{
     this.ctx.rotate(this.r);
     this.ctx.scale(this.sx, this.sy);
     
-    this.ctx.beginPath();
-    //this.ctx.moveTo(0,0);
-    this.ctx.arc(0,0,20,-5* Math.PI/6,-1 *Math.PI/6,true);
-    this.ctx.fillStyle = 'red';    
-    //this.ctx.fillRect(17,-11,2,2);
-    //this.ctx.fillRect(-0,-30,2,2);
+    this.ctx.beginPath();  
+    this.ctx.arc(0,0,20,-5* Math.PI/6,-1 *Math.PI/6,true);  
     this.ctx.moveTo(-17,-10);
     this.ctx.lineTo(-0,-30);
     this.ctx.moveTo(17,-10);
