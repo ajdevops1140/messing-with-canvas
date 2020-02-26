@@ -10,7 +10,8 @@ export class Basic{
   sy:number = 1;
   timeDiff:number;
   color:string = 'black';
-  
+  inXBounds:boolean;
+  inYBounds:boolean;  
 
   constructor(private ctx:CanvasRenderingContext2D){}
 
@@ -61,20 +62,25 @@ export class Basic{
   {
     if(this.x < 0 || this.x > cvWidth)
     {
-      this.vx *= -1;
-      return true;      
+      this.vx *= -1; 
+      this.inXBounds = false;          
     }
-    return false;
+    else{
+      this.inXBounds = true;
+    }
+    
   }
 
   checkYBounds(cvWidth,cvHeight)
   {
     if(this.y < 0 || this.y > cvHeight)
     {
-      this.vy *= -1;
-      return true;
+      this.vy *= -1;  
+      this.inYBounds = false;    
+    }    
+    else{
+      this.inYBounds = true;
     }
-    return false;  
   }
 
   draw()
