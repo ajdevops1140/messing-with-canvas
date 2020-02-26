@@ -19,10 +19,9 @@ export class Basic{
     this.ctx.scale(this.sx, this.sy);
     
     this.ctx.beginPath();
-    console.log('In Basic draw');
-    this.ctx.moveTo(10,10);
-    this.ctx.arcTo(100,50,10,100,40);
-    this.ctx.lineTo(10,100);
+    this.ctx.moveTo(0,0);
+    this.ctx.arcTo(0,20,10,100,300);
+    //this.ctx.lineTo(30,100);
     this.ctx.moveTo(0,0);
     this.ctx.lineTo(50,10);
     this.ctx.stroke();
