@@ -14,6 +14,12 @@ export class Basic{
 
   constructor(private ctx:CanvasRenderingContext2D){}
 
+  setPos(x,y)
+  {
+    this.x = x;
+    this.y = y;
+  }
+
   adjustPos(speedX,speedY)
   {
     this.x += speedX;

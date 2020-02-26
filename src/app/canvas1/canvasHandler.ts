@@ -6,7 +6,7 @@ export class CanvasHandler
   currTime;
   basic:Basic[]; 
 
-  constructor()
+  constructor(private ctx:CanvasRenderingContext2D)
   {
     this.basic = new Array();
   }
@@ -15,5 +15,7 @@ export class CanvasHandler
   { 
     this.basic.push(obj);
   }
+
+  
   
 }

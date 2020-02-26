@@ -13,7 +13,7 @@ export class Canvas1Component implements OnInit {
   cvHeight:number = 300;
   @ViewChild('cv',{static:true}) cv:ElementRef;
   ctx:CanvasRenderingContext2D;
-  cvh:CanvasHandler;
+  cvh:CanvasHandler;  
   b:Basic;
 
   constructor(){}
@@ -24,15 +24,17 @@ export class Canvas1Component implements OnInit {
 
   ngAfterViewInit(){
     this.ctx = this.cv.nativeElement.getContext('2d'); 
-    this.cvh = new CanvasHandler();
-       
+    this.cvh = new CanvasHandler(this.ctx);    
+    this.b = new Basic(this.ctx);
   }
 
   animate()
   {
-    //this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
-    
+    //this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);    
     this.ctx.save();    
+    this.b.setPos(20,20);
+    this.b.adjustRot(90 * Math.PI/180);
+    
     this.draw();    
   }
 
@@ -42,7 +44,7 @@ export class Canvas1Component implements OnInit {
   {
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);   
     this.ctx.save();
-
+    
     this.ctx.restore();
     window.requestAnimationFrame(()=>{this.draw()});
   }
