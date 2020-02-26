@@ -1,6 +1,6 @@
 export class Basic{
-  x:number = 50;
-  y:number = 50;
+  x:number = 0;
+  y:number = 0;
   vx:number = 1;
   ax:number = 0;
   r:number = 0;
