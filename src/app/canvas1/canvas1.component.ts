@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input} from '@angular/core';
 
 @Component({
   selector: 'app-canvas1',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./canvas1.component.css']
 })
 export class Canvas1Component implements OnInit {
+
+  cvWidth:number = 300;
+  cvHeight:number = 300;
+
 
   constructor() { }
 
