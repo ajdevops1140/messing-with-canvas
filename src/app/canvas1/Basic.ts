@@ -2,7 +2,9 @@ export class Basic{
   x:number = 0;
   y:number = 0;
   vx:number = 1;
+  vy:number = 1;
   ax:number = 0;
+  ay:number = 0;
   r:number = 0;
   sx:number = 1;
   sy:number = 1;
@@ -12,10 +14,10 @@ export class Basic{
 
   constructor(private ctx:CanvasRenderingContext2D){}
 
-  adjustPos(x,y)
+  adjustPos(speedX,speedY)
   {
-    this.x = x;
-    this.y = y;
+    this.x += speedX;
+    this.y += speedY;
   }
 
   adjustRot(r)
@@ -23,10 +25,14 @@ export class Basic{
     this.r = r;
   }
 
-  adjustSpeed(vx,ax)
+  adjustSpeed(vx,vy,ax,ay)
   {
     this.vx = vx;
+    this.vy = vy;
     this.ax = ax;
+    this.ay = ay;
+    this.vx += (vx + ax);
+    this.vy += (vy + ay);
   }
 
   draw()
