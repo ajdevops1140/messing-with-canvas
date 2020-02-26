@@ -14,13 +14,16 @@ export class Basic{
   draw()
   {
     this.ctx.save();
-    //this.ctx.translate(0,0);
-    //this.rotate(this.r);
-    //this.scale(this.sx, this.sy);
+    this.ctx.translate(this.x,this.y);
+    this.ctx.rotate(this.r);
+    this.ctx.scale(this.sx, this.sy);
     
     this.ctx.beginPath();
     console.log('In Basic draw');
-    this.ctx.moveTo(150,150);
+    this.ctx.moveTo(10,10);
+    this.ctx.arcTo(100,50,10,100,40);
+    this.ctx.lineTo(10,100);
+    this.ctx.moveTo(0,0);
     this.ctx.lineTo(50,10);
     this.ctx.stroke();
     this.ctx.restore();
