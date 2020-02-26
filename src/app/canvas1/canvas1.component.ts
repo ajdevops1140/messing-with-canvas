@@ -9,7 +9,7 @@ export class Canvas1Component implements OnInit {
 
   cvWidth:number = 300;
   cvHeight:number = 300;
-
+  @ViewChild('cv',{static:true}) cv:HTMLCanvasElement
 
   constructor() { }
 
