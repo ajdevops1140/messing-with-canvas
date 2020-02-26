@@ -1,8 +1,8 @@
 export class Basic{
   x:number = 0;
   y:number = 0;
-  vx:number = 1;
-  vy:number = 1;
+  vx:number = 0;
+  vy:number = 0;
   ax:number = 0;
   ay:number = 0;
   r:number = 0;
@@ -20,6 +20,14 @@ export class Basic{
     this.y = y;
   }
 
+  setSpeed(vx,vy)
+  {
+    this.vx = vx;
+    this.vy = vy;
+  }
+
+
+
   adjustPos()
   {
     this.x += this.vx;
@@ -31,35 +39,42 @@ export class Basic{
     this.r += r * Math.PI/180;
   }
 
-  adjustSpeed(vx,vy,ax,ay)
-  {    
-    this.vx += (vx + ax);
-    this.vy += (vy + ay);
-  }
-
-  adjustSpeedWithBounds(vx,vy,cvWidth,cvHeight)
+  adjustAcceleration(ax,ay)
   {
-    this.vx += (vx + this.ax);
-    this.vy += (vy + this.ay);
-
-    if(this.x < 0 || this.x > cvWidth)
-    {
-       this.vx *= -1;       
-    }
-
-    if(this.y < 0 || this.y > cvHeight)
-    {
-      this.vy *= -1;
-    }  
+    this.ax +=ax;
+    this.ay +=ay;
   }
 
-  checkBounds(cvWidth,cvHeight)
+  addAccelerationToSpeed()
+  {
+    this.vx += this.ax;
+    this.vy += this.ay;
+  }
+
+  adjustSpeed(vx,vy,ax = 0,ay = 0)
+  {    
+    this.vx = (vx + ax);
+    this.vy = (vy + ay);
+  } 
+
+  checkXBounds(cvWidth,cvHeight)
   {
     if(this.x < 0 || this.x > cvWidth)
     {
       this.vx *= -1;
-      this.ax *= -1;
+      return true;      
     }
+    return false;
+  }
+
+  checkYBounds(cvWidth,cvHeight)
+  {
+    if(this.y < 0 || this.y > cvHeight)
+    {
+      this.vy *= -1;
+      return true;
+    }
+    return false;  
   }
 
   draw()

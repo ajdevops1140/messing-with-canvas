@@ -34,6 +34,7 @@ export class Canvas1Component implements OnInit {
     //this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);    
     this.ctx.save();    
     this.b.setPos(20,20);
+    this.b.setSpeed(1,0.1);
     this.b.adjustRot(90);
     this.b.color ='green';
     this.draw();    
@@ -44,9 +45,21 @@ export class Canvas1Component implements OnInit {
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);   
     this.ctx.save();
     this.b.draw();
-    this.b.adjustSpeedWithBounds(0.1,0,this.cvWidth,this.cvHeight);
+    //this.b.adjustSpeed(1,0);
     this.b.adjustPos();
     this.b.adjustRot(1);
+
+    if(this.b.checkXBounds(this.cvWidth,this.cvHeight))
+    {
+      this.b.adjustAcceleration(0.2,0.1);
+      this.b.addAccelerationToSpeed();
+    }
+
+    if(this.b.checkYBounds(this.cvWidth,this.cvHeight))
+    {
+      this.b.adjustAcceleration(0.5,0.5);
+      this.b.addAccelerationToSpeed();
+    }
     this.ctx.restore();
     window.requestAnimationFrame(()=>{this.draw()});
   }
