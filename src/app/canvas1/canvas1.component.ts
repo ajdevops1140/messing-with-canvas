@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input,ElementRef,AfterViewInit} from '@angular/core';
+import { Component, OnInit, ViewChild, Input,ElementRef} from '@angular/core';
 
 @Component({
   selector: 'app-canvas1',
@@ -17,12 +17,7 @@ export class Canvas1Component implements OnInit {
   ngOnInit() {
     this.ctx = this.cv.nativeElement.getContext('2d');    
     this.animate();
-  }
-
-  ngAfterViewInit()
-  {
-    
-  }
+  }  
 
   animate()
   {
