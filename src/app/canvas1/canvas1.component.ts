@@ -23,7 +23,9 @@ export class Canvas1Component implements OnInit {
   }  
 
   ngAfterViewInit(){
-    this.ctx = this.cv.nativeElement.getContext('2d');    
+    this.ctx = this.cv.nativeElement.getContext('2d'); 
+    this.cvh = new CanvasHandler();
+       
   }
 
   animate()

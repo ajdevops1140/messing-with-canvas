@@ -12,10 +12,25 @@ export class Basic{
 
   constructor(private ctx:CanvasRenderingContext2D){}
 
+  adjustPos(x,y)
+  {
+    this.x = x;
+    this.y = y;
+  }
+
+  adjustRot(r)
+  {
+    this.r = r;
+  }
+
+  adjustSpeed(vx,ax)
+  {
+    this.vx = vx;
+    this.ax = ax;
+  }
+
   draw()
   {
-    
-
     this.ctx.save();
     this.ctx.translate(this.x,this.y);
     this.ctx.rotate(this.r);
