@@ -12,6 +12,8 @@ export class Basic{
   color:string = 'black';
   inXBounds:boolean;
   inYBounds:boolean;  
+  adjustX:boolean;
+  adjustY:boolean;
 
   constructor(private ctx:CanvasRenderingContext2D){}
 
@@ -63,7 +65,8 @@ export class Basic{
     if(this.x < 0 || this.x > cvWidth)
     {
       this.vx *= -1; 
-      this.inXBounds = false;          
+      this.inXBounds = false;
+      this.adjustX = true;          
     }
     else{
       this.inXBounds = true;

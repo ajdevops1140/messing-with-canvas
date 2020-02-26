@@ -47,12 +47,15 @@ export class Canvas1Component implements OnInit {
     this.b.draw();
     
 
-    if(this.b.checkXBounds(this.cvWidth,this.cvHeight))
+    this.b.checkXBounds(this.cvWidth,this.cvHeight)
+    
+    if(this.b.inXBounds && this.b.adjustX)
     {
-      //if(this.b.inXBounds)
-      //this.b.adjustAcceleration(0.2,0.1);
-      //this.b.addAccelerationToSpeed();
+      this.b.adjustAcceleration(0.2,0.1);
+      this.b.addAccelerationToSpeed();
+      this.b.adjustX = false;      
     }
+    
 
     if(this.b.checkYBounds(this.cvWidth,this.cvHeight))
     {
