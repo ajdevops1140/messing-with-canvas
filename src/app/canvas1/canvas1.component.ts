@@ -27,20 +27,27 @@ export class Canvas1Component implements OnInit {
   animate()
   {
     //this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
+    let time = new Date();
+    this.prevTime = this.currTime = time.getMilliseconds();
     this.ctx.save();    
     this.draw();    
   }
 
-  deg;number = 2;
+  speed:number = 100;
+  deg:number = 0;
   rotate:number = 0;
+  prevTime;
+  currTime;
 
   draw()
   {
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     let time = new Date();
+    this.currTime = time.getMilliseconds();
+    let timeDiff = this.currTime - this.prevTime;
     this.ctx.save();
     this.ctx.translate(20,20);
-    this.rotate = time.getMilliseconds() * (Math.PI/180);
+    this.rotate = this.deg *(Math.PI/180);
     this.ctx.rotate(this.rotate);
     
     this.ctx.beginPath();
@@ -49,7 +56,7 @@ export class Canvas1Component implements OnInit {
     this.ctx.stroke();
     
     this.ctx.restore();
-    this.deg += 50;
+    this.deg += this.speed;//
     window.requestAnimationFrame(()=>{this.draw()});
   }
 
