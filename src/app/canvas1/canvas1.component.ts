@@ -38,6 +38,8 @@ export class Canvas1Component implements OnInit {
   rotate:number = 0;
   prevTime;
   currTime;
+  x = 20;
+  y = 20;
 
   draw()
   {
@@ -46,7 +48,7 @@ export class Canvas1Component implements OnInit {
     this.currTime = time.getMilliseconds();
     let timeDiff = this.currTime - this.prevTime;
     this.ctx.save();
-    this.ctx.translate(20,20);
+    this.ctx.translate(this.x,this.y);
     this.rotate = this.deg *(Math.PI/180);
     this.ctx.rotate(this.rotate);
     
@@ -57,6 +59,15 @@ export class Canvas1Component implements OnInit {
     
     this.ctx.restore();
     this.deg += this.speed;//
+    if(this.x + 20 > this.cvWidth || this.x - 20 < 0)
+    {
+      this.speed *= -1;
+      //console.log(this.speed);
+    }
+    
+    this.x+=this.speed;
+    //console.log(this.x);
+    //this.y+=this.speed;
     window.requestAnimationFrame(()=>{this.draw()});
   }
 
