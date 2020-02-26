@@ -39,11 +39,18 @@ export class Basic{
 
   adjustSpeedWithBounds(vx,vy,cvWidth,cvHeight)
   {
+    this.vx += (vx + this.ax);
+    this.vy += (vy + this.ay);
+
     if(this.x < 0 || this.x > cvWidth)
     {
-       this.vx += (vx + this.ax) * -1;
-       this.vy += (vy + this.ay) * -1;
+       this.vx *= -1;       
     }
+
+    if(this.y < 0 || this.y > cvHeight)
+    {
+      this.vy *= -1;
+    }  
   }
 
   checkBounds(cvWidth,cvHeight)

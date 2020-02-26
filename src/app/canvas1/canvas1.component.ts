@@ -39,17 +39,14 @@ export class Canvas1Component implements OnInit {
     this.draw();    
   }
 
-  
-
   draw()
   {
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);   
     this.ctx.save();
     this.b.draw();
-    this.b.adjustSpeed(0.1,0,0,0);
+    this.b.adjustSpeedWithBounds(0.1,0,this.cvWidth,this.cvHeight);
     this.b.adjustPos();
     this.b.adjustRot(1);
-    this.b.checkBounds(this.cvWidth,this.cvHeight);
     this.ctx.restore();
     window.requestAnimationFrame(()=>{this.draw()});
   }
