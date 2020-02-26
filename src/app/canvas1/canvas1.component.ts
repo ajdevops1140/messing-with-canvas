@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input,ElementRef,AfterViewInit} from '@angular/core';
 import { Basic } from './Basic';
+import { CanvasHandler } from './canvasHandler';
 
 @Component({
   selector: 'app-canvas1',
