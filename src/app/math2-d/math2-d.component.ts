@@ -76,7 +76,7 @@ export class Math2DComponent implements OnInit {
     this.chs.drawPoints();
     this.chs.rotatePoint(-10,1);
     //this.ctx.restore();
-    window.requestAnimationFrame(()=>{this.draw()});
+    //window.requestAnimationFrame(()=>{this.draw()});
   }
 
 }
