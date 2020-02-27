@@ -41,8 +41,10 @@ export class CanvasHandlerService {
     this.ctx.fillText(`${index}:(${p2d.x}),(${p2d.y})`,p2d.x + 5,p2d.y + 5);
     this.ctx.fillStyle = 'blue';
     this.ctx.arc(p2d.x,p2d.y,5,0,2 * Math.PI);  
+    this.ctx.fill();
     this.ctx.moveTo(0,0);
-    this.ctx.lineTo(p2d.x,p2d.y);  
+    this.ctx.lineTo(p2d.x,p2d.y); 
+    this.ctx.stroke(); 
     this.ctx.restore();
   }
 
