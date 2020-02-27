@@ -73,8 +73,9 @@ export class Math2DComponent implements OnInit {
     
     //this.ctx.save();
     this.drawGraph(this.ctx);
+     this.chs.rotatePoint(-10,1);
     this.chs.drawPoints();
-    this.chs.rotatePoint(-10,1);
+   
     //this.ctx.restore();
     //window.requestAnimationFrame(()=>{this.draw()});
   }

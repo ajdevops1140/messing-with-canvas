@@ -14,9 +14,10 @@ export class P2D
     return Math.sqrt((this.x * this.x)+(this.y * this.y));
   }
 
-  norm()
+  normalize()
   {
-
+    this.x = this.x/this.mag();
+    this.y = this.y/this.mag();
   }
 
   dot(x,y)
@@ -34,8 +35,9 @@ export class P2D
     //x = x*cos - y*sin
     //y = y*cos + x*sin
     let theta = this.degToRad(deg);
-    this.x = Math.ceil((this.x*Math.cos(theta)) - (this.y*Math.sin(theta)));
-    this.y = Math.ceil((this.y*Math.cos(theta)) + (this.x*Math.sin(theta)));
+    this.x = (this.x*Math.cos(theta)) - (this.y*Math.sin(theta));
+    this.y = (this.y*Math.cos(theta)) + (this.x*Math.sin(theta));
+    //this.normalize();
   }
 
 
