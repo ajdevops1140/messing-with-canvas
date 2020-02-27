@@ -13,12 +13,22 @@ export class Math2DComponent implements OnInit {
   cvHeight:number = 300;
   @ViewChild('cv',{static:true}) cv:ElementRef;
   ctx:CanvasRenderingContext2D;
+  wRight:number;
+  wLeft:number;
+  hUp:number;
+  hDown:number;
 
   constructor() { }
 
   ngOnInit() 
   {
     this.ctx = this.cv.nativeElement.getContext('2d'); 
+    let w = this.cvWidth/2;
+    let h = this.cvHeight/2;
+    this.wRight = w;
+    this.wLeft = -w;
+    this.hUp = -h;
+    this.hDown = h;
   }
 
   ngAfterViewInit()
@@ -26,28 +36,27 @@ export class Math2DComponent implements OnInit {
     this.BeginDraw(this.ctx);
   }
 
-  drawGraph(ctx:CanvasRenderingContext2D,width:number,height:number)
+  drawGraph(ctx:CanvasRenderingContext2D)
   {
-    let w = width/2;
-    let h = height/2;
-    let wRight = w;
-    let wLeft = -w;
-    let hUp = -h;
-    let hDown = h;
+    
 
-    ctx.save();    
+    ctx.strokeStyle = 'green';
+
+    ctx.save();  
+    ctx.translate(this.wRight,this.hDown);
+
     ctx.beginPath();    
-    ctx.moveTo(0,hUp);
-    ctx.lineTo(0,hDown);
-    ctx.moveTo(wLeft,0);
-    ctx.lineTo(wRight,0);
-
+    ctx.moveTo(0,this.hUp);
+    ctx.lineTo(0,this.hDown);
+    ctx.moveTo(this.wLeft,0);
+    ctx.lineTo(this.wRight,0);
+    ctx.stroke();
   }
 
   BeginDraw(ctx:CanvasRenderingContext2D)
   {
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
-    this.drawGraph(ctx,this.cvWidth,this.cvHeight);
+    this.drawGraph(ctx);
 
   }
 
