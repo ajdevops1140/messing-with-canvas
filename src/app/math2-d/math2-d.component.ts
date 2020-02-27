@@ -1,6 +1,7 @@
 import { Component, OnInit,ViewChild, Input,ElementRef,AfterViewInit } from '@angular/core';
 import { Basic } from '../util/Basic';
 import { P2D } from '../util/P2D';
+import { CanvasHandlerService } from '../util/canvas-handler.CanvasHandlerService';
 
 @Component({
   selector: 'app-math2-d',
@@ -38,8 +39,6 @@ export class Math2DComponent implements OnInit {
 
   drawGraph(ctx:CanvasRenderingContext2D)
   {
-    
-
     ctx.strokeStyle = 'green';
 
     ctx.save();  
@@ -51,6 +50,12 @@ export class Math2DComponent implements OnInit {
     ctx.moveTo(this.wLeft,0);
     ctx.lineTo(this.wRight,0);
     ctx.stroke();
+    ctx.restore();
+  }
+
+  drawPoint(x,y,ctx:CanvasRenderingContext2D,wRight,hDown)
+  {
+     
   }
 
   BeginDraw(ctx:CanvasRenderingContext2D)
