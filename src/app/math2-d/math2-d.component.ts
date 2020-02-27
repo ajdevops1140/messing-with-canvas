@@ -26,4 +26,14 @@ export class Math2DComponent implements OnInit {
 
   }
 
+  drawGraph(ctx:CanvasRenderingContext2D)
+  {
+
+  }
+
+  BeginDraw()
+  {
+    
+  }
+
 }
