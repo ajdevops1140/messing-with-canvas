@@ -26,16 +26,29 @@ export class Math2DComponent implements OnInit {
     this.BeginDraw(this.ctx);
   }
 
-  drawGraph(ctx:CanvasRenderingContext2D)
+  drawGraph(ctx:CanvasRenderingContext2D,width:number,height:number)
   {
+    let w = width/2;
+    let h = height/2;
+    let wRight = w;
+    let wLeft = -w;
+    let hUp = -h;
+    let hDown = h;
+
+    ctx.save();    
+    ctx.beginPath();    
+    ctx.moveTo(0,hUp);
+    ctx.lineTo(0,hDown);
+    ctx.moveTo(wLeft,0);
+    ctx.lineTo(wRight,0);
 
   }
 
   BeginDraw(ctx:CanvasRenderingContext2D)
   {
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
-    this.drawGraph(ctx);
-    
+    this.drawGraph(ctx,this.cvWidth,this.cvHeight);
+
   }
 
 }
