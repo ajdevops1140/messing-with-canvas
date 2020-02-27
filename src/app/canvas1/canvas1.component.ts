@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Input,ElementRef,AfterViewInit} from '@angular/core';
-import { Basic } from './Basic';
+import { Basic } from '../util/Basic';
 import { CanvasHandler } from './canvasHandler';
 
 @Component({

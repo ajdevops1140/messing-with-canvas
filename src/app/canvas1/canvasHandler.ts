@@ -1,4 +1,4 @@
-import { Basic } from './Basic';
+import { Basic } from '../util/Basic';
 
 export class CanvasHandler
 {
