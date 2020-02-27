@@ -1,7 +1,7 @@
 import { Component, OnInit,ViewChild, Input,ElementRef,AfterViewInit } from '@angular/core';
 import { Basic } from '../util/Basic';
 import { P2D } from '../util/P2D';
-import { CanvasHandlerService } from '../util/canvas-handler.CanvasHandlerService';
+import { CanvasHandlerService } from '../util/canvas-handler.service';
 
 @Component({
   selector: 'app-math2-d',
@@ -19,7 +19,7 @@ export class Math2DComponent implements OnInit {
   hUp:number;
   hDown:number;
 
-  constructor() { }
+  constructor(private chs:CanvasHandlerService) { }
 
   ngOnInit() 
   {
