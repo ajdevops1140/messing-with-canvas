@@ -18,7 +18,7 @@ export class Math2DComponent implements OnInit {
 
   ngOnInit() 
   {
-
+    this.ctx = this.cv.nativeElement.getContext('2d'); 
   }
 
   ngAfterViewInit()
