@@ -34,7 +34,7 @@ export class Math2DComponent implements OnInit {
 
   ngAfterViewInit()
   {
-    this.chs.setParameters(this.cv,this.cvWidth,this.cvHeight);
+    this.chs.setParameters(this.cv,this.wRight,this.hDown);
     this.BeginDraw(this.ctx);    
   }
 
@@ -58,6 +58,7 @@ export class Math2DComponent implements OnInit {
   BeginDraw(ctx:CanvasRenderingContext2D)
   {
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
+    this.ctx.save();
     let p1 = new P2D(30,0);
     let p2 = new P2D(30,0);
     p2.rotate(45);
@@ -69,6 +70,7 @@ export class Math2DComponent implements OnInit {
   draw()
   {
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
+    
     this.ctx.save();
     this.drawGraph(this.ctx);
     this.chs.drawPoints();

@@ -18,12 +18,14 @@ export class CanvasHandlerService {
   setParameters(canvas:ElementRef<HTMLCanvasElement>,width:number,height:number)
   {
     this.ctx = canvas.nativeElement.getContext('2d');
+    console.log(this.ctx);
     this.width = width;
     this.height = height;
   }
 
   addPoint(p:P2D)
   {
+    console.log(p);
     this.drawArray.push(p);
   }
 
@@ -38,9 +40,10 @@ export class CanvasHandlerService {
     this.ctx.save();
     this.ctx.fillStyle = 'red';
     this.ctx.translate(this.width,this.height);
+    this.ctx.beginPath();
     this.ctx.fillText(`${index}:(${p2d.x}),(${p2d.y})`,p2d.x + 5,p2d.y + 5);
     this.ctx.fillStyle = 'blue';
-    this.ctx.arc(p2d.x -2 ,p2d.y -2,5,0,2 * Math.PI);  
+    this.ctx.arc(p2d.x -2 ,p2d.y -2,10,0,2 * Math.PI);  
     this.ctx.fill();
     this.ctx.moveTo(0,0);
     this.ctx.lineTo(p2d.x,p2d.y); 
@@ -49,9 +52,10 @@ export class CanvasHandlerService {
   }
 
   drawPoints()
-  {
-    for(let i = 0; i < this.drawArray;i++)
+  {     
+    for(let i = 0; i < this.drawArray.length;i++)
     {
+      console.log(`${this.ctx},${i}`);
       this.drawPoint(this.ctx,i);
     }
   }
