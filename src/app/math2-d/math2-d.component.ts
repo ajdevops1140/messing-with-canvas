@@ -10,8 +10,8 @@ import { CanvasHandlerService } from '../util/canvas-handler.service';
 })
 export class Math2DComponent implements OnInit {
 
-  cvWidth:number = 300;
-  cvHeight:number = 300;
+  cvWidth:number = 500;
+  cvHeight:number = 500;
   @ViewChild('cv',{static:true}) cv:ElementRef;
   ctx:CanvasRenderingContext2D;
   wRight:number;
@@ -59,9 +59,9 @@ export class Math2DComponent implements OnInit {
   {
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     this.ctx.save();
-    let p1 = new P2D(30,0);
-    let p2 = new P2D(30,0);
-    p2.rotate(45);
+    let p1 = new P2D(100,0);
+    let p2 = new P2D(100,0);
+    //p2.rotate(-45);
     this.chs.addPoint(p1);
     this.chs.addPoint(p2);
     this.draw();
@@ -71,10 +71,12 @@ export class Math2DComponent implements OnInit {
   {
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     
-    this.ctx.save();
+    //this.ctx.save();
     this.drawGraph(this.ctx);
     this.chs.drawPoints();
-    window.requestAnimationFrame(()=>{this.draw});
+    this.chs.rotatePoint(-10,1);
+    //this.ctx.restore();
+    window.requestAnimationFrame(()=>{this.draw()});
   }
 
 }

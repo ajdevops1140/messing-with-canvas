@@ -34,16 +34,23 @@ export class CanvasHandlerService {
     this.drawArray.splice(index,1);
   }
 
+  rotatePoint(deg:number,index:number)
+  {
+    //console.log("Rotate");
+    this.drawArray[index].rotate(deg);
+  }
+
   drawPoint(ctx:CanvasRenderingContext2D, index:number)
   {
     let p2d:P2D = this.drawArray[index];
     this.ctx.save();
     this.ctx.fillStyle = 'red';
+    //this.ctx.
     this.ctx.translate(this.width,this.height);
     this.ctx.beginPath();
-    this.ctx.fillText(`${index}:(${p2d.x}),(${p2d.y})`,p2d.x + 5,p2d.y + 5);
+    this.ctx.fillText(`${index}:(${Math.floor(p2d.x)},${Math.floor(p2d.y)})`,p2d.x + 10,p2d.y);
     this.ctx.fillStyle = 'blue';
-    this.ctx.arc(p2d.x -2 ,p2d.y -2,10,0,2 * Math.PI);  
+    this.ctx.arc(p2d.x ,p2d.y ,5,0,2 * Math.PI);  
     this.ctx.fill();
     this.ctx.moveTo(0,0);
     this.ctx.lineTo(p2d.x,p2d.y); 
@@ -55,7 +62,7 @@ export class CanvasHandlerService {
   {     
     for(let i = 0; i < this.drawArray.length;i++)
     {
-      console.log(`${this.ctx},${i}`);
+      //console.log(`${this.ctx},${i}`);
       this.drawPoint(this.ctx,i);
     }
   }
