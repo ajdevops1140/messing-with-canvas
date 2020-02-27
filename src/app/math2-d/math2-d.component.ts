@@ -43,7 +43,6 @@ export class Math2DComponent implements OnInit {
 
     ctx.save();  
     ctx.translate(this.wRight,this.hDown);
-
     ctx.beginPath();    
     ctx.moveTo(0,this.hUp);
     ctx.lineTo(0,this.hDown);
@@ -53,16 +52,24 @@ export class Math2DComponent implements OnInit {
     ctx.restore();
   }
 
-  drawPoint(x,y,ctx:CanvasRenderingContext2D,wRight,hDown)
-  {
-     
-  }
+ 
 
   BeginDraw(ctx:CanvasRenderingContext2D)
   {
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
-    this.drawGraph(ctx);
+    let p1 = new P2D(30,0);
+    let p2 = new P2D(30,0);
+    p2.rotate(45);
+    this.chs.addPoint(p1);
+    this.chs.addPoint(p2);
+    this.draw();
+  }
 
+  draw()
+  {
+    this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
+    this.drawGraph(this.ctx);
+    window.requestAnimationFrame(()=>{this.draw});
   }
 
 }

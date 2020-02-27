@@ -3,7 +3,11 @@ export class P2D
   x;
   y;
 
-  constructor(){}
+  constructor(x =0,y =0 )
+  {
+    this.x = x;
+    this.y = y;
+  }
 
   mag()
   {
@@ -20,10 +24,16 @@ export class P2D
     return (this.x * x) + (this.y * y);
   }
 
-  rotate(theta)
+  degToRad(deg:number)
+  {
+    return deg * Math.PI/180;
+  }
+
+  rotate(deg)
   {
     //x = x*cos - y*sin
     //y = y*cos + x*sin
+    let theta = this.degToRad(deg);
     this.x = (this.x*Math.cos(theta)) - (this.y*Math.sin(theta));
     this.y = (this.y*Math.cos(theta)) + (this.x*Math.sin(theta));
   }
