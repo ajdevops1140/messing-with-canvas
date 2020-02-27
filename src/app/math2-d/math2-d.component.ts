@@ -23,7 +23,7 @@ export class Math2DComponent implements OnInit {
 
   ngAfterViewInit()
   {
-
+    this.BeginDraw(this.ctx);
   }
 
   drawGraph(ctx:CanvasRenderingContext2D)
@@ -31,8 +31,10 @@ export class Math2DComponent implements OnInit {
 
   }
 
-  BeginDraw()
+  BeginDraw(ctx:CanvasRenderingContext2D)
   {
+    this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
+    this.drawGraph(ctx);
     
   }
 
