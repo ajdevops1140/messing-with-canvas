@@ -69,7 +69,8 @@ export class Math2DComponent implements OnInit {
   {
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     this.drawGraph(this.ctx);
-    window.requestAnimationFrame(()=>{this.draw});
+    this.chs.drawPoints();
+    //window.requestAnimationFrame(()=>{this.draw});
   }
 
 }
