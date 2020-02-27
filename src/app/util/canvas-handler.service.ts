@@ -6,7 +6,7 @@ export class CanvasHandlerService {
 
   private ctx:CanvasRenderingContext2D;
 
-  drawArray:any[];
+  drawArray:any;
 
   constructor()
   {
@@ -20,6 +20,12 @@ export class CanvasHandlerService {
 
   addPoint(p:P2D)
   {
+    this.drawArray.push(p);
+  }
+
+  removePoint(index:number)
+  {
     
   }
+
 }
