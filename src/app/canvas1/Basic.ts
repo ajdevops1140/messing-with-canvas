@@ -1,3 +1,5 @@
+import { P2D } from './P2D';
+
 export class Basic{
   x:number = 0;
   y:number = 0;
@@ -14,6 +16,7 @@ export class Basic{
   inYBounds:boolean;  
   adjustX:boolean;
   adjustY:boolean;
+  direction:P2D;
 
   constructor(private ctx:CanvasRenderingContext2D){}
 
