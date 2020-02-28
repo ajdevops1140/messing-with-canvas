@@ -8,6 +8,7 @@ export class P2D
   animate:boolean = false;
   toRotate:boolean = false;
   toDot:boolean = false;
+  dotResult:number;
   rot:number;
 
   constructor(x =0,y =0 )

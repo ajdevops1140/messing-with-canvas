@@ -69,6 +69,11 @@ export class Math2DComponent implements OnInit {
     }
   }
 
+  toggleDot(index:number)
+  {
+    this.chs.getPoint(index).toDot = !this.chs.getPoint(index).toDot;
+  }
+
   onRotate(r:number,index:number)
   {
     this.chs.getPoint(index).rot = r;
@@ -76,6 +81,11 @@ export class Math2DComponent implements OnInit {
     {      
       this.chs.getPoint(index).toRotate = true;
     }
+  }
+
+  dotProduct(i:number,j:number)
+  {
+    this.chs.getPoint(i);
   }
 
   reset(index:number)

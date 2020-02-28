@@ -23,8 +23,11 @@
       <div class="sep">
         <button (click)="toggleDot(i)"><span>Dot</span></button>
         <ul *ngIf="p.toDot" >
-          <li class="dotLi">
-            {{p.toDot}}
+          <li class="dotLi" *ngFor="let p1 of chs.drawArray; index as j">
+            <div *ngIf="i != j">
+              <label>{{j+1}}</label>              
+              <label> Dot: {{p.dot(p1.x,p1.y)}}</label>
+            </div>
           </li>
         </ul>
       </div>
