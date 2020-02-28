@@ -3,10 +3,19 @@ canvas{
 }
 
 button{
-  margin-top: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .rot{
   margin-left: 5px;
   width:30px;
+}
+
+li{
+  border-top: 1px solid gray;
+}
+
+.sep{
+  margin: 5px 0px 5px 0px;
 }
