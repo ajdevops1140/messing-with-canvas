@@ -15,6 +15,7 @@ button{
 li{
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
+  list-style-type: none;
 }
 
 .sep{
