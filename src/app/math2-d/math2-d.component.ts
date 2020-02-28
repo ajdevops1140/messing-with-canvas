@@ -79,6 +79,17 @@ export class Math2DComponent implements OnInit {
     }
   }
 
+  reset()
+  {
+    this.chs.getPoint(1).x = 100;
+    this.chs.getPoint(1).y = 0;
+    this.rotation = 0;
+    if(!this.isAnimate)
+    {
+      this.draw();
+    }
+  }
+
   BeginDraw(ctx:CanvasRenderingContext2D)
   {
     let t:Date = new Date();
