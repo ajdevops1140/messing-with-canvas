@@ -95,7 +95,7 @@ export class Math2DComponent implements OnInit {
     this.drawGraph(this.ctx);
     //if(this.chs.timeDiff >= this.chs.timeDelay)
    // {
-      this.chs.rotatePoint(1,1); 
+      this.chs.rotatePoint(5,1); 
       this.rotatingPointMag = this.chs.getPoint(1).mag();
       this.chs.timeDiff = 0;     
     //}

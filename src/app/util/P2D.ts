@@ -46,7 +46,7 @@ export class P2D
     let y = this.y;
     //x = x*cos - y*sin
     //y = y*cos + x*sin    
-    let theta = this.theta = this.prec(this.degToRad(deg),2);
+    let theta = this.theta = this.prec(this.degToRad(deg),3);
     let sx = this.prec(x * Math.cos(theta) - y * Math.sin(theta));
     let sy = this.prec(y * Math.cos(theta) + x * Math.sin(theta));
 
