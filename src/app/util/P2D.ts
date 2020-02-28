@@ -6,6 +6,7 @@ export class P2D
   precision:number = 6;
   theta:number;
   animate:boolean = false;
+  toRotate:boolean = false;
   rot:number;
 
   constructor(x =0,y =0 )

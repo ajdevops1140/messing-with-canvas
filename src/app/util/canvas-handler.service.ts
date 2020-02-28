@@ -56,12 +56,13 @@ export class CanvasHandlerService {
     this.ctx.fillStyle = 'red';
     this.ctx.translate(this.width,this.height);
     //this.ctx.translate(p2d.x,p2d.y);
-    if(p2d.animate)
+    if(!p2d.animate && p2d.toRotate)
     {
       p2d.rotate(p2d.rot);
-    }else if(!p2d.animate)
+      this.getPoint(index).toRotate = false;
+    }else if(p2d.animate)
     {
-      
+      p2d.rotate(p2d.rot);
     }    
     
     this.ctx.beginPath();

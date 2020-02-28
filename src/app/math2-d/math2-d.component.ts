@@ -74,7 +74,7 @@ export class Math2DComponent implements OnInit {
     this.chs.getPoint(index).rot = r;
     if(!this.chs.getPoint(index).animate)
     {      
-      
+      this.chs.getPoint(index).toRotate = true;
     }
   }
 
@@ -83,7 +83,8 @@ export class Math2DComponent implements OnInit {
     this.chs.getPoint(index).x = 100;
     this.chs.getPoint(index).y = 0;
     this.chs.getPoint(index).rot = 0;
-    this.chs.getPoint(index).animate = false    
+    this.chs.getPoint(index).animate = false;
+    this.chs.getPoint(index).toRotate = false;   
   }
 
   BeginDraw(ctx:CanvasRenderingContext2D)
