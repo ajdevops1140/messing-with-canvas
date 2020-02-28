@@ -77,7 +77,12 @@ export class Math2DComponent implements OnInit {
   {
     let t:Date = new Date();
     this.chs.currTime = t.getMilliseconds();
-    this.chs.timeDiff += (this.chs.currTime - this.chs.prevTime);
+    if(this.chs.currTime < this.chs.prevTime)
+    {
+      this.chs.TimeDiff += this.chs.prevTime - this.chs.currTime;
+    }
+    else
+      this.chs.timeDiff += (this.chs.currTime - this.chs.prevTime);
 
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     //console.log(this.chs.timeDiff);
