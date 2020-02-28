@@ -58,7 +58,7 @@ export class CanvasHandlerService {
     this.ctx.translate(p2d.x,p2d.y);
     p2d.rotate(p2d.rot);
     this.ctx.beginPath();
-    this.ctx.fillText(`${index}:(${Math.floor(p2d.x)},${Math.floor(p2d.y)})`,p2d.x + 10,p2d.y);
+    this.ctx.fillText(`${index + 1}:(${Math.floor(p2d.x)},${Math.floor(p2d.y)})`,p2d.x + 10,p2d.y);
     this.ctx.fillStyle = 'blue';
     this.ctx.arc(p2d.x ,p2d.y ,5,0,2 * Math.PI);  
     this.ctx.fill();

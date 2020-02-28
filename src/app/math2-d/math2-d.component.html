@@ -3,6 +3,9 @@
   <ul>
     <li *ngFor="let p of chs.drawArray; index as i">
       <div class="sep">
+        <label>ID:</label><span>{{i+1}}</span>
+      </div>
+      <div class="sep">
         <label>Magnitude of Rotating Point:</label><span>{{p.mag()}}</span>
       </div>
       <div class="sep">
