@@ -73,7 +73,7 @@ export class Math2DComponent implements OnInit {
   {
     if(!this.isAnimate)
     {
-      this.chs.rotatePoint(r,1);
+      this.chs.rotatePoint(r,index);
       this.draw();
     }
   }
@@ -125,8 +125,6 @@ export class Math2DComponent implements OnInit {
     this.drawGraph(this.ctx);
     //if(this.chs.timeDiff >= this.chs.timeDelay)
    // {
-      this.chs.rotatePoint(this.rotation,1); 
-      this.rotatingPointMag = this.chs.getPoint(1).mag();
       this.chs.timeDiff = 0;     
     //}
     this.chs.drawPoints();
