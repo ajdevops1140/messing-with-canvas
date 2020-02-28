@@ -69,12 +69,11 @@ export class Math2DComponent implements OnInit {
     }
   }
 
-  onRotate(r:number)
+  onRotate(r:number,index:number)
   {
-    this.rotation = r;
     if(!this.isAnimate)
     {
-      this.chs.rotatePoint(this.rotation,1);
+      this.chs.rotatePoint(r,1);
       this.draw();
     }
   }

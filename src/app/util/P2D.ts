@@ -6,12 +6,14 @@ export class P2D
   precision:number = 6;
   theta:number;
   animate:boolean = false;
+  rot:number;
 
   constructor(x =0,y =0 )
-  {
-    
+  {    
     this.x = x;
     this.y = y;
+    this.theta = 0;
+    this.rot = 0;
   }
 
   mag()
@@ -45,12 +47,13 @@ export class P2D
   {
     let x = this.x;
     let y = this.y;
+    this.rot = deg;
     //x = x*cos - y*sin
     //y = y*cos + x*sin    
     let theta = this.theta = this.degToRad(deg);
     theta /=2;
-    let sx = this.prec(x * (Math.cos(theta))- y * (Math.sin(theta)));
-    let sy = this.prec(y * (Math.cos(theta)) + x *(Math.sin(theta)));
+    let sx = this.prec((x * Math.cos(theta)) - (y * Math.sin(theta)));
+    let sy = this.prec((y * Math.cos(theta)) + (x * Math.sin(theta)));
 
     this.x = sx;
     this.y = sy;

@@ -1,22 +1,22 @@
 <canvas #cv [width]="cvWidth" [height]="cvHeight"></canvas>
 <div>
   <ul>
-    <li *ngFor="let p of chs.drawArray">
+    <li *ngFor="let p of chs.drawArray; index as i">
       <div class="sep">
-        <label>Magnitude of Rotating Point:</label><span>{{rotatingPointMag}}</span>
+        <label>Magnitude of Rotating Point:</label><span>{{p.mag()}}</span>
       </div>
       <div class="sep">
-        <label>Precision:</label><span>{{precision}}</span>
+        <label>Precision:</label><span>{{p.precision}}</span>
       </div>
       <div class="sep">
-        <label>Theta:</label><span>{{theta}}</span>
+        <label>Theta:</label><span>{{p.theta}}</span>
       </div>
       <div class="sep">
         <button (click)="toggleAnimation()"><span >{{isAnimate? 'Animate' : 'Static'}}</span></button>
       </div>
       <div>
       <div class="sep">
-        <button (click)="onRotate(rot.value)"><span>Rotate</span></button><input #rot class="rot" [placeholder]='rotation' />
+        <button (click)="onRotate(rot.value,i)"><span>Rotate</span></button><input #rot class="rot" [placeholder]='rotation' />
       </div>
       </div>
       <div class="sep">

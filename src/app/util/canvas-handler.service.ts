@@ -55,6 +55,8 @@ export class CanvasHandlerService {
     this.ctx.save();
     this.ctx.fillStyle = 'red';
     this.ctx.translate(this.width,this.height);
+    this.ctx.translate(p2d.x,p2d.y);
+    
     this.ctx.beginPath();
     this.ctx.fillText(`${index}:(${Math.floor(p2d.x)},${Math.floor(p2d.y)})`,p2d.x + 10,p2d.y);
     this.ctx.fillStyle = 'blue';
