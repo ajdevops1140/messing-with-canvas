@@ -5,6 +5,7 @@ export class P2D
   degChange:number;
   precision:number = 6;
   theta:number;
+  animate:boolean = false;
 
   constructor(x =0,y =0 )
   {

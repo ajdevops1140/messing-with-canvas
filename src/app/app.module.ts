@@ -7,10 +7,11 @@ import { HelloComponent } from './hello.component';
 import { Canvas1Component } from './canvas1/canvas1.component';
 import { Math2DComponent } from './math2-d/math2-d.component';
 import { CanvasHandlerService } from './util/canvas-handler.service';
+import { PointControlComponent } from './point-control/point-control.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, HelloComponent, Canvas1Component, Math2DComponent ],
+  declarations: [ AppComponent, HelloComponent, Canvas1Component, Math2DComponent, PointControlComponent ],
   bootstrap:    [ AppComponent ],
   providers: [CanvasHandlerService]
 })

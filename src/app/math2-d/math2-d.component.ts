@@ -101,7 +101,6 @@ export class Math2DComponent implements OnInit {
     let p1 = new P2D(100,0);
     let p2 = new P2D(100,0);
     let p3 = new P2D(-100,0);
-    //p2.rotate(-45);
     this.chs.addPoint(p1);
     this.chs.addPoint(p2);
     this.chs.addPoint(p3);
