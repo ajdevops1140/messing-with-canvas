@@ -80,7 +80,7 @@ export class Math2DComponent implements OnInit {
     this.chs.timeDiff += (this.chs.currTime - this.chs.prevTime);
 
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
-    console.log(this.chs.timeDiff);
+    //console.log(this.chs.timeDiff);
     //this.ctx.save();
     this.drawGraph(this.ctx);
     if(this.chs.timeDiff >= this.chs.timeDelay)
