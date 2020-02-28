@@ -35,7 +35,7 @@ export class Math2DComponent implements OnInit {
     this.wLeft = -w;
     this.hUp = -h;
     this.hDown = h;
-    this.isAnimate = true;
+    this.isAnimate = false;
     this.rotation = 0;
   }
 
