@@ -86,14 +86,14 @@ export class Math2DComponent implements OnInit {
     else
       this.chs.timeDiff += (this.chs.currTime - this.chs.prevTime);*/
     let p1 = this.chs.getPoint(1);
-    this.precision = p1.prec;
+    this.precision = p1.precision;
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     //console.log(this.chs.timeDiff);
     //this.ctx.save();
     this.drawGraph(this.ctx);
     //if(this.chs.timeDiff >= this.chs.timeDelay)
    // {
-      this.chs.rotatePoint(-0.09,1); 
+      this.chs.rotatePoint(1,1); 
       this.rotatingPointMag = this.chs.getPoint(1).mag();
       this.chs.timeDiff = 0;     
     //}
