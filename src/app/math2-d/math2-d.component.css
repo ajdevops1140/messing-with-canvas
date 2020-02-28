@@ -12,9 +12,14 @@ button{
   width:30px;
 }
 
-li{
+.mli{
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
+  list-style-type: none;
+}
+
+.dotLi
+{
   list-style-type: none;
 }
 

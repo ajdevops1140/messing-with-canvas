@@ -1,7 +1,7 @@
 <canvas #cv [width]="cvWidth" [height]="cvHeight"></canvas>
 <div>
   <ul>
-    <li *ngFor="let p of chs.drawArray; index as i">
+    <li class="mli" *ngFor="let p of chs.drawArray; index as i">
       <div class="sep">
         <label>ID:</label><span>{{i+1}}</span>
       </div>
@@ -21,10 +21,10 @@
         <button (click)="onRotate(rot.value,i)"><span>Rotate</span></button><input #rot class="rot" [placeholder]='rotation' />
       </div>
       <div class="sep">
-        <button (click)="$"><span>Dot</span></button>
-        <ul>
-          <li>
-
+        <button (click)="toggleDot(i)"><span>Dot</span></button>
+        <ul *ngIf="p.toDot" >
+          <li class="dotLi">
+            {{p.toDot}}
           </li>
         </ul>
       </div>

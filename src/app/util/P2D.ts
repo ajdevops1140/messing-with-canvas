@@ -7,6 +7,7 @@ export class P2D
   theta:number;
   animate:boolean = false;
   toRotate:boolean = false;
+  toDot:boolean = false;
   rot:number;
 
   constructor(x =0,y =0 )
