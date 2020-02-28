@@ -49,7 +49,18 @@ export class Canvas1Component implements OnInit {
 
     this.b.checkXBounds(this.cvWidth,this.cvHeight)
     
-    if(this.b.inXBounds && this.b.adjustX)
+    
+
+    this.b.adjustPos();
+    this.b.adjustRot(1);
+    this.ctx.restore();
+    window.requestAnimationFrame(()=>{this.draw()});
+  }
+
+}
+
+/*
+if(this.b.inXBounds && this.b.adjustX)
     {
       this.b.adjustAcceleration(0.2,0.1);
       this.b.addAccelerationToSpeed();
@@ -63,10 +74,4 @@ export class Canvas1Component implements OnInit {
       //this.b.addAccelerationToSpeed();
     }
 
-    this.b.adjustPos();
-    this.b.adjustRot(1);
-    this.ctx.restore();
-    window.requestAnimationFrame(()=>{this.draw()});
-  }
-
-}
+*/

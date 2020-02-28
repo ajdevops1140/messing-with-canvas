@@ -21,6 +21,7 @@ export class Math2DComponent implements OnInit {
   rotatingPointMag:number;
   precision:any;
   theta:any;
+  isAnimate:boolean;
 
   constructor(private chs:CanvasHandlerService) { }
 
@@ -33,6 +34,7 @@ export class Math2DComponent implements OnInit {
     this.wLeft = -w;
     this.hUp = -h;
     this.hDown = h;
+    this.isAnimate = true;
   }
 
   ngAfterViewInit()
@@ -56,7 +58,14 @@ export class Math2DComponent implements OnInit {
     ctx.restore();
   }
 
- 
+  toggleAnimation()
+  {
+    this.isAnimate = !this.isAnimate;
+    if(this.isAnimate)
+    {
+      this.draw();
+    }
+  }
 
   BeginDraw(ctx:CanvasRenderingContext2D)
   {
@@ -103,7 +112,10 @@ export class Math2DComponent implements OnInit {
    
     //this.ctx.restore();
     this.chs.prevTime = this.chs.currTime;
-    window.requestAnimationFrame(()=>{this.draw()});
+    if(this.isAnimate)
+    {
+      window.requestAnimationFrame(()=>{this.draw()});
+    }
   }
 
 }
