@@ -17,10 +17,8 @@
       <div class="sep">
         <button (click)="toggleAnimation(i)"><span >{{p.animate? 'Animate' : 'Static'}}</span></button>
       </div>
-      <div>
       <div class="sep">
         <button (click)="onRotate(rot.value,i)"><span>Rotate</span></button><input #rot class="rot" [placeholder]='rotation' />
-      </div>
       </div>
       <div class="sep">
         <button (click)="reset(i)"><span>Reset</span></button>
