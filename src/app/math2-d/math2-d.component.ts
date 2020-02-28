@@ -18,6 +18,7 @@ export class Math2DComponent implements OnInit {
   wLeft:number;
   hUp:number;
   hDown:number;
+  rotatingPointMag:number;
 
   constructor(private chs:CanvasHandlerService) { }
 
@@ -59,7 +60,7 @@ export class Math2DComponent implements OnInit {
   {
     let t:Date = new Date();
     this.chs.prevTime = this.chs.currTime = t.getMilliseconds();    
-    this.chs.timeDelay = 1;
+    this.chs.timeDelay = 20;
     this.chs.timeDiff = 0;
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     this.ctx.save();
@@ -77,22 +78,23 @@ export class Math2DComponent implements OnInit {
   {
     let t:Date = new Date();
     this.chs.currTime = t.getMilliseconds();
-    if(this.chs.currTime < this.chs.prevTime)
+    /*if(this.chs.currTime < this.chs.prevTime)
     {
-      this.chs.TimeDiff += (this.chs.prevTime - this.chs.currTime);
+      this.chs.timeDiff += (this.chs.prevTime - this.chs.currTime);
     }
     else
-      this.chs.timeDiff += (this.chs.currTime - this.chs.prevTime);
+      this.chs.timeDiff += (this.chs.currTime - this.chs.prevTime);*/
 
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     //console.log(this.chs.timeDiff);
     //this.ctx.save();
     this.drawGraph(this.ctx);
-    if(this.chs.timeDiff >= this.chs.timeDelay)
-    {
-      this.chs.rotatePoint(-1,1); 
+    //if(this.chs.timeDiff >= this.chs.timeDelay)
+   // {
+      this.chs.rotatePoint(-0.09,1); 
+      this.rotatingPointMag = this.chs.getPoint(1).mag();
       this.chs.timeDiff = 0;     
-    }
+    //}
     this.chs.drawPoints();
    
     //this.ctx.restore();

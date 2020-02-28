@@ -38,6 +38,11 @@ export class CanvasHandlerService {
     this.drawArray.splice(index,1);
   }
 
+  getPoint(index:number)
+  {
+    return this.drawArray[index];
+  }
+
   rotatePoint(deg:number,index:number)
   {
     //console.log("Rotate");

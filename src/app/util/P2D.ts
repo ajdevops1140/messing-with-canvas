@@ -2,6 +2,7 @@ export class P2D
 {
   x:number;
   y:number;
+  degChange:number;
 
   constructor(x =0,y =0 )
   {
@@ -31,13 +32,14 @@ export class P2D
     return deg * Math.PI/180;
   }
 
-  rotate(deg)
+  rotate(deg:number)
   {
     //x = x*cos - y*sin
     //y = y*cos + x*sin
-    let theta = Number.parseFloat((this.degToRad(deg)).toPrecision(2));
-    let sx = ((this.x*Math.cos(theta)) - (this.y*Math.sin(theta))).toPrecision(2);
-    let sy = ((this.y*Math.cos(theta)) + (this.x*Math.sin(theta))).toPrecision(2);
+    //let theta = Number.parseFloat((this.degToRad(deg)).toPrecision(6));
+    let theta = Number.parseFloat(deg.toPrecision(4));
+    let sx = ((this.x*Math.cos(theta)) - (this.y*Math.sin(theta))).toPrecision(4);
+    let sy = ((this.y*Math.cos(theta)) + (this.x*Math.sin(theta))).toPrecision(4);
 
     this.x = Number.parseFloat(sx);
     this.y = Number.parseFloat(sy);
