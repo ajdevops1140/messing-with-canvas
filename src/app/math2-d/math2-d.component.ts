@@ -19,6 +19,7 @@ export class Math2DComponent implements OnInit {
   hUp:number;
   hDown:number;
   rotatingPointMag:number;
+  precision:any;
 
   constructor(private chs:CanvasHandlerService) { }
 
@@ -84,7 +85,8 @@ export class Math2DComponent implements OnInit {
     }
     else
       this.chs.timeDiff += (this.chs.currTime - this.chs.prevTime);*/
-
+    let p1 = this.chs.getPoint(1);
+    this.precision = p1.prec;
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     //console.log(this.chs.timeDiff);
     //this.ctx.save();

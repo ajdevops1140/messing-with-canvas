@@ -3,6 +3,7 @@ export class P2D
   x:number;
   y:number;
   degChange:number;
+  precision:number = 4;
 
   constructor(x =0,y =0 )
   {
@@ -32,17 +33,25 @@ export class P2D
     return deg * Math.PI/180;
   }
 
+  //Parse the number and return the precision
+  prec(n:number)
+  {
+    return Number.parseFloat(n.toPrecision(this.precision));
+  }
+
   rotate(deg:number)
   {
+    let x = this.x;
+    let y = this.y;
     //x = x*cos - y*sin
     //y = y*cos + x*sin
     //let theta = Number.parseFloat((this.degToRad(deg)).toPrecision(6));
-    let theta = Number.parseFloat(deg.toPrecision(4));
-    let sx = ((this.x*Math.cos(theta)) - (this.y*Math.sin(theta))).toPrecision(4);
-    let sy = ((this.y*Math.cos(theta)) + (this.x*Math.sin(theta))).toPrecision(4);
+    let theta = this.prec(deg);
+    let sx = (x * this.prec(Math.cos(theta))) - (y * this.prec(Math.sin(theta)));
+    let sy = (y * this.prec(Math.cos(theta))) + (x * this.prec(Math.sin(theta)));
 
-    this.x = Number.parseFloat(sx);
-    this.y = Number.parseFloat(sy);
+    this.x = this.prec(sx);
+    this.y = this.prec(sy);
 
     //this.normalize();
   }
