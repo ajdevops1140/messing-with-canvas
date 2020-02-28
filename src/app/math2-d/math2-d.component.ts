@@ -57,6 +57,10 @@ export class Math2DComponent implements OnInit {
 
   BeginDraw(ctx:CanvasRenderingContext2D)
   {
+    let t:Date = new Date();
+    this.chs.prevTime = this.chs.currTime = t.getMilliseconds();    
+    this.chs.timeDelay = 1;
+    this.chs.timeDiff = 0;
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     this.ctx.save();
     let p1 = new P2D(100,0);
@@ -71,14 +75,23 @@ export class Math2DComponent implements OnInit {
 
   draw()
   {
+    let t:Date = new Date();
+    this.chs.currTime = t.getMilliseconds();
+    this.chs.timeDiff += (this.chs.currTime - this.chs.prevTime);
+
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     
     //this.ctx.save();
     this.drawGraph(this.ctx);
-     this.chs.rotatePoint(-10,1);
+    if(this.chs.timeDiff >= this.chs.timeDelay)
+    {
+      this.chs.rotatePoint(-1,1); 
+      this.chs.timeDiff = 0;     
+    }
     this.chs.drawPoints();
    
     //this.ctx.restore();
+    this.chs.prevTime = this.chs.currTime;
     window.requestAnimationFrame(()=>{this.draw()});
   }
 

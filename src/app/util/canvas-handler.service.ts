@@ -9,6 +9,10 @@ export class CanvasHandlerService {
   drawArray:any;
   width:number;
   height:number;
+  prevTime:number;
+  currTime:number;
+  timeDiff:number;
+  timeDelay:number;
 
   constructor()
   {
