@@ -79,7 +79,7 @@ export class Math2DComponent implements OnInit {
     this.chs.currTime = t.getMilliseconds();
     if(this.chs.currTime < this.chs.prevTime)
     {
-      this.chs.TimeDiff += this.chs.prevTime - this.chs.currTime;
+      this.chs.TimeDiff += (this.chs.prevTime - this.chs.currTime);
     }
     else
       this.chs.timeDiff += (this.chs.currTime - this.chs.prevTime);
