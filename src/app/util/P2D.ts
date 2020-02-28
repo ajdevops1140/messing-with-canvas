@@ -33,7 +33,7 @@ export class P2D
   dot(x,y)
   {
     return (this.x * x) + (this.y * y);
-  }
+  } 
 
   degToRad(deg:number)
   {

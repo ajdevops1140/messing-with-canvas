@@ -83,9 +83,16 @@ export class Math2DComponent implements OnInit {
     }
   }
 
-  dotProduct(i:number,j:number)
+  getAngle(i:number,j:number)
   {
-    this.chs.getPoint(i);
+    let p1 = this.chs.getPoint(i);
+    let p2 = this.chs.getPoint(j);
+    let dot = p1.dot(p2.x,p2.y);
+    let magP1 = p1.mag();
+    let magP2 = p2.mag();
+    let magMult = magP1 * magP2;
+    let cosa = dot/magMult;
+    return Math.acos(cosa);    
   }
 
   reset(index:number)
