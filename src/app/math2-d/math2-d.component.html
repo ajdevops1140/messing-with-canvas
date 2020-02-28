@@ -4,5 +4,5 @@
 <div><label>Theta:</label><span>{{theta}}</span></div>
 <button (click)="toggleAnimation()"><span >{{ isAnimate? 'Animate' : 'Static'}}</span></button>
 <div>
-<button><span>Rotate</span></button>
+<button (click)="$"><span>Rotate</span></button><input #rot class="rot" [placeholder]='rotation' />
 </div>
