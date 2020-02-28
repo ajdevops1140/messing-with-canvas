@@ -35,9 +35,9 @@ export class P2D
   }
 
   //Parse the number and return the precision
-  prec(n:number)
+  prec(n:number,p:number = this.precision)
   {
-    return Number.parseFloat(n.toPrecision(this.precision));
+    return Number.parseFloat(n.toPrecision(p));
   }
 
   rotate(deg:number)
@@ -46,8 +46,8 @@ export class P2D
     let y = this.y;
     //x = x*cos - y*sin
     //y = y*cos + x*sin    
-    let theta = this.theta = this.degToRad(deg);
-    let sx = this.prec(x * Math.cos(theta)  - y * Math.sin(theta));
+    let theta = this.theta = this.prec(this.degToRad(deg),2);
+    let sx = this.prec(x * Math.cos(theta) - y * Math.sin(theta));
     let sy = this.prec(y * Math.cos(theta) + x * Math.sin(theta));
 
     this.x = sx;
