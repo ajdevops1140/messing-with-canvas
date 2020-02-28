@@ -6,7 +6,7 @@ export class CanvasHandlerService {
 
   private ctx:CanvasRenderingContext2D;
 
-  drawArray:P2D;
+  drawArray:P2D[];
   width:number;
   height:number;
   prevTime:number;
@@ -55,8 +55,15 @@ export class CanvasHandlerService {
     this.ctx.save();
     this.ctx.fillStyle = 'red';
     this.ctx.translate(this.width,this.height);
-    this.ctx.translate(p2d.x,p2d.y);
-    p2d.rotate(p2d.rot);
+    //this.ctx.translate(p2d.x,p2d.y);
+    if(p2d.animate)
+    {
+      p2d.rotate(p2d.rot);
+    }else if(!p2d.animate)
+    {
+      
+    }    
+    
     this.ctx.beginPath();
     this.ctx.fillText(`${index + 1}:(${Math.floor(p2d.x)},${Math.floor(p2d.y)})`,p2d.x + 10,p2d.y);
     this.ctx.fillStyle = 'blue';

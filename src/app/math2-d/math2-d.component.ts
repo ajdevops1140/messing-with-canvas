@@ -60,22 +60,21 @@ export class Math2DComponent implements OnInit {
     ctx.restore();
   }
 
-  toggleAnimation()
+  toggleAnimation(index:number)
   {
-    this.isAnimate = !this.isAnimate;
-    if(this.isAnimate)
+    this.chs.getPoint(index).animate = !this.chs.getPoint(index).animate;
+    if(!this.chs.getPoint(index).animate)
     {
-      this.draw();
+      
     }
   }
 
   onRotate(r:number,index:number)
   {
     this.chs.getPoint(index).rot = r;
-    if(!this.isAnimate)
-    {
+    if(!this.chs.getPoint(index).animate)
+    {      
       
-      this.draw();
     }
   }
 
@@ -84,10 +83,7 @@ export class Math2DComponent implements OnInit {
     this.chs.getPoint(index).x = 100;
     this.chs.getPoint(index).y = 0;
     this.chs.getPoint(index).rot = 0;
-    if(!this.isAnimate)
-    {
-      this.draw();
-    }
+    this.chs.getPoint(index).animate = false    
   }
 
   BeginDraw(ctx:CanvasRenderingContext2D)
@@ -129,10 +125,9 @@ export class Math2DComponent implements OnInit {
    
     //this.ctx.restore();
     this.chs.prevTime = this.chs.currTime;
-    if(this.isAnimate)
-    {
-      window.requestAnimationFrame(()=>{this.draw()});
-    }
+    
+    window.requestAnimationFrame(()=>{this.draw()});
+    
   }
 
 }
