@@ -71,18 +71,19 @@ export class Math2DComponent implements OnInit {
 
   onRotate(r:number,index:number)
   {
+    this.chs.getPoint(index).rot = r;
     if(!this.isAnimate)
     {
-      this.chs.rotatePoint(r,index);
+      
       this.draw();
     }
   }
 
-  reset()
+  reset(index:number)
   {
-    this.chs.getPoint(1).x = 100;
-    this.chs.getPoint(1).y = 0;
-    this.rotation = 0;
+    this.chs.getPoint(index).x = 100;
+    this.chs.getPoint(index).y = 0;
+    this.chs.getPoint(index).rot = 0;
     if(!this.isAnimate)
     {
       this.draw();
@@ -116,9 +117,6 @@ export class Math2DComponent implements OnInit {
     }
     else
       this.chs.timeDiff += (this.chs.currTime - this.chs.prevTime);*/
-    let p1 = this.chs.getPoint(1);
-    this.precision = p1.precision;
-    this.theta = p1.theta;
     this.ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     //console.log(this.chs.timeDiff);
     //this.ctx.save();
