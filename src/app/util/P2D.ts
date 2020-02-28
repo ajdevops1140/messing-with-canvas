@@ -1,10 +1,11 @@
 export class P2D
 {
-  x;
-  y;
+  x:number;
+  y:number;
 
   constructor(x =0,y =0 )
   {
+    
     this.x = x;
     this.y = y;
   }
@@ -34,9 +35,13 @@ export class P2D
   {
     //x = x*cos - y*sin
     //y = y*cos + x*sin
-    let theta = this.degToRad(deg);
-    this.x = (this.x*Math.cos(theta)) - (this.y*Math.sin(theta));
-    this.y = (this.y*Math.cos(theta)) + (this.x*Math.sin(theta));
+    let theta = Number.parseFloat((this.degToRad(deg)).toPrecision(2));
+    let sx = ((this.x*Math.cos(theta)) - (this.y*Math.sin(theta))).toPrecision(2);
+    let sy = ((this.y*Math.cos(theta)) + (this.x*Math.sin(theta))).toPrecision(2);
+
+    this.x = Number.parseFloat(sx);
+    this.y = Number.parseFloat(sy);
+
     //this.normalize();
   }
 
