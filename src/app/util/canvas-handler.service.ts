@@ -54,7 +54,6 @@ export class CanvasHandlerService {
     let p2d:P2D = this.drawArray[index];
     this.ctx.save();
     this.ctx.fillStyle = 'red';
-    //this.ctx.
     this.ctx.translate(this.width,this.height);
     this.ctx.beginPath();
     this.ctx.fillText(`${index}:(${Math.floor(p2d.x)},${Math.floor(p2d.y)})`,p2d.x + 10,p2d.y);
