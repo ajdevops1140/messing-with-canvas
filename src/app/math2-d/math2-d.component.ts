@@ -71,7 +71,12 @@ export class Math2DComponent implements OnInit {
 
   onRotate(r:number)
   {
-    
+    this.rotation = r;
+    if(!this.isAnimate)
+    {
+      this.chs.rotatePoint(this.rotation,1);
+      this.draw();
+    }
   }
 
   BeginDraw(ctx:CanvasRenderingContext2D)
