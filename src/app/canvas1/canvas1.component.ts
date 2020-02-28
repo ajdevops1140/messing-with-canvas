@@ -57,7 +57,7 @@ export class Canvas1Component implements OnInit {
     }
     
 
-    if(this.b.checkYBounds(this.cvWidth,this.cvHeight))
+    if(this.b.inYBounds && this.b.adjustY)
     {
       //this.b.adjustAcceleration(0.5,0.5);
       //this.b.addAccelerationToSpeed();
