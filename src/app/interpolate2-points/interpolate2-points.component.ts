@@ -18,9 +18,33 @@ export class Interpolate2PointsComponent implements OnInit {
   hUp:number;
   hDown:number;
 
-  constructor() { }
+  constructor(private chs:CanvasHandlerService) { }
 
   ngOnInit() {
+    this.ctx = this.cv.nativeElement.getContext('2d'); 
+    let w = this.cvWidth/2;
+    let h = this.cvHeight/2;
+    this.wRight = w;
+    this.wLeft = -w;
+    this.hUp = -h;
+    this.hDown = h;
+  }
+
+  ngAfterViewInit()
+  {
+    this.chs.setParameters(this.cv,this.wRight,this.hDown);    
+  }
+
+  BeginDraw(ctx:CanvasRenderingContext2D)
+  {
+    ctx.save();  
+    ctx.translate(this.wRight,this.hDown);
+    ctx.restore();
+  }
+
+  drawInterpolation(ctx:CanvasRenderingContext2D)
+  {
+    
   }
 
 }

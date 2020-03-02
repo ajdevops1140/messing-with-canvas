@@ -10,6 +10,7 @@ export class P2D
   toDot:boolean = false;
   dotResult:number;
   rot:number;
+  color = 'blue';
 
   constructor(x =0,y =0 )
   {    

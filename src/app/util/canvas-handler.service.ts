@@ -49,6 +49,17 @@ export class CanvasHandlerService {
     this.drawArray[index].rot = deg;
   }
 
+  drawSinglePoint(index:number)
+  {
+    let p2d = this.getPoint(index);
+    this.ctx.save();
+    this.ctx.translate(p2d.x ,p2d.y);
+    this.ctx.arc(p2d.x ,p2d.y ,5,0,2 * Math.PI);
+    this.ctx.fillStyle = p2d.color;
+    this.ctx.fill()
+    this.ctx.restore();
+  }
+
   drawPoint(ctx:CanvasRenderingContext2D, index:number)
   {
     let p2d:P2D = this.drawArray[index];
@@ -84,5 +95,8 @@ export class CanvasHandlerService {
       this.drawPoint(this.ctx,i);
     }
   }
+
+
+
 
 }

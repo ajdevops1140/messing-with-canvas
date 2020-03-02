@@ -148,4 +148,6 @@ export class Math2DComponent implements OnInit {
     
   }
 
+  
+
 }
