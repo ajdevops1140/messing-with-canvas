@@ -17,7 +17,7 @@ import { CanvasHandlerService } from "../util/canvas-handler.service";
 })
 export class Interpolate2PointsComponent implements OnInit {
   cvWidth: number = 500;
-  cvHeight: number = 100;
+  cvHeight: number = 400;
   @ViewChild("cv", { static: true }) cv: ElementRef;
   ctx: CanvasRenderingContext2D;
   wRight: number;
@@ -25,7 +25,7 @@ export class Interpolate2PointsComponent implements OnInit {
   hUp: number;
   hDown: number;
   t:number = 0;
-  tSpeed:number = 0.1;
+  tSpeed:number = 0.01;
 
   constructor(private chs: CanvasHandlerService) {}
 
@@ -47,7 +47,7 @@ export class Interpolate2PointsComponent implements OnInit {
   BeginDraw(ctx: CanvasRenderingContext2D) {
     let h: CanvasHandlerService = this.chs;
     let p0 = new P2D(-150, 0);
-    let p1 = new P2D(150, 0);
+    let p1 = new P2D(150, 160);
     let p2 = new P2D(-150, 0);
     p2.color = "red";
     h.addPoint(p0);
@@ -72,17 +72,14 @@ export class Interpolate2PointsComponent implements OnInit {
     let p2 = h.getPoint(2);
     p2.linearInterpolate(p0,p1,this.t);
 
-    this.t = (this.t + this.tSpeed)/10;
-    if(this.tSpeed < 0 || this.tSpeed > 1)
-    {
-      this.tSpeed = 0.1;
-    }
-    if(this.t <= 0)
+    this.t = (this.t + this.tSpeed);
+    
+    if(this.t < 0)
     {
       this.t = 0;
       this.tSpeed *= -1;
     }
-    else if(this.t >= 1)
+    else if(this.t > 1)
     {
       this.t = 1;
       this.tSpeed *= -1;
