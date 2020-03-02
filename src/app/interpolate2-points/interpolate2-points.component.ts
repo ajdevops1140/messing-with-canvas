@@ -37,6 +37,14 @@ export class Interpolate2PointsComponent implements OnInit {
 
   BeginDraw(ctx:CanvasRenderingContext2D)
   {
+    let h:CanvasHandlerService = this.chs;
+    let p0 = new P2D(-150,0);
+    let p1 = new P2D(150,0);
+    let p2 = new P2D(-150,0);
+    p2.color = 'red';
+    
+
+
     ctx.save();  
     ctx.translate(this.wRight,this.hDown);
     ctx.restore();
@@ -44,7 +52,7 @@ export class Interpolate2PointsComponent implements OnInit {
 
   drawInterpolation(ctx:CanvasRenderingContext2D)
   {
-    
+
   }
 
 }
