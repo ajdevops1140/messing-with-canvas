@@ -69,7 +69,8 @@ export class CanvasHandlerService {
     this.ctx.beginPath();
     this.ctx.moveTo(p1.x,p1.y);
     this.ctx.lineTo(p2.x,p2.y);
-
+    this.ctx.closePath();
+    this.ctx.restore();
   }
 
   drawPoint(ctx:CanvasRenderingContext2D, index:number)
