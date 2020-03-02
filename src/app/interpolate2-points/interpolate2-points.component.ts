@@ -9,6 +9,14 @@ import { CanvasHandlerService } from '../util/canvas-handler.service';
   styleUrls: ['./interpolate2-points.component.css']
 })
 export class Interpolate2PointsComponent implements OnInit {
+  cvWidth:number = 500;
+  cvHeight:number = 100;
+  @ViewChild('cv',{static:true}) cv:ElementRef;
+  ctx:CanvasRenderingContext2D;
+  wRight:number;
+  wLeft:number;
+  hUp:number;
+  hDown:number;
 
   constructor() { }
 

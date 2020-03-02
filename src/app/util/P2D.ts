@@ -30,6 +30,17 @@ export class P2D
     this.y = this.y/this.mag();
   }
 
+  linearInterpolate(P2,t)
+  {
+
+  }
+
+  linearInterpolate(P1,P2,t)
+  {
+    // P(t)=(1-t)P1 + tP2
+    
+  }
+
   dot(x,y)
   {
     return (this.x * x) + (this.y * y);
