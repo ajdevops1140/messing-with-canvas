@@ -59,9 +59,9 @@ export class Interpolate2PointsComponent implements OnInit {
   drawInterpolation(ctx: CanvasRenderingContext2D) 
   {
     let h:CanvasHandlerService = this.chs;
-    h.drawPoint(ctx,0);
-    h.drawPoint(ctx,1);
-    h.
+    h.drawSinglePoint(0);
+    h.drawSinglePoint(1);
+    h.drawSinglePoint(2);
 
   }
 }
