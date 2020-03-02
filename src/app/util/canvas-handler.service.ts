@@ -53,11 +53,23 @@ export class CanvasHandlerService {
   {
     let p2d = this.getPoint(index);
     this.ctx.save();
-    this.ctx.translate(p2d.x ,p2d.y);
+    this.ctx.translate(this.width,this.height);
     this.ctx.arc(p2d.x ,p2d.y ,5,0,2 * Math.PI);
     this.ctx.fillStyle = p2d.color;
     this.ctx.fill()
     this.ctx.restore();
+  }
+
+  drawLineBetweenPoints(i1,i2)
+  {
+    let p1 = this.getPoint(i1);
+    let p2 = this.getPoint(i2);
+    this.ctx.save();
+    this.ctx.translate(this.width,this.height);
+    this.ctx.beginPath();
+    this.ctx.moveTo(p1.x,p1.y);
+    this.ctx.lineTo(p2.x,p2.y);
+
   }
 
   drawPoint(ctx:CanvasRenderingContext2D, index:number)
