@@ -54,10 +54,12 @@ export class CanvasHandlerService {
     let p2d = this.getPoint(index);
     this.ctx.save();
     this.ctx.translate(this.width,this.height);
+    this.ctx.beginPath();
     this.ctx.arc(p2d.x ,p2d.y ,5,0,2 * Math.PI);
     this.ctx.fillStyle = p2d.color;
     this.ctx.fill()
     this.ctx.restore();
+    this.ctx.closePath();
   }
 
   drawLineBetweenPoints(i1,i2)
