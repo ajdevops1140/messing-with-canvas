@@ -35,9 +35,9 @@ export class P2D
   {
     // P(t)=(1-t)P1 + tP2
     let P0 = new P2D();
-    P0.x = ((1-t) * P1.x) + (t * P2.x);
-    P0.y = ((1-t) * P1.y) + (t * P2.y);
-    return P0;
+    this.x = ((1-t) * P1.x) + (t * P2.x);
+    this.y = ((1-t) * P1.y) + (t * P2.y);
+   
   }
 
   dot(x,y)

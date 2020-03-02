@@ -24,6 +24,8 @@ export class Interpolate2PointsComponent implements OnInit {
   wLeft: number;
   hUp: number;
   hDown: number;
+  t:number = 0;
+  tSpeed:number = 0.1;
 
   constructor(private chs: CanvasHandlerService) {}
 
@@ -67,6 +69,24 @@ export class Interpolate2PointsComponent implements OnInit {
     let p0 = h.getPoint(0);
     let p1 = h.getPoint(1);
     let p2 = h.getPoint(2);
+    p2.linearInterpolate(p0,p1,this.t);
+
+    this.t = (this.t + this.tSpeed)/60;
+    if(this.tSpeed < 0 || this.tSpeed > 1)
+    {
+      this.tSpeed = 0.1;
+    }
+    if(this.t <= 0)
+    {
+      this.t = 0;
+      this.tSpeed *= -1;
+    }
+    else if(this.t >= 1)
+    {
+      this.t = 1;
+      this.tSpeed *= -1;
+    }
+    window.requestAnimationFrame(()=>this.drawInterpolation(ctx));
 
   }
 }
