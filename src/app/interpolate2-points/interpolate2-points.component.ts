@@ -62,6 +62,7 @@ export class Interpolate2PointsComponent implements OnInit {
 
   drawInterpolation(ctx: CanvasRenderingContext2D) 
   {
+    ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     let h:CanvasHandlerService = this.chs;
     h.drawSinglePoint(0);
     h.drawSinglePoint(1);
@@ -71,7 +72,7 @@ export class Interpolate2PointsComponent implements OnInit {
     let p2 = h.getPoint(2);
     p2.linearInterpolate(p0,p1,this.t);
 
-    this.t = (this.t + this.tSpeed)/60;
+    this.t = (this.t + this.tSpeed)/10;
     if(this.tSpeed < 0 || this.tSpeed > 1)
     {
       this.tSpeed = 0.1;
