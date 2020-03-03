@@ -2,6 +2,8 @@ export class P2D
 {
   x:number;
   y:number;
+  originX:number;
+  originY:number;
   degChange:number;
   precision:number = 6;
   theta:number;
