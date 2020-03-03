@@ -54,10 +54,7 @@ export class Interpolate2PointsComponent implements OnInit {
     h.addPoint(p0);
     h.addPoint(p1);
     h.addPoint(p2);
-
-    ctx.save();
-    ctx.translate(this.wRight, this.hDown);
-    ctx.restore();
+    
     this.drawInterpolation(ctx);
   }
 
@@ -65,9 +62,11 @@ export class Interpolate2PointsComponent implements OnInit {
   {
     ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     let h:CanvasHandlerService = this.chs;
+    h.drawLineBetweenPoints(0,1);
     h.drawSinglePoint(0);
     h.drawSinglePoint(1);
     h.drawSinglePoint(2);
+    
     let p0 = h.getPoint(0);
     let p1 = h.getPoint(1);
     let p2 = h.getPoint(2);
