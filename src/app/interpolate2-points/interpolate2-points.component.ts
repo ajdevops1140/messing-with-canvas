@@ -9,7 +9,7 @@ import {
 import { Basic } from "../util/Basic";
 import { P2D } from "../util/P2D";
 import { CanvasHandlerService } from "../util/canvas-handler.service";
-import { arrow } from '../Objects/arrow';
+import { Arrow } from '../Objects/arrow';
 
 @Component({
   selector: "app-interpolate2-points",
@@ -29,7 +29,7 @@ export class Interpolate2PointsComponent implements OnInit {
   speed:number = 0.25;
   tSpeed:number = 1/60 * this.speed;
   interPoint:P2D;
-  arr1:arrow;
+  arr1:Arrow;
 
   constructor(private chs: CanvasHandlerService) {}
 
@@ -93,6 +93,6 @@ export class Interpolate2PointsComponent implements OnInit {
 
   BeginArrowDraw(ctx: CanvasRenderingContext2D)
   {
-    this.arr1 = new arrow(this.cvWidth, this.cvHeight);
+    this.arr1 = new arrow();
   }
 }

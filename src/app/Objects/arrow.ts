@@ -1,8 +1,8 @@
 import { P2D } from '../util/P2D';
 
-export class arrow
+export class Arrow
 {
-  points:P2D;
+  points:any[];
   centerShiftX:number;  //For translating to canvas position
   centerShiftY:number;  //For translating to canvas position
   originX:number;       //Point to begin Object draw
@@ -21,7 +21,7 @@ export class arrow
 
   initializePoints()
   {
-     this.points = new P2D[4];
+     this.points = new Array(4);
      for(let i = 0; i < this.points.length;i++)
      {
        this.points[i] = new P2D();
