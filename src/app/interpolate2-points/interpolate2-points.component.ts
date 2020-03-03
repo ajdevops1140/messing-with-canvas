@@ -25,7 +25,8 @@ export class Interpolate2PointsComponent implements OnInit {
   hUp: number;
   hDown: number;
   t:number = 0;
-  tSpeed:number = 0.01;
+  speed:number = 0.1;
+  tSpeed:number = 1/60 * this.speed;
 
   constructor(private chs: CanvasHandlerService) {}
 

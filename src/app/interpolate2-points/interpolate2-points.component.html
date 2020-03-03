@@ -1,7 +1,7 @@
 <canvas #cv [width]="cvWidth" [height]="cvHeight"></canvas>
 <div>
-  <label><i>t = </i></label><span>{{t}}</span>
+  <label><i>t = </i></label><span>{{t.toFixed(2)}}</span>
 </div>
 <div>
-  <label>Speed = </label><span>{{this.tSpeed}}</span>
+  <label>Speed = </label><span>{{this.tSpeed.toPrecision(2)}}</span>
 </div>
