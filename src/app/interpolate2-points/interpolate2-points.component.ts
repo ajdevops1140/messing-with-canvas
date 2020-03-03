@@ -44,7 +44,7 @@ export class Interpolate2PointsComponent implements OnInit {
 
   ngAfterViewInit() {
     this.chs.setParameters(this.cv, this.wRight, this.hDown);
-    this.BeginDraw(this.ctx);
+    //this.BeginDraw(this.ctx);
   }
 
   BeginDraw(ctx: CanvasRenderingContext2D) {
