@@ -49,8 +49,8 @@ export class Interpolate2PointsComponent implements OnInit {
 
   BeginDraw(ctx: CanvasRenderingContext2D) {
     let h: CanvasHandlerService = this.chs;
-    let p0 = new P2D(-150, 0);
-    let p1 = new P2D(150, 160);
+    let p0 = new P2D(150, 0);
+    let p1 = new P2D(-150, 160);
     let p2 = new P2D(-150, 0);
     p2.color = "red";
     h.addPoint(p0);
