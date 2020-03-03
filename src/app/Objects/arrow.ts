@@ -30,7 +30,12 @@ export class Arrow
      {
        this.points[i] = new P2D(this.originX,this.originY);
      }
-     
+
+     this.points[0].translate(0,15);     
+     this.points[1].translate(0,-15);   
+     this.points[2].translate(-5,-10);    
+     this.points[3].translate(5,-10);        
+     /*
      this.points[0].x = 0;
      this.points[0].y = 0;
      this.points[1].x = 0;
@@ -39,6 +44,10 @@ export class Arrow
      this.points[2].y = -20;
      this.points[3].x = 5;
      this.points[3].y = -20;
+     for(let i = 0; i < this.points.length;i++)
+     {
+       this.points[i].setFromCanvasOrigin();
+     }*/
      /*
      this.points[0].translate(0,0);
      this.points[1].translate(5,-20);
@@ -77,8 +86,9 @@ export class Arrow
   {
     ctx.save();
     //this.translateFromCanvasOrigin(ctx);
-    this.translate(this.shiftX,this.shiftY);    
+    this.translate(this.shiftX,this.shiftY); 
     this.rotate(this.rotation);
+       
    
      
     

@@ -18,8 +18,8 @@ export class P2D
   {    
     this.originX = oX;
     this.originY = oY;
-    this.x = x;
-    this.y = y;
+    this.x = x + this.originX;
+    this.y = y + this.originY;
     
     this.theta = 0;
     this.rot = 0;
@@ -29,8 +29,10 @@ export class P2D
   {
     //this.originX +
     //this.originY + 
+    this.setToCanvasOrigin();
     this.x += x;
     this.y += y;
+    this.setFromCanvasOrigin();
   }
 
   setToCanvasOrigin()
@@ -85,6 +87,7 @@ export class P2D
 
   rotate(deg:number)
   {
+    this.setToCanvasOrigin();
     let x = this.x;
     let y = this.y;
     this.rot = deg;
@@ -98,6 +101,7 @@ export class P2D
 
     this.x = sx;
     this.y = sy;
+    this.setFromCanvasOrigin();
   }
 
 
