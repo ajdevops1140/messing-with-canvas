@@ -9,6 +9,7 @@ import {
 import { Basic } from "../util/Basic";
 import { P2D } from "../util/P2D";
 import { CanvasHandlerService } from "../util/canvas-handler.service";
+import { arrow } from '../Objects/arrow';
 
 @Component({
   selector: "app-interpolate2-points",
@@ -87,5 +88,10 @@ export class Interpolate2PointsComponent implements OnInit {
       this.tSpeed *= -1;
     }
     window.requestAnimationFrame(()=>this.drawInterpolation(ctx));
+  }
+
+  BeginArrowDraw(ctx: CanvasRenderingContext2D)
+  {
+
   }
 }
