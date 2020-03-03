@@ -22,6 +22,12 @@ export class P2D
     this.rot = 0;
   }
 
+  translate(x,y)
+  {
+    this.x + x;
+    this.y + y;
+  }
+
   mag()
   {
     return Math.sqrt((this.x * this.x)+(this.y * this.y));
