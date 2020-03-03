@@ -17,8 +17,8 @@ import { Arrow } from '../Objects/arrow';
   styleUrls: ["./interpolate2-points.component.css"]
 })
 export class Interpolate2PointsComponent implements OnInit {
-  cvWidth: number = 500;
-  cvHeight: number = 400;
+  cvWidth: number = 300;
+  cvHeight: number = 300;
   @ViewChild("cv", { static: true }) cv: ElementRef;
   ctx: CanvasRenderingContext2D;
   wRight: number;
