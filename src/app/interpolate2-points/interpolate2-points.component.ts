@@ -30,6 +30,9 @@ export class Interpolate2PointsComponent implements OnInit {
   tSpeed:number = 1/60 * this.speed;
   interPoint:P2D;
   arr1:Arrow;
+  w;
+  h;
+  x1;y1;
   x;
   y;
 
@@ -37,13 +40,15 @@ export class Interpolate2PointsComponent implements OnInit {
 
   ngOnInit() {
     this.ctx = this.cv.nativeElement.getContext("2d");
-    let w = this.cvWidth / 2;
-    let h = this.cvHeight / 2;
-    this.wRight = w;
-    this.wLeft = -w;
-    this.hUp = -h;
-    this.hDown = h;
+    this.w = this.cvWidth / 2;
+    this.h = this.cvHeight / 2;
+    this.wRight = this.w;
+    this.wLeft = -this.w;
+    this.hUp = -this.h;
+    this.hDown = this.h;
     this.interPoint = new P2D(0,0);
+    this.x1 = 0;
+    this.y1 = 0;
     this.x = 150;
     this.y = 150;
   }
@@ -51,9 +56,12 @@ export class Interpolate2PointsComponent implements OnInit {
   ngAfterViewInit() {
     this.chs.setParameters(this.cv, this.wRight, this.hDown);
     //this.BeginDraw(this.ctx);
-    //this.BeginArrowDraw(this.ctx);
-
-    this.Draw(this.ctx);
+    this.BeginArrowDraw(this.ctx);
+    let w = this.w;
+    let h = this.h;
+    let s = 0;
+    
+    //this.Draw(this.ctx);
   }
 
   Draw(ctx: CanvasRenderingContext2D)
@@ -67,7 +75,7 @@ export class Interpolate2PointsComponent implements OnInit {
     ctx.stroke();
 
   
-    ctx.fillText(`(${this.x},${this.y})`,this.x + 5,this.y - 5);
+    ctx.fillText(`(${this.x - 150},${150 - this.y})`,this.x + 5,this.y - 5);
     ctx.fillStyle = 'red';
     ctx.fillRect(this.x -5,this.y-5,9,9);  
 
