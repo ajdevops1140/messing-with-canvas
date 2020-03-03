@@ -20,14 +20,29 @@ export class P2D
     this.originY = oY;
     this.x = x;
     this.y = y;
+    
     this.theta = 0;
     this.rot = 0;
   }
 
   translate(x,y)
   {
-    this.x = this.x + this.originX + x;
-    this.y = this.y + this.originY + y;
+    //this.originX +
+    //this.originY + 
+    this.x += x;
+    this.y += y;
+  }
+
+  setToCanvasOrigin()
+  {
+    this.x -= this.originX;
+    this.y -= this.originY;
+  }
+
+  setFromCanvasOrigin()
+  {
+    this.x += this.originX;
+    this.y += this.originY;
   }
 
   mag()
@@ -74,7 +89,8 @@ export class P2D
     let y = this.y;
     this.rot = deg;
     //x = x*cos - y*sin
-    //y = y*cos + x*sin    
+    //y = y*cos + x*sin
+
     let theta = this.theta = this.degToRad(deg);
     //theta /=2;
     let sx = this.prec((x * Math.cos(theta)) - (y * Math.sin(theta)));

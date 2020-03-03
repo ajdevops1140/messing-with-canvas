@@ -11,10 +11,10 @@ export class Arrow
   shiftY:number;
   rotation:number;
 
-  constructor(canvasWidth:number,canvasHeight:number,x:number = 0, y:number = 0)
+  constructor(/*canvasWidth:number,canvasHeight:number,*/x:number = 0, y:number = 0)
   {
-    this.centerShiftX = canvasWidth;  
-    this.centerShiftY = canvasHeight;
+    //this.centerShiftX = canvasWidth;  
+    //this.centerShiftY = canvasHeight;
     this.originX = x;
     this.originY = y;
     this.rotation = 0;
@@ -30,6 +30,7 @@ export class Arrow
      {
        this.points[i] = new P2D(this.originX,this.originY);
      }
+     
      this.points[0].x = 0;
      this.points[0].y = 0;
      this.points[1].x = 0;
@@ -38,6 +39,12 @@ export class Arrow
      this.points[2].y = -20;
      this.points[3].x = 5;
      this.points[3].y = -20;
+     /*
+     this.points[0].translate(0,0);
+     this.points[1].translate(5,-20);
+     this.points[2].translate(5,-20);
+     this.points[3].translate(5,-20);
+     */
   }
 
   translateToCanvasOrigin(ctx:CanvasRenderingContext2D)
@@ -70,9 +77,9 @@ export class Arrow
   {
     ctx.save();
     //this.translateFromCanvasOrigin(ctx);
-    this.translate(this.shiftX,this.shiftY);
+    this.translate(this.shiftX,this.shiftY);    
     this.rotate(this.rotation);
-    
+   
      
     
     

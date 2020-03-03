@@ -30,6 +30,8 @@ export class Interpolate2PointsComponent implements OnInit {
   tSpeed:number = 1/60 * this.speed;
   interPoint:P2D;
   arr1:Arrow;
+  x;
+  y;
 
   constructor(private chs: CanvasHandlerService) {}
 
@@ -42,12 +44,32 @@ export class Interpolate2PointsComponent implements OnInit {
     this.hUp = -h;
     this.hDown = h;
     this.interPoint = new P2D(0,0);
+    this.x = 150;
+    this.y = 150;
   }
 
   ngAfterViewInit() {
     this.chs.setParameters(this.cv, this.wRight, this.hDown);
     //this.BeginDraw(this.ctx);
-    this.BeginArrowDraw(this.ctx);
+    //this.BeginArrowDraw(this.ctx);
+
+    this.Draw(this.ctx);
+  }
+
+  Draw(ctx: CanvasRenderingContext2D)
+  {
+    ctx.beginPath();
+    ctx.moveTo(150,0);
+    ctx.lineTo(150,300);
+    ctx.moveTo(0,150);
+    ctx.lineTo(300,150);
+    ctx.stroke();
+    
+    ctx.fillText(`(${this.x},${this.y})`,this.x + 5,this.y - 5);
+    ctx.fillStyle = 'red';
+    ctx.fillRect(this.x -5,this.y-5,9,9);  
+
+    window.requestAnimationFrame(()=>this.Draw);
   }
 
   BeginDraw(ctx: CanvasRenderingContext2D) {
@@ -75,7 +97,7 @@ export class Interpolate2PointsComponent implements OnInit {
     let p0 = h.getPoint(0);
     let p1 = h.getPoint(1);
     let p2 = h.getPoint(2);
-    this.interPoint = p2.linearInterpolate(p0,p1,this.t);
+    //this.interPoint = p2.linearInterpolate(p0,p1,this.t);
 
     this.t = (this.t + this.tSpeed);
     
@@ -94,16 +116,16 @@ export class Interpolate2PointsComponent implements OnInit {
 
   BeginArrowDraw(ctx: CanvasRenderingContext2D)
   {
-    this.arr1 = new Arrow(0, 0,100,30);
+    this.arr1 = new Arrow(this.wRight, this.hDown);
     this.drawArrow(this.ctx);
   }
 
   drawArrow(ctx: CanvasRenderingContext2D){
     ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     this.arr1.draw(ctx);
-    this.arr1.rotation = -0.0;
+    this.arr1.rotation = 0.0;
     this.arr1.shiftX = 0;
-    this.arr1.shiftY = 0.0;
+    this.arr1.shiftY = 0;
 
     window.requestAnimationFrame(()=>this.drawArrow(ctx));
   }
