@@ -25,7 +25,7 @@ export class Interpolate2PointsComponent implements OnInit {
   hUp: number;
   hDown: number;
   t:number = 0;
-  speed:number = 0.1;
+  speed:number = 0.25;
   tSpeed:number = 1/60 * this.speed;
   interPoint:P2D;
 
