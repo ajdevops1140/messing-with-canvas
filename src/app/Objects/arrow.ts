@@ -26,14 +26,14 @@ export class Arrow
      {
        this.points[i] = new P2D();
      }
-     this.points[0].x = 0;
-     this.points[0].y = 0;
-     this.points[1].x = 0;
-     this.points[1].y = -30;
-     this.points[2].x = -5;
-     this.points[2].y = -20;
-     this.points[3].x = 5;
-     this.points[3].y = -20;
+     this.points[0].x = this.originX + 0;
+     this.points[0].y = this.originY + 0;
+     this.points[1].x = this.originX + 0;;
+     this.points[1].y = this.originY + (-30);
+     this.points[2].x = this.originX + (-5);
+     this.points[2].y = this.originY + (-20);
+     this.points[3].x = this.originX + 5;
+     this.points[3].y = this.originY + (-20);
   }
 
   translateToCanvasOrigin(ctx:CanvasRenderingContext2D)
