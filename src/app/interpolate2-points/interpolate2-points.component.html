@@ -16,12 +16,12 @@
 </div-->
 <div>
 <div>
-  <button class='up'>&#8593;</button>
+  <button (click)="modify(0,-1)" class='up'>&#8593;</button>
 </div>
 <div>
-  <button>&#8592;</button><button>&#8594;</button>
+  <button (click)="modify(-1,0)">&#8592;</button><button (click)="modify(1,0)">&#8594;</button>
 </div>
 <div>
-  <button class='down'>&#8595;</button>
+  <button (click)="modify(0,1)" class='down'>&#8595;</button>
 </div>
 </div>
