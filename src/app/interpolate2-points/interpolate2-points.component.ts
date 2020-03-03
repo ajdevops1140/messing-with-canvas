@@ -41,7 +41,7 @@ export class Interpolate2PointsComponent implements OnInit {
     this.wLeft = -w;
     this.hUp = -h;
     this.hDown = h;
-    this.interPoint = new P2D();
+    this.interPoint = new P2D(0,0);
   }
 
   ngAfterViewInit() {
@@ -94,7 +94,7 @@ export class Interpolate2PointsComponent implements OnInit {
 
   BeginArrowDraw(ctx: CanvasRenderingContext2D)
   {
-    this.arr1 = new Arrow(this.wRight, this.hDown,100,30);
+    this.arr1 = new Arrow(0, 0,100,30);
     this.drawArrow(this.ctx);
   }
 
@@ -103,7 +103,7 @@ export class Interpolate2PointsComponent implements OnInit {
     this.arr1.draw(ctx);
     this.arr1.rotation = -0.0;
     this.arr1.shiftX = 0;
-    this.arr1.shiftY = 0.1;
+    this.arr1.shiftY = 0.0;
 
     window.requestAnimationFrame(()=>this.drawArrow(ctx));
   }

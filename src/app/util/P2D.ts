@@ -14,8 +14,10 @@ export class P2D
   rot:number;
   color = 'blue';
 
-  constructor(x =0,y =0 )
+  constructor(oX,oY,x =0,y =0 )
   {    
+    this.originX = oX;
+    this.originY = oY;
     this.x = x;
     this.y = y;
     this.theta = 0;
@@ -24,8 +26,8 @@ export class P2D
 
   translate(x,y)
   {
-    this.x += x;
-    this.y += y;
+    this.x = this.x + this.originX + x;
+    this.y = this.y + this.originY + y;
   }
 
   mag()
@@ -39,7 +41,7 @@ export class P2D
     this.y = this.y/this.mag();
   }
 
-  linearInterpolate(P1,P2,t)
+  /*linearInterpolate(P1,P2,t)
   {
     // P(t)=(1-t)P1 + tP2
     let P0 = new P2D();
@@ -48,7 +50,7 @@ export class P2D
     P0.x = this.x;
     P0.y = this.y;
     return P0;
-  }
+  }*/
 
   dot(x,y)
   {

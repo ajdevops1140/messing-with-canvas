@@ -69,9 +69,11 @@ export class Arrow
   draw(ctx:CanvasRenderingContext2D)
   {
     ctx.save();
-    this.translateFromCanvasOrigin(ctx);
+    //this.translateFromCanvasOrigin(ctx);
     this.translate(this.shiftX,this.shiftY);
     this.rotate(this.rotation);
+    
+     
     
     
     ctx.beginPath();
