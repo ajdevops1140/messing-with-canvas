@@ -94,11 +94,13 @@ export class Interpolate2PointsComponent implements OnInit {
   BeginArrowDraw(ctx: CanvasRenderingContext2D)
   {
     this.arr1 = new Arrow(this.cvWidth,this.cvHeight);
-
+    this.drawArrow(this.ctx);
   }
 
   drawArrow(ctx: CanvasRenderingContext2D){
     ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
-  
+    this.arr1.draw(ctx);
+
+    window.requestAnimationFrame(()=>this.drawInterpolation(ctx));
   }
 }
