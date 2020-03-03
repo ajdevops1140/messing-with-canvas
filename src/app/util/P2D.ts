@@ -24,8 +24,8 @@ export class P2D
 
   translate(x,y)
   {
-    this.x + x;
-    this.y + y;
+    this.x += x;
+    this.y += y;
   }
 
   mag()

@@ -7,6 +7,8 @@ export class Arrow
   centerShiftY:number;  //For translating to canvas position
   originX:number;       //Point to begin Object draw
   originY:number;       //Point to begin Object draw
+  shiftX:number;
+  shiftY:number;
   rotation:number;
 
   constructor(canvasWidth:number,canvasHeight:number,x:number = 0, y:number = 0)
@@ -16,6 +18,8 @@ export class Arrow
     this.originX = x;
     this.originY = y;
     this.rotation = 0;
+    this.shiftX = 0;
+    this.shiftY = 0;
     this.initializePoints();
   }
 
@@ -66,8 +70,9 @@ export class Arrow
   {
     ctx.save();
     this.translateFromCanvasOrigin(ctx);
-    this.translate()
+    this.translate(this.shiftX,this.shiftY);
     this.rotate(this.rotation);
+    
     
     ctx.beginPath();
     ctx.moveTo(this.points[0].x,this.points[0].y);
