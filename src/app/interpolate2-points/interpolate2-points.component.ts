@@ -86,6 +86,5 @@ export class Interpolate2PointsComponent implements OnInit {
       this.tSpeed *= -1;
     }
     window.requestAnimationFrame(()=>this.drawInterpolation(ctx));
-
   }
 }
