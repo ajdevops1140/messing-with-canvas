@@ -66,6 +66,7 @@ export class Arrow
   {
     ctx.save();
     this.translateFromCanvasOrigin(ctx);
+    this.translate()
     this.rotate(this.rotation);
     
     ctx.beginPath();
