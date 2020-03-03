@@ -27,6 +27,7 @@ export class Interpolate2PointsComponent implements OnInit {
   t:number = 0;
   speed:number = 0.1;
   tSpeed:number = 1/60 * this.speed;
+  interPoint:P2D;
 
   constructor(private chs: CanvasHandlerService) {}
 
@@ -38,6 +39,7 @@ export class Interpolate2PointsComponent implements OnInit {
     this.wLeft = -w;
     this.hUp = -h;
     this.hDown = h;
+    this.interPoint = new P2D();
   }
 
   ngAfterViewInit() {
@@ -70,7 +72,7 @@ export class Interpolate2PointsComponent implements OnInit {
     let p0 = h.getPoint(0);
     let p1 = h.getPoint(1);
     let p2 = h.getPoint(2);
-    p2.linearInterpolate(p0,p1,this.t);
+    this.interPoint = p2.linearInterpolate(p0,p1,this.t);
 
     this.t = (this.t + this.tSpeed);
     
