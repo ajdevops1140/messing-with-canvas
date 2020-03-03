@@ -9,7 +9,7 @@ export class Arrow
   originY:number;       //Point to begin Object draw
   rotation:number;
 
-  arrow(canvasWidth:number,canvasHeight:number,x:number = 0, y:number = 0)
+  constructor(canvasWidth:number,canvasHeight:number,x:number = 0, y:number = 0)
   {
     this.centerShiftX = canvasWidth;  
     this.centerShiftY = canvasHeight;
