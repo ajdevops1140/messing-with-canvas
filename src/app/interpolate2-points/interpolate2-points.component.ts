@@ -64,13 +64,21 @@ export class Interpolate2PointsComponent implements OnInit {
     ctx.moveTo(0,150);
     ctx.lineTo(300,150);
     ctx.stroke();
+
+    
     
     ctx.fillText(`(${this.x},${this.y})`,this.x + 5,this.y - 5);
     ctx.fillStyle = 'red';
     ctx.fillRect(this.x -5,this.y-5,9,9);  
 
-    window.requestAnimationFrame(()=>this.Draw);
+    //window.requestAnimationFrame(()=>this.Draw);
   }
+
+  modify(x,y)
+  {
+
+  }
+
 
   BeginDraw(ctx: CanvasRenderingContext2D) {
     let h: CanvasHandlerService = this.chs;

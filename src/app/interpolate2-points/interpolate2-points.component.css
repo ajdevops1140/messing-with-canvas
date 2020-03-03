@@ -2,3 +2,11 @@ canvas{
   margin: 20px 0px 20px 30px;
   border: 1px solid black;
 }
+
+input{
+  width: 20px;
+}
+
+.up,.down{
+  margin-left:17px;
+}
