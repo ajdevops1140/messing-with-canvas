@@ -1,4 +1,4 @@
-import { P2D } from './util/P2D';
+import { P2D } from '../util/P2D';
 
 export class arrow
 {
@@ -9,7 +9,7 @@ export class arrow
   originY:number;       //Point to begin Object draw
   rotation:number;
 
-  arrow(x:number, y:number,canvasWidth:number,canvasHeight:number)
+  arrow(canvasWidth:number,canvasHeight:number,x:number = 0, y:number = 0)
   {
     this.centerShiftX = canvasWidth;  
     this.centerShiftY = canvasHeight;
