@@ -159,7 +159,7 @@ export class Interpolate2PointsComponent implements OnInit {
 
     this.arr1.draw(ctx);
     this.arr1.rotation = -1;
-    this.arr1.shiftX = 0.4;
+    this.arr1.shiftX = 0.1;
     this.arr1.shiftY = -0;
 
     window.requestAnimationFrame(()=>this.drawArrow(ctx));

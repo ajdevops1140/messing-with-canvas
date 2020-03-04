@@ -18,7 +18,7 @@ export class P2D
   rot:number;
   color = 'blue';
 
-  constructor(oX, oY, x = 0,y = 0)
+  constructor(oX = 0, oY = 0, x = 0,y = 0)
   {    
     this.originX = oX;
     this.originY = oY;
@@ -33,6 +33,16 @@ export class P2D
   setOriginalValue()
   {
 
+  }
+
+  getDistance2D(p2:P2D)
+  {
+    let xDiff = this.x - p2.x;
+    let yDiff = this.y - p2.y;
+    let xSquared = xDiff * xDiff;
+    let ySquared = yDiff * yDiff;
+    let addSquared = xSquared + ySquared;
+    return Math.sqrt(addSquared);
   }
 
   translate(tX,tY)
