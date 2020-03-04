@@ -27,7 +27,7 @@ export class Arrow
   {
     for(let i = 0; i < this.points.length;i++)
     {
-      this.points[i].
+      this.points[i].setFromCanvasOrigin();
     }     
   }
 
@@ -40,7 +40,7 @@ export class Arrow
      this.points[1] = new P2D(0,-15);    
      this.points[2] = new P2D(-5,-10);      
      this.points[3] = new P2D(5,-10);  
-        
+     this.setFromOrigin();
      /*
      this.points[0].x = 0;
      this.points[0].y = 0;
