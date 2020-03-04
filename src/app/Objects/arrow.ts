@@ -43,10 +43,11 @@ export class Arrow
   {
      this.points = new Array(4);     
 
-     this.points[0] = new P2D(this.originX,this.originY,0,15);     
-     this.points[1] = new P2D(this.originX,this.originY,0,-15);    
-     this.points[2] = new P2D(this.originX,this.originY,-5,-10);      
-     this.points[3] = new P2D(this.originX,this.originY,5,-10);  
+     this.points[0] = new P2D(this.originX,this.originY,0,15); 
+     this.points[1] = new P2D(this.originX,this.originY,0,0); 
+     this.points[2] = new P2D(this.originX,this.originY,0,-15);    
+     this.points[3] = new P2D(this.originX,this.originY,-5,-10);      
+     this.points[4] = new P2D(this.originX,this.originY,5,-10);  
      this.setFromOrigin();
   }
 
@@ -80,19 +81,28 @@ export class Arrow
   {
     ctx.save();
     //this.translateFromCanvasOrigin(ctx);
-    this.setToOrigin();
+    //this.setToOrigin();
+      
     this.rotate(this.rotation);
-    this.translate(this.shiftX,this.shiftY);  
+    this.translate(this.shiftX,this.shiftY);
     this.setFromOrigin();
     
     
     ctx.beginPath();
+    ctx.strokeStyle = 'blue';
     ctx.moveTo(this.points[0].x,this.points[0].y);
     ctx.lineTo(this.points[1].x,this.points[1].y);
-    ctx.lineTo(this.points[2].x,this.points[2].y);
-    ctx.moveTo(this.points[1].x,this.points[1].y);
-    ctx.lineTo(this.points[3].x,this.points[3].y);
     ctx.stroke();
+    ctx.closePath();
+    ctx.beginPath();
+    ctx.strokeStyle = 'red';
+    ctx.moveTo(this.points[1].x,this.points[1].y);
+    ctx.lineTo(this.points[2].x,this.points[2].y);
+    ctx.lineTo(this.points[3].x,this.points[3].y);
+    ctx.moveTo(this.points[2].x,this.points[2].y);
+    ctx.lineTo(this.points[4].x,this.points[4].y);
+    ctx.stroke();
+    ctx.closePath();
 
     ctx.restore();
   }

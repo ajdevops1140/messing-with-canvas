@@ -2,6 +2,8 @@ export class P2D
 {
   x:number;
   y:number;
+  oX:number;
+  oY:number;
   tX:number;    //Translation
   tY:number;
   originX:number;  //Shift origin value
@@ -20,33 +22,35 @@ export class P2D
   {    
     this.originX = oX;
     this.originY = oY;
-    this.x = x ;//+ this.originX;
-    this.y = y ;//+ this.originY;
-    
+    this.oX = this.x = x ;//+ this.originX;
+    this.oY = this.y = y ;//+ this.originY;
+    this.tX = 0;
+    this.tY = 0;
     this.theta = 0;
     this.rot = 0;
   }
 
+  setOriginalValue()
+  {
 
+  }
 
   translate(tX,tY)
   {    
     this.tX += tX;
-    this.tY += tY;
-    this.x += this.tX;
-    this.y += this.tY;    
+    this.tY += tY;     
   }
 
   setToCanvasOrigin()
   {
-    this.x = this.x - this.tX - this.originX;
-    this.y = this.y - this.tY - this.originY;
+    this.x = this.prec((this.x - this.tX - this.originX),6);
+    this.y = this.prec((this.y - this.tY - this.originY),6);
   }
 
   setFromCanvasOrigin()
   {
-    this.x = this.x + this.tX + this.originX;
-    this.y = this.y + this.tY + this.originY;
+    this.x = this.prec((this.x + this.tX + this.originX),6);
+    this.y = this.prec((this.y + this.tY + this.originY),6);
   }
 
   mag()
@@ -84,22 +88,22 @@ export class P2D
   //Parse the number and return the precision
   prec(n:number,p:number = this.precision)
   {
-    return Number.parseFloat(n.toPrecision(p));
+    return Number.parseFloat(n.toFixed(p));
   }
 
   rotate(deg:number)
   {
     //this.setToCanvasOrigin();
-    let x = this.x;
-    let y = this.y;
-    this.rot = deg;
+    let x = this.oX;
+    let y = this.oY;
+    this.rot += deg;
     //x = x*cos - y*sin
     //y = y*cos + x*sin
 
-    let theta = this.theta = this.degToRad(deg);
+    let theta = this.theta = this.degToRad(this.rot);
     //theta /=2;
-    let sx = this.prec((x * Math.cos(theta)) - (y * Math.sin(theta)));
-    let sy = this.prec((y * Math.cos(theta)) + (x * Math.sin(theta)));
+    let sx = this.prec((x * Math.cos(theta)) + (y * Math.sin(theta)));
+    let sy = this.prec((y * Math.cos(theta)) - (x * Math.sin(theta)));
 
     this.x = sx;
     this.y = sy;
