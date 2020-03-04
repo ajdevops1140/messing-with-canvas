@@ -89,14 +89,26 @@ export class Interpolate2PointsComponent implements OnInit {
     this.y += y;    
   }
 
-  upAndDown(t:number)
+  inc_dec(n:string,t:number)
   {
-    this.t += t;
+    switch(n)
+    {
+      case 'inc': this.t += t;
+      break;
+      case 'dec': this.t -= t;
+      break;
+    }
   }
 
-  leftAndRight(rot:number)
+  leftAndRight(n:string,rot:number)
   {
-    this.rotation += rot;
+    switch(n)
+    {
+      case 'left': this.rotation += rot;
+      break;
+      case 'right': this.rotation += rot;
+      break;
+    }
   }
   
 
