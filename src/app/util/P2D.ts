@@ -2,7 +2,9 @@ export class P2D
 {
   x:number;
   y:number;
-  originX:number;
+  tX:number;    //Translation
+  tY:number;
+  originX:number;  //Shift origin value
   originY:number;
   degChange:number;
   precision:number = 6;
@@ -14,10 +16,10 @@ export class P2D
   rot:number;
   color = 'blue';
 
-  constructor(x = 0,y = 0)
+  constructor(oX, oY, x = 0,y = 0)
   {    
-    this.originX = 0;
-    this.originY = 0;
+    this.originX = oX;
+    this.originY = oY;
     this.x = x ;//+ this.originX;
     this.y = y ;//+ this.originY;
     
@@ -27,26 +29,24 @@ export class P2D
 
 
 
-  translate(x,y)
-  {
-    //this.originX +
-    //this.originY + 
-    //this.setToCanvasOrigin();
-    this.x += x;
-    this.y += y;
-    //this.setFromCanvasOrigin();
+  translate(tX,tY)
+  {    
+    this.tX += tX;
+    this.tY += tY;
+    this.x += this.tX;
+    this.y += this.tY;    
   }
 
   setToCanvasOrigin()
   {
-    this.x -= this.originX;
-    this.y -= this.originY;
+    this.x = this.x - this.tX - this.originX;
+    this.y = this.y - this.tY - this.originY;
   }
 
   setFromCanvasOrigin()
   {
-    this.x += this.originX;
-    this.y += this.originY;
+    this.x = this.x + this.tX + this.originX;
+    this.y = this.y + this.tY + this.originY;
   }
 
   mag()

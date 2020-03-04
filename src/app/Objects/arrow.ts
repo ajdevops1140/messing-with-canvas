@@ -31,35 +31,23 @@ export class Arrow
     }     
   }
 
+  setToOrigin()
+  {
+     for(let i = 0; i < this.points.length;i++)
+    {
+      this.points[i].setToCanvasOrigin();
+    }    
+  }
+
   initializePoints()
   {
-     this.points = new Array(4);
-     
+     this.points = new Array(4);     
 
-     this.points[0] = new P2D(0,15);     
-     this.points[1] = new P2D(0,-15);    
-     this.points[2] = new P2D(-5,-10);      
-     this.points[3] = new P2D(5,-10);  
+     this.points[0] = new P2D(this.originX,this.originY,0,15);     
+     this.points[1] = new P2D(this.originX,this.originY,0,-15);    
+     this.points[2] = new P2D(this.originX,this.originY,-5,-10);      
+     this.points[3] = new P2D(this.originX,this.originY,5,-10);  
      this.setFromOrigin();
-     /*
-     this.points[0].x = 0;
-     this.points[0].y = 0;
-     this.points[1].x = 0;
-     this.points[1].y = -30;
-     this.points[2].x = -5;
-     this.points[2].y = -20;
-     this.points[3].x = 5;
-     this.points[3].y = -20;
-     for(let i = 0; i < this.points.length;i++)
-     {
-       this.points[i].setFromCanvasOrigin();
-     }*/
-     /*
-     this.points[0].translate(0,0);
-     this.points[1].translate(5,-20);
-     this.points[2].translate(5,-20);
-     this.points[3].translate(5,-20);
-     */
   }
 
   translateToCanvasOrigin(ctx:CanvasRenderingContext2D)
@@ -92,12 +80,10 @@ export class Arrow
   {
     ctx.save();
     //this.translateFromCanvasOrigin(ctx);
-    
+    this.setToOrigin();
     this.rotate(this.rotation);
-    this.translate(this.shiftX,this.shiftY); 
-       
-   
-     
+    this.translate(this.shiftX,this.shiftY);  
+    this.setFromOrigin();
     
     
     ctx.beginPath();
