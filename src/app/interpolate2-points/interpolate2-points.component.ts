@@ -26,6 +26,7 @@ export class Interpolate2PointsComponent implements OnInit {
   hUp: number;
   hDown: number;
   t:number = 0;
+  rotation:number = 0;
   speed:number = 0.25;
   tSpeed:number = 1/60 * this.speed;
   interPoint:P2D;
@@ -87,6 +88,17 @@ export class Interpolate2PointsComponent implements OnInit {
     this.x += x;
     this.y += y;    
   }
+
+  upAndDown(t:number)
+  {
+    this.t += t;
+  }
+
+  leftAndRight(rot:number)
+  {
+    this.rotation += rot;
+  }
+  
 
 
   BeginDraw(ctx: CanvasRenderingContext2D) {
@@ -158,8 +170,8 @@ export class Interpolate2PointsComponent implements OnInit {
     ctx.restore();
 
     this.arr1.draw(ctx);
-    this.arr1.rotation = -0.4;
-    this.arr1.t = 0.01;
+    this.arr1.rotation = this.rotation;
+    this.arr1.t = this.t;
     //this.arr1.shiftX = 0;
     //this.arr1.shiftY = -0;
 
