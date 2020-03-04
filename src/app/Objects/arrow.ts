@@ -23,18 +23,24 @@ export class Arrow
     this.initializePoints();
   }
 
+  setFromOrigin()
+  {
+    for(let i = 0; i < this.points.length;i++)
+    {
+      this.points[i].
+    }     
+  }
+
   initializePoints()
   {
      this.points = new Array(4);
-     for(let i = 0; i < this.points.length;i++)
-     {
-       this.points[i] = new P2D(this.originX,this.originY);
-     }
+     
 
-     this.points[0].translate(0,15);     
-     this.points[1].translate(0,-15);   
-     this.points[2].translate(-5,-10);    
-     this.points[3].translate(5,-10);        
+     this.points[0] = new P2D(0,15);     
+     this.points[1] = new P2D(0,-15);    
+     this.points[2] = new P2D(-5,-10);      
+     this.points[3] = new P2D(5,-10);  
+        
      /*
      this.points[0].x = 0;
      this.points[0].y = 0;

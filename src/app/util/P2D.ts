@@ -14,16 +14,18 @@ export class P2D
   rot:number;
   color = 'blue';
 
-  constructor(oX,oY,x =0,y =0 )
+  constructor(x = 0,y = 0)
   {    
-    this.originX = oX;
-    this.originY = oY;
+    this.originX = 0;
+    this.originY = 0;
     this.x = x ;//+ this.originX;
     this.y = y ;//+ this.originY;
     
     this.theta = 0;
     this.rot = 0;
   }
+
+
 
   translate(x,y)
   {
@@ -32,7 +34,7 @@ export class P2D
     //this.setToCanvasOrigin();
     this.x += x;
     this.y += y;
-    this.setFromCanvasOrigin();
+    //this.setFromCanvasOrigin();
   }
 
   setToCanvasOrigin()
@@ -87,7 +89,7 @@ export class P2D
 
   rotate(deg:number)
   {
-    this.setToCanvasOrigin();
+    //this.setToCanvasOrigin();
     let x = this.x;
     let y = this.y;
     this.rot = deg;
