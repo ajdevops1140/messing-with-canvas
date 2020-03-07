@@ -67,5 +67,11 @@ export class mat4
     }
   }
 
+  translation(tX,tY,tZ)
+  {
+    this.identity();
+    this.m41 = tX; this.m42 = tY; this.m43 = tZ;
+  }
+
 
 }
