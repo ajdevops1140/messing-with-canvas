@@ -16,6 +16,8 @@ export class vec4{
     p.z = this.z/this.w;
     return p;
   }
+  
+  
 
   setPoint(x = 0,y = 0,z = 0,w = 1)
   {
