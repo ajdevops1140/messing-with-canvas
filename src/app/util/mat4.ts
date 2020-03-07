@@ -1,3 +1,5 @@
+ import { vec4 } from './vector';
+ 
  //Row vector matrix
 export class mat4
 {
