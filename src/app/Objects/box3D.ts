@@ -4,8 +4,11 @@ import { mat4 } from "../util/mat4";
 export class box3D {
   points: vec4[];
   rotation:number;
+  rot;
   fovX;
   fovY;
+  f;
+  n;
   axis;
   tX;
   tY;
@@ -22,6 +25,9 @@ export class box3D {
     this.oY = 0;
     this.axis = '';
     this.rotation = 0;
+    this.rot = 0;
+    this.f = 0;
+    this.n = 0;
     this.fovY = this.fovX = (75 * Math.PI)/180;
     this.setPoints();
   }
@@ -80,10 +86,10 @@ export class box3D {
   draw(ctx: CanvasRenderingContext2D) {
 
     this.setPoints();
-    this.rotate(this.axis,this.rotation);
+    this.rotate(this.axis,this.rot);
     this.translate(this.tX + this.oX, this.tY + this.oY, this.tZ);
     this.fovX = this.fovY = (75 * Math.PI)/180;
-    this.perspective(this.fovX, this.fovY, 10, 60);
+    this.perspective(this.fovX, this.fovY,this.f, this.n);
     this.clip4();
 
     ctx.beginPath();
@@ -108,6 +114,6 @@ export class box3D {
     ctx.moveTo(this.points[7].x, this.points[7].y);
     ctx.lineTo(this.points[3].x, this.points[3].y);
     ctx.stroke();
-    ctx.closePath();
+    //ctx.closePath();
   }
 }
