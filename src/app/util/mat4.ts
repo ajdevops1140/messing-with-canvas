@@ -81,9 +81,10 @@ export class mat4
     this.m41 = tX; this.m42 = tY; this.m43 = tZ;
   }
 
+  //fov has to be in radians
   getZoom(fov)
   {
-
+    return (1/(Math.tan(fov/2)));
   }
 
   perspective(fovX, fovY, f, n)
