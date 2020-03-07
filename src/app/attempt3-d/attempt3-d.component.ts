@@ -47,13 +47,14 @@ export class Attempt3DComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.box.oX = this.wRight;
-    this.box.oY = this.hDown;
-    this.box.fovX = 1000;
-    this.box.fovY = 1000;
-    this.box.tX = 100;
-    this.box.f = 1000;
-    this.box.n = -1000;
+    this.box.oX = 0 ;// this.wRight;
+    this.box.oY = 0 ;// this.hDown;
+    this.box.fovX = 80;
+    this.box.fovY = 80;
+    this.box.tX = 20;
+    this.box.ty = 20;
+    this.box.f = 0.8;
+    this.box.n = -0.1;
     this.box.rotation = 0;
 
     this.Draw(this.ctx);

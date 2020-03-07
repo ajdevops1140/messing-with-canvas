@@ -60,7 +60,7 @@ export class box3D {
     this.rotation += rad;
     let m = new mat4();
     m.rotate(axis, this.rotation);
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < this.points.length; i++) {
       let p = this.points[i];
       this.points[i] = m.multVec(p);
     }
@@ -69,7 +69,7 @@ export class box3D {
   perspective(fovX, fovY, f, n) {
     let m = new mat4();
     m.perspective(fovX, fovY, f, n);
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < this.points.length; i++) {
       let p = this.points[i];
       this.points[i] = m.multVec(p);
     }
@@ -77,8 +77,15 @@ export class box3D {
 
   clip4()
   {
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < this.points.length; i++) {
       this.points[i].clip4();
+    }
+  }
+
+  clip3()
+  {
+    for (let i = 0; i < this.points.length; i++) {
+      this.points[i].clip3();
     }
   }
 
@@ -86,11 +93,12 @@ export class box3D {
   draw(ctx: CanvasRenderingContext2D) {
 
     this.setPoints();
-    this.rotate(this.axis,this.rot);
-    this.translate(this.tX + this.oX, this.tY + this.oY, this.tZ);
-    this.fovX = this.fovY = (75 * Math.PI)/180;
+    //this.rotate(this.axis,this.rot);
+    this.translate(this.tX, this.tY, this.tZ);
+    //this.fovX = this.fovY = (75 * Math.PI)/180;
     this.perspective(this.fovX, this.fovY,this.f, this.n);
     this.clip4();
+    this.clip3();
 
     ctx.beginPath();
     ctx.moveTo(this.points[0].x, this.points[0].y);

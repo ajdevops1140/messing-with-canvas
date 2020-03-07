@@ -23,6 +23,12 @@ export class vec4{
     this.y /= this.w;
     this.z /= this.w;
   } 
+
+  clip3()
+  {
+    this.x /= this.z;
+    this.y /= this.z;
+  }
   
 
   setPoint(x = 0,y = 0,z = 0,w = 1)
