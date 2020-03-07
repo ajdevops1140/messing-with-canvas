@@ -6,6 +6,8 @@ export class mat4
   m31; m32; m33; m34;
   m41; m42; m43; m44;
 
+  zoomX; zoomY;
+
   constructor(){
     this.identity();
   }
@@ -71,6 +73,19 @@ export class mat4
   {
     this.identity();
     this.m41 = tX; this.m42 = tY; this.m43 = tZ;
+  }
+
+  getZoom(fov)
+  {
+
+  }
+
+  perspective(fovX, fovY, f, n)
+  {
+    this.m11 = this.getZoom(fovX); this.m12 = 0;                  this.m13 = 0;                  this.m14 = 0;
+    this.m21 = 0;                  this.m22 = this.getZoom(fovY); this.m23 = 0;                  this.m24 = 0;
+    this.m31 = 0;                  this.m32 = 0;                  this.m33 = (f+n)/(f-n);        this.m34 = 1;
+    this.m41 = 0;                  this.m42 = 0;                  this.m43 = (-2 * n * f)/(f-n); this.m44 = 0;   
   }
 
 
