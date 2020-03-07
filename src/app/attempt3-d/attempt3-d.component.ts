@@ -47,17 +47,19 @@ export class Attempt3DComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-       
-    
+    this.box.oX = this.wRight;
+    this.box.oY = this.hDown;
+    this.box.fovX = 65;
+    this.box.fovY = 65;
+    this.box.rotation = 0.1;
 
-    //this.Draw(this.ctx);
+    this.Draw(this.ctx);
   }
 
   Draw(ctx:CanvasRenderingContext2D)
   {
     ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
-    this.box.translate(this.wRight,this.hDown,0);
-
+    this.box.draw(ctx);
 
     window.requestAnimationFrame(()=>this.Draw(ctx));
   }

@@ -4,8 +4,25 @@ import { mat4 } from "../util/mat4";
 export class box3D {
   points: vec4[];
   rotation:number;
+  fovX;
+  fovY;
+  axis;
+  tX;
+  tY;
+  tZ;
+  oX;
+  oY;
+
 
   constructor() {
+    this.tX = 0;
+    this.tY = 0;
+    this.tZ = 0;
+    this.oX = 0;
+    this.oY = 0;
+    this.axis = '';
+    this.rotation = 0;
+    this.fovY = this.fovX = (75 * Math.PI)/180;
     this.setPoints();
   }
 
@@ -36,7 +53,7 @@ export class box3D {
   rotate(axis, rad) {
     this.rotation += rad;
     let m = new mat4();
-    m.rotate(axis, this.rotati);
+    m.rotate(axis, this.rotation);
     for (let i = 0; i < 8; i++) {
       let p = this.points[i];
       this.points[i] = m.multVec(p);
@@ -52,7 +69,23 @@ export class box3D {
     }
   }
 
+  clip4()
+  {
+    for (let i = 0; i < 8; i++) {
+      this.points[i].clip4();
+    }
+  }
+
+
   draw(ctx: CanvasRenderingContext2D) {
+
+    this.setPoints();
+    this.rotate(this.axis,this.rotation);
+    this.translate(this.tX + this.oX, this.tY + this.oY, this.tZ);
+    this.fovX = this.fovY = (75 * Math.PI)/180;
+    this.perspective(this.fovX, this.fovY, 10, 60);
+    this.clip4();
+
     ctx.beginPath();
     ctx.moveTo(this.points[0].x, this.points[0].y);
     ctx.lineTo(this.points[1].x, this.points[1].y);

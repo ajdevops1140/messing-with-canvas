@@ -16,7 +16,13 @@ export class vec4{
     p.z = this.z/this.w;
     return p;
   }
-  
+
+  clip4()
+  {
+    this.x /= this.w;
+    this.y /= this.w;
+    this.z /= this.w;
+  } 
   
 
   setPoint(x = 0,y = 0,z = 0,w = 1)
