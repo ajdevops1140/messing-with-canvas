@@ -57,6 +57,7 @@ export class Attempt3DComponent implements OnInit {
   createProgram(gl,vshader, fshader)
   {
     let vertexShader = loadShader(gl, gl.VERTEX_SHADER, vshader);
+    
   }
 
   loadShader(gl, type, source)
@@ -68,6 +69,10 @@ export class Attempt3DComponent implements OnInit {
       return null;
     }
 
+    gl.shaderSource(shader, source); //Set the shader createProgram
+    gl.compileShader(shader);        //Compile the shaderSource
+
+    let compiled = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
 
   }
 
