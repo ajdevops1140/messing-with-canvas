@@ -29,6 +29,10 @@ export class mat4
     let y = (v.x * this.m12) + (v.y * this.m22) + (v.z * this.m32) + (v.w * this.m42);
     let z = (v.z * this.m13) + (v.y * this.m23) + (v.z * this.m33) + (v.w * this.m43);
     let w = (v.w * this.m14) + (v.y * this.m24) + (v.z * this.m34) + (v.w * this.m44);
+
+    let p = new vec4();
+    p.x = x; p.y = y; p.z = z; p.w = w;
+    return p;
   }
 
   rotateX(rad)
