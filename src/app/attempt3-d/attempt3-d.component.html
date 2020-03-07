@@ -1,0 +1,13 @@
+<canvas #cv [width]="cvWidth" [height]="cvHeight"></canvas>
+
+<div>
+<div>
+  <button (click)="inc_dec('inc',0.05)" class='up'>&#8593;</button>
+</div>
+<div>
+  <button (click)="leftAndRight('left',1)">&#8592;</button><button (click)="leftAndRight('right',-1)">&#8594;</button>
+</div>
+<div>
+  <button (click)="inc_dec('dec',0.05)" class='down'>&#8595;</button>
+</div>
+</div>
