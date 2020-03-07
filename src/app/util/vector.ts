@@ -3,9 +3,9 @@ export class vec4{
 
   x; y; z; w;
 
-  constructor()
+  constructor(x = 0, y = 0, z = 0, w = 1)
   {
-    this.x = 0; this.y = 0; this.z = 0; this.w = 1;
+    this.setPoint(x,y,z,w);
   }
 
   clip()
@@ -15,6 +15,14 @@ export class vec4{
     p.y = this.y/this.w;
     p.z = this.z/this.w;
     return p;
+  }
+
+  setPoint(x = 0,y = 0,z = 0,w = 1)
+  {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    this.w = w;
   }
 }
 
