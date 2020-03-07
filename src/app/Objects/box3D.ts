@@ -3,6 +3,7 @@ import { mat4 } from "../util/mat4";
 
 export class box3D {
   points: vec4[];
+  rotation:number;
 
   constructor() {
     this.setPoints();
@@ -33,8 +34,9 @@ export class box3D {
   }
 
   rotate(axis, rad) {
+    this.rotation += rad;
     let m = new mat4();
-    m.rotate(axis, rad);
+    m.rotate(axis, this.rotati);
     for (let i = 0; i < 8; i++) {
       let p = this.points[i];
       this.points[i] = m.multVec(p);

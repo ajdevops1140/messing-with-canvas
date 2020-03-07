@@ -31,6 +31,7 @@ export class Attempt3DComponent implements OnInit {
   tSpeed: number = (1 / 60) * this.speed;
   w;
   h;
+  box:box3D;
 
   constructor() { }
 
@@ -41,7 +42,8 @@ export class Attempt3DComponent implements OnInit {
     this.wRight = this.w;
     this.wLeft = -this.w;
     this.hUp = -this.h;
-    this.hDown = this.h;    
+    this.hDown = this.h;  
+    this.box = new box3D();  
   }
 
   ngAfterViewInit() {
@@ -53,6 +55,8 @@ export class Attempt3DComponent implements OnInit {
 
   Draw(ctx:CanvasRenderingContext2D)
   {
+    ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
+    this.box.translate(this.wRight,this.hDown,0);
 
 
     window.requestAnimationFrame(()=>this.Draw(ctx));
