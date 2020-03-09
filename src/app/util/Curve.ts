@@ -48,15 +48,20 @@ export class Curve {
     p.x = (c0 * this.p0.x) + (c1 * this.p1.x) + (c2 * this.p2.x) + (c3 * this.p3.x);
     p.y = (c0 * this.p0.y) + (c1 * this.p1.y) + (c2 * this.p2.y) + (c3 * this.p3.y);
 
+    console.log(`x: ${p.x},y: ${p.y}`);
+
     return p;
   }
 
   createPoints()
   {
-    let points = new Array(this.steps);
-    for(let i = 0;i < points.length; i++)
+    let points = new Array();
+    for(let i = 0;i < this.steps; i++)
     {
-      points[i] = this.interpolate(i * this.tDiv);      
+      //let p:P2D = this.interpolate(i * this.tDiv);  
+      points[i].push(this.interpolate(i * this.tDiv));  
+      console.log(`x: ${points[i].x},y: ${points[i].y}`);
+      //console.log(`x: ${p.x},y: ${p.y}`);    
     }
     return points;
   }
