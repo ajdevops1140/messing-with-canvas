@@ -11,7 +11,10 @@ export class Curve {
   tDiv:number;
   originX:number;
   originY:number;
+  tX:number;
+  tY:number;
   rot:number;
+  points:P2D[];
 
   constructor(p0 , p1 , p2 , p3,originX = 0, originY = 0) 
   {
@@ -58,12 +61,22 @@ export class Curve {
     return points;
   }
 
-  rotate(deg:number)
+  rotate(deg:number,points)
   {
-    for(let i =0;i < this.points.length; i++)
+    for(let i =0;i < points.length; i++)
     {
-      this.points[i].rotate(deg);
+      points[i].rotate(deg);
     }
+    return points;
+  } 
+
+  translate(tX,tY,points)
+  {
+    for(let i =0;i < points.length; i++)
+    {
+      points[i].translate(tX,tY);
+    }
+    return points;
   }
 
   setFromOrigin(points)
@@ -75,9 +88,23 @@ export class Curve {
     return points;
   }
 
+  setupPoints()
+  {
+    this.points = this.createPoints();
+  }
+
   draw(ctx:CanvasRenderingContext2D)
   {
+    
+    this.points = this.setFromOrigin(this.points);
 
+    ctx.beginPath();
+    ctx.moveTo(this.p0.x,this.p0.y);
+    for(let i = 0;i < this.points.length; i++)
+    {
+      ctx.lineTo(this.points[i].x, this.points[i].y);
+    }
+    ctx.closePath();
   }
 
 }

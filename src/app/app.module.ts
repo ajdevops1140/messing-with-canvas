@@ -9,10 +9,11 @@ import { Math2DComponent } from './math2-d/math2-d.component';
 import { CanvasHandlerService } from './util/canvas-handler.service';
 import { Interpolate2PointsComponent } from './interpolate2-points/interpolate2-points.component';
 import { Attempt3DComponent } from './attempt3-d/attempt3-d.component';
+import { BezierComponent } from './bezier/bezier.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, HelloComponent, Canvas1Component, Math2DComponent, Interpolate2PointsComponent, Attempt3DComponent],
+  declarations: [ AppComponent, HelloComponent, Canvas1Component, Math2DComponent, Interpolate2PointsComponent, Attempt3DComponent, BezierComponent],
   bootstrap:    [ AppComponent ],
   providers: [CanvasHandlerService]
 })
