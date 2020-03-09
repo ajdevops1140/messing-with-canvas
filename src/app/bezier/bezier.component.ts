@@ -40,6 +40,7 @@ export class BezierComponent implements OnInit {
     this.c = new Curve(p0,p1,p2,p3,this.w,this.h);
     this.c.setupPoints();
     this.c.setSteps(5);
+    this.draw(this.ctx);
   }
 
   draw(ctx:CanvasRenderingContext2D)
