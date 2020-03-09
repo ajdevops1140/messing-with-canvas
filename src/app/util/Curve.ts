@@ -79,6 +79,7 @@ export class Curve {
     for(let i = 0;i < this.steps +1; i++)
     {
       points.push(this.interpolate(i * this.tDiv));  
+      console.log(points[i].oX);
     }
     return points;
   }
@@ -124,7 +125,7 @@ export class Curve {
 
   drawFromSteps(ctx:CanvasRenderingContext2D)
   {
-    this.points = this.setFromOrigin(this.points);
+    //this.points = this.setFromOrigin(this.points);
     ctx.beginPath();
     ctx.moveTo(this.points[0].x,this.points[0].y);
     console.log(`x: ${this.points[0].x},y: ${this.points[0].y}`);
