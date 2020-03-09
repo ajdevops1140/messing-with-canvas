@@ -53,7 +53,7 @@ export class Curve {
 
   createPoints()
   {
-    let points = new P2D[this.steps + 1];
+    let points = new Array(this.steps);
     for(let i = 0;i < points.length; i++)
     {
       points[i] = this.interpolate(i * this.tDiv);      
