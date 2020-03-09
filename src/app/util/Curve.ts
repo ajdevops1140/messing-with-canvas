@@ -27,6 +27,24 @@ export class Curve {
     this.steps = steps;
   }
 
+  calculate(t)
+  {
+   
+    return ( (1 - t) )
+  }
+
+  interpolate(t)
+  {
+    let p = new P2D();
+    let c0 = (1 - t) * (1 - t) * (1 - t);
+    let c1 = (3 * t) * ((1-t) * (1-t));
+    let c2 = ((3 * t) * (3 * t)) * (1-t);
+    let c3 = t * t * t;
   
+    p.x = (c0 * this.p0.x) + (c1 * this.p1.x) + (c2 * this.p2.x) + (c3 * this.p3.x);
+    p.y = (c0 * this.p0.y) + (c1 * this.p1.y) + (c2 * this.p2.y) + (c3 * this.p3.y);
+
+    return p;
+  }
 
 }
