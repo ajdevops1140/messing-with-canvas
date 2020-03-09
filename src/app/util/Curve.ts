@@ -98,8 +98,9 @@ export class Curve {
 
   drawFromSteps(ctx:CanvasRenderingContext2D)
   {
-    this.points = this.translate(this.tX,this.tY,this.points);
+    
     this.points = this.rotate(this.rot,this.points);
+    this.points = this.translate(this.tX,this.tY,this.points);
     this.points = this.setFromOrigin(this.points);
 
     ctx.beginPath();

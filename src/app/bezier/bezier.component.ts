@@ -40,8 +40,8 @@ export class BezierComponent implements OnInit {
     this.c = new Curve(p0,p1,p2,p3,this.w,this.h);
     this.c.setSteps(10);
     this.c.setupPoints();
-    this.c.rot = 0;
-    this.c.tX = 0;
+    this.c.rot += 0.1;
+    this.c.tX += 0.1;
     
     this.draw(this.ctx);
   }
@@ -50,8 +50,9 @@ export class BezierComponent implements OnInit {
   {
     ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     this.c.drawFromSteps(this.ctx);
-
-    //window.requestAnimationFrame(()=>{this.draw(ctx)});
+    this.c.rot += 0.1;
+    this.c.tX += 0.;
+    window.requestAnimationFrame(()=>{this.draw(ctx)});
   }
 
 }

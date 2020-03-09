@@ -50,8 +50,8 @@ export class P2D
 
   translate(tX,tY)
   {    
-    this.tX += tX;
-    this.tY += tY;     
+    this.tX = tX;
+    this.tY = tY;     
   }
 
   setToCanvasOrigin()
@@ -117,7 +117,7 @@ export class P2D
     //this.setToCanvasOrigin();
     let x = this.oX;
     let y = this.oY;
-    this.rot += deg;
+    this.rot = deg;
     //x = x*cos - y*sin
     //y = y*cos + x*sin
 
