@@ -18,10 +18,10 @@ export class P2D
   rot:number;
   color = 'blue';
 
-  constructor(oX = 0, oY = 0, x = 0,y = 0)
+  constructor(originX = 0, originY = 0, x = 0,y = 0)
   {    
-    this.originX = oX;
-    this.originY = oY;
+    this.originX = originX;
+    this.originY = originY;
     this.oX = this.x = x ;//+ this.originX;
     this.oY = this.y = y ;//+ this.originY;
     this.tX = 0;
