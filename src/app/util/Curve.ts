@@ -20,6 +20,7 @@ export class Curve {
   {
     this.originX = originX;
     this.originY = originY;
+    this.tX = this.tY = this.rot = 0;
     this.setPoints(p0, p1, p2, p3);
   }
 
@@ -45,8 +46,8 @@ export class Curve {
     let c2 = ((3 * t) * (3 * t)) * (1-t);
     let c3 = t * t * t;
   
-    p.x = (c0 * this.p0.x) + (c1 * this.p1.x) + (c2 * this.p2.x) + (c3 * this.p3.x);
-    p.y = (c0 * this.p0.y) + (c1 * this.p1.y) + (c2 * this.p2.y) + (c3 * this.p3.y);
+    p.oX = p.x = (c0 * this.p0.x) + (c1 * this.p1.x) + (c2 * this.p2.x) + (c3 * this.p3.x);
+    p.oY = p.y = (c0 * this.p0.y) + (c1 * this.p1.y) + (c2 * this.p2.y) + (c3 * this.p3.y);
 
     console.log(`x: ${p.x},y: ${p.y}`);
 
@@ -97,7 +98,8 @@ export class Curve {
 
   drawFromSteps(ctx:CanvasRenderingContext2D)
   {
-    
+    this.points = this.translate(this.tX,this.tY,this.points);
+    this.points = this.rotate(this.rot,this.points);
     this.points = this.setFromOrigin(this.points);
 
     ctx.beginPath();
