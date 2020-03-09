@@ -45,6 +45,7 @@ export class Curve {
       for(let i =1;i < this.points.length;i++)
       {
          let p = this.points[i].getOriginDisplacement(this.points[0]);
+         console.log(`Displaced: ${p.oX},${p.oY}`);
          this.displaced.push(p);
       }
     }
@@ -118,11 +119,12 @@ export class Curve {
   {
     this.points = this.rotate(this.rot,this.points);
     this.points = this.translate(this.tX,this.tY,this.points);
-    this.points = this.setFromOrigin(this.points);
+    
   }
 
   drawFromSteps(ctx:CanvasRenderingContext2D)
   {
+    this.points = this.setFromOrigin(this.points);
     ctx.beginPath();
     ctx.moveTo(this.points[0].x,this.points[0].y);
     console.log(`x: ${this.points[0].x},y: ${this.points[0].y}`);
