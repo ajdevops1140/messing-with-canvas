@@ -8,6 +8,7 @@ export class Curve {
   p2:P2D;
   p3:P2D;
   steps:number;
+  tDiv:number;
 
   constructor(p0 , p1 , p2 , p3) 
   {
@@ -25,6 +26,7 @@ export class Curve {
   setSteps(steps)
   {
     this.steps = steps;
+    this.tDiv = 1/steps;
   }
 
   interpolate(t)
@@ -39,6 +41,21 @@ export class Curve {
     p.y = (c0 * this.p0.y) + (c1 * this.p1.y) + (c2 * this.p2.y) + (c3 * this.p3.y);
 
     return p;
+  }
+
+  createPoints()
+  {
+    let points = new P2D[this.steps + 1];
+    for(let i = 0;i < points.length; i++)
+    {
+      points[i] = this.interpolate(i * this.tDiv);      
+    }
+    return points;
+  }
+
+  draw(ctx:CanvasRenderingContext2D)
+  {
+    
   }
 
 }
