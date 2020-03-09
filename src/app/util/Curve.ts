@@ -93,14 +93,14 @@ export class Curve {
     this.points = this.createPoints();
   }
 
-  draw(ctx:CanvasRenderingContext2D)
+  drawFromSteps(ctx:CanvasRenderingContext2D)
   {
     
     this.points = this.setFromOrigin(this.points);
 
     ctx.beginPath();
-    ctx.moveTo(this.p0.x,this.p0.y);
-    for(let i = 0;i < this.points.length; i++)
+    ctx.moveTo(this.points[0].x,this.points[0].y);
+    for(let i = 1;i < this.points.length; i++)
     {
       ctx.lineTo(this.points[i].x, this.points[i].y);
     }
