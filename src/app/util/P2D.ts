@@ -66,6 +66,14 @@ export class P2D
     this.y = this.prec((this.y + this.tY + this.originY),6);
   }
 
+  setFromOrigin(originX, originY)
+  {
+    this.originX = originX;
+    this.originY = originY;
+    this.x = this.prec((this.x + this.tX + this.originX),6);
+    this.y = this.prec((this.y + this.tY + this.originY),6);
+  }
+
   mag()
   {
     return Math.sqrt((this.x * this.x)+(this.y * this.y));

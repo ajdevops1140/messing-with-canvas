@@ -9,6 +9,9 @@ export class Curve {
   p3:P2D;
   steps:number;
   tDiv:number;
+  originX:number;
+  originY:number;
+  rot:number;
 
   constructor(p0 , p1 , p2 , p3) 
   {
@@ -53,9 +56,26 @@ export class Curve {
     return points;
   }
 
+  rotate(deg:number)
+  {
+    for(let i =0;i < this.points.length; i++)
+    {
+      this.points[i].rotate(deg);
+    }
+  }
+
+  setFromOrigin(points)
+  {
+     for(let i = 0;i < points.length; i++)
+    {
+      points[i].setFromOrigin(this.originX, this.originY);      
+    }
+    return points;
+  }
+
   draw(ctx:CanvasRenderingContext2D)
   {
-    
+
   }
 
 }
