@@ -50,9 +50,9 @@ export class BezierComponent implements OnInit {
   {
     ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     this.c.drawFromSteps(this.ctx);
-    this.c.rot += 0.1;
-    this.c.tX += 0.;
-    window.requestAnimationFrame(()=>{this.draw(ctx)});
+    this.c.rot += 0.5;
+    this.c.tX += 0.1;
+    /window.requestAnimationFrame(()=>{this.draw(ctx)});
   }
 
 }

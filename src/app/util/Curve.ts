@@ -49,7 +49,7 @@ export class Curve {
     p.oX = p.x = (c0 * this.p0.x) + (c1 * this.p1.x) + (c2 * this.p2.x) + (c3 * this.p3.x);
     p.oY = p.y = (c0 * this.p0.y) + (c1 * this.p1.y) + (c2 * this.p2.y) + (c3 * this.p3.y);
 
-    console.log(`x: ${p.x},y: ${p.y}`);
+    //console.log(`x: ${p.x},y: ${p.y}`);
 
     return p;
   }
