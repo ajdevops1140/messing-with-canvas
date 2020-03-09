@@ -29,6 +29,29 @@ export class P2D
     this.rot = 0;
   }
 
+  copy()
+  {
+    let p = new P2D();
+    p.x = this.x;
+    p.y = this.y;
+    p.oX = this.oX;
+    p.oY = this.oY;
+    p.tX = this.tX; //Translation
+    p.tY = this.tY;
+    p.originX = this.originX;  //Shift origin value
+    p.originY = this.originY;
+    p.degChange = this.degChange;
+    p.precision = this.precision;
+    p.theta = this.theta;
+    p.animate = this.animate;
+    p.toRotate = this.toRotate;
+    p.toDot = this.toDot;
+    p.dotResult = this.dotResult;
+    p.rot = this.rot;
+    p.color = this.color;
+    return p;    
+  }
+
   getDisplacement(p2:P2D)
   {
     let displaced = new P2D();

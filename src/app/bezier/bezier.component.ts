@@ -15,8 +15,8 @@ import { Curve } from "../util/Curve";
   styleUrls: ['./bezier.component.css']
 })
 export class BezierComponent implements OnInit {
-  cvWidth: number = 300;
-  cvHeight: number = 300;
+  cvWidth: number = 800;
+  cvHeight: number = 800;
   @ViewChild("cv", { static: true }) cv: ElementRef;
   ctx: CanvasRenderingContext2D;
   c:Curve;
