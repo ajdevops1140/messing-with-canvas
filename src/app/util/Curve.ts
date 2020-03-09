@@ -1,4 +1,4 @@
-import { P2D } from "./util/P2D";
+import { P2D } from "./P2D";
 
 //(1-t)^3(P0) + 3t(1-t)^2(P1)+3t^2(1-t)(P2)+t^3(P3)
 export class Curve {
@@ -100,9 +100,11 @@ export class Curve {
 
     ctx.beginPath();
     ctx.moveTo(this.points[0].x,this.points[0].y);
+    console.log(`x: ${this.points[0].x},y: ${this.points[0].y}`);
     for(let i = 1;i < this.points.length; i++)
     {
       ctx.lineTo(this.points[i].x, this.points[i].y);
+      console.log(`x: ${this.points[i].x},y: ${this.points[i].y}`);
     }
     ctx.stroke();
   }
