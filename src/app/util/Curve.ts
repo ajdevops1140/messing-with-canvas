@@ -104,7 +104,7 @@ export class Curve {
     {
       ctx.lineTo(this.points[i].x, this.points[i].y);
     }
-    ctx.closePath();
+    ctx.stroke();
   }
 
 }
