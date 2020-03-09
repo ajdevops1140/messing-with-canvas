@@ -32,16 +32,10 @@ export class BezierComponent implements OnInit {
   }
 
   ngAfterViewInit()
-  {    
-    let p0 = new P2D(this.w,this.h,0,0);
-    let p1 = new P2D(this.w,this.h,0,-50);
-    let p2 = new P2D(this.w,this.h,40,-20);
-    let p3 = new P2D(this.w,this.h,120,0);
-    this.c = new Curve(p0,p1,p2,p3,this.w,this.h);
+  {   
+    this.c = new Curve(0,0,0,-50,40,-20,120,0,this.w,this.h);
     this.c.setSteps(10);
-    this.c.setupPoints();
-    this.c.rot += 0.1;
-    this.c.tX += 0.1;
+    this.c.setupPoints();    
     
     this.draw(this.ctx);
   }
@@ -50,8 +44,8 @@ export class BezierComponent implements OnInit {
   {
     ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     this.c.drawFromSteps(this.ctx);
-    this.c.rot += 0.5;
-    this.c.tX += 0.1;
+    this.c.rot += 0.0;
+    this.c.tX += 0.0;
     //window.requestAnimationFrame(()=>{this.draw(ctx)});
   }
 
