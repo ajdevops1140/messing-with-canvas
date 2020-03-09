@@ -13,8 +13,10 @@ export class Curve {
   originY:number;
   rot:number;
 
-  constructor(p0 , p1 , p2 , p3) 
+  constructor(p0 , p1 , p2 , p3,originX = 0, originY = 0) 
   {
+    this.originX = originX;
+    this.originY = originY;
     this.setPoints(p0, p1, p2, p3);
   }
 
@@ -34,7 +36,7 @@ export class Curve {
 
   interpolate(t)
   {
-    let p = new P2D();
+    let p = new P2D(this.originX, this.originY);
     let c0 = (1 - t) * (1 - t) * (1 - t);
     let c1 = (3 * t) * ((1-t) * (1-t));
     let c2 = ((3 * t) * (3 * t)) * (1-t);
