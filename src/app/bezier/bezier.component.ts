@@ -20,17 +20,24 @@ export class BezierComponent implements OnInit {
   @ViewChild("cv", { static: true }) cv: ElementRef;
   ctx: CanvasRenderingContext2D;
   c:Curve;
+  w:number;
+  h:number;
 
   constructor() { }
 
   ngOnInit() {
      this.ctx = this.cv.nativeElement.getContext('2d'); 
+     this.w = this.cvWidth/2;
+     this.h = this.cvHeight/2;
   }
 
   ngAfterViewInit()
-  {
-    this.c = new Curve();
-    
+  {    
+    let p0 = new P2D(this.w,this.h);
+    let p1 = new P2D(this.w,this.h);
+    let p2 = new P2D(this.w,this.h);
+    let p3 = new P2D(this.w,this.h);
+    this.c = new Curve(p0,p1,p2,p3);
   }
 
 }
