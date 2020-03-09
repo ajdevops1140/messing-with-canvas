@@ -18,6 +18,8 @@ import { Arrow } from "../Objects/arrow";
 })
 export class BezierComponent implements OnInit {
 
+  
+
   constructor() { }
 
   ngOnInit() {
