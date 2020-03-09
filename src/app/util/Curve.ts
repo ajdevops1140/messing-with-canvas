@@ -15,21 +15,38 @@ export class Curve {
   tY:number;
   rot:number;
   points:P2D[];
+  displaced:P2D[];
 
-  constructor(p0 , p1 , p2 , p3,originX = 0, originY = 0) 
+  constructor(x0,y0,x1,y1,x2,y2,x3,y3,/*p0 , p1 , p2 , p3,*/originX = 0, originY = 0) 
   {
     this.originX = originX;
-    this.originY = originY;
+    this.originY = originY;    
     this.tX = this.tY = this.rot = 0;
-    this.setPoints(p0, p1, p2, p3);
+    this.setPoints(x0,y0,x1,y1,x2,y2,x3,y3);
   }
 
-  setPoints(p0, p1, p2, p3)
+  setPoints(x0,y0,x1,y1,x2,y2,x3,y3)
   {
-    this.p0 = p0;
-    this.p1 = p1;
-    this.p2 = p2;
-    this.p3 = p3; 
+    this.p0 = new P2D();
+    this.p1 = new P2D();
+    this.p2 = new P2D();
+    this.p3 = new P2D(); 
+    this.p0.setPoint(x0,y0);
+    this.p1.setPoint(x1,y1);
+    this.p2.setPoint(x2,y2);
+    this.p3.setPoint(x3,y2);
+  }
+
+  setDisplacements()
+  {
+    this.displaced = new Array();
+    if(this.points != undefined)
+    {
+      for(let i =1;i < this.points.length;i++)
+      {
+         let p = this.points[i].
+      }
+    }
   }
 
   setSteps(steps)
@@ -96,13 +113,15 @@ export class Curve {
     this.points = this.createPoints();
   }
 
-  drawFromSteps(ctx:CanvasRenderingContext2D)
+  setValues(rot,tX,tY)
   {
-    
     this.points = this.rotate(this.rot,this.points);
     this.points = this.translate(this.tX,this.tY,this.points);
     this.points = this.setFromOrigin(this.points);
+  }
 
+  drawFromSteps(ctx:CanvasRenderingContext2D)
+  {
     ctx.beginPath();
     ctx.moveTo(this.points[0].x,this.points[0].y);
     console.log(`x: ${this.points[0].x},y: ${this.points[0].y}`);

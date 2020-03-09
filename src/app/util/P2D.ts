@@ -22,8 +22,7 @@ export class P2D
   {    
     this.originX = originX;
     this.originY = originY;
-    this.oX = this.x = x ;//+ this.originX;
-    this.oY = this.y = y ;//+ this.originY;
+    this.setPoint(x,y);
     this.tX = 0;
     this.tY = 0;
     this.theta = 0;
@@ -35,6 +34,14 @@ export class P2D
     let displaced = new P2D();
     displaced.x = this.x - p2.x;
     displaced.y = this.y - p2.y;
+    return displaced;
+  }
+
+  getOriginDisplacement(p2:P2D)
+  {
+    let displaced = new P2D();
+    displaced.x = this.oX - p2.oX;
+    displaced.y = this.oY - p2.oY;
     return displaced;
   }
 
@@ -52,6 +59,12 @@ export class P2D
   {    
     this.tX = tX;
     this.tY = tY;     
+  }
+
+  setPoint(x,y)
+  {
+    this.oX = this.x = x ;//+ this.originX;
+    this.oY = this.y = y ;//+ this.originY;
   }
 
   setToCanvasOrigin()
