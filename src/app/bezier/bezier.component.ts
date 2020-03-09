@@ -42,4 +42,12 @@ export class BezierComponent implements OnInit {
     this.c.setSteps(5);
   }
 
+  draw(ctx:CanvasRenderingContext2D)
+  {
+    ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
+    this.c.drawFromSteps(this.ctx);
+
+    window.requestAnimationFrame(()=>{this.draw(ctx)});
+  }
+
 }
