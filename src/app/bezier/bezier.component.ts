@@ -34,12 +34,14 @@ export class BezierComponent implements OnInit {
   ngAfterViewInit()
   {    
     let p0 = new P2D(this.w,this.h,0,0);
-    let p1 = new P2D(this.w,this.h,25,-100);
-    let p2 = new P2D(this.w,this.h,40,-100);
+    let p1 = new P2D(this.w,this.h,25,0);
+    let p2 = new P2D(this.w,this.h,40,0);
     let p3 = new P2D(this.w,this.h,120,0);
     this.c = new Curve(p0,p1,p2,p3,this.w,this.h);
     this.c.setSteps(15);
     this.c.setupPoints();
+    this.c.rot = 30;
+    this.c.tX = -40;
     
     this.draw(this.ctx);
   }
