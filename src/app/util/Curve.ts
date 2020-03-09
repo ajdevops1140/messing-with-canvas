@@ -27,12 +27,6 @@ export class Curve {
     this.steps = steps;
   }
 
-  calculate(t)
-  {
-   
-    return ( (1 - t) )
-  }
-
   interpolate(t)
   {
     let p = new P2D();
