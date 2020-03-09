@@ -56,12 +56,9 @@ export class Curve {
   createPoints()
   {
     let points = new Array();
-    for(let i = 0;i < this.steps; i++)
+    for(let i = 0;i < this.steps +1; i++)
     {
-      //let p:P2D = this.interpolate(i * this.tDiv);  
-      points[i].push(this.interpolate(i * this.tDiv));  
-      console.log(`x: ${points[i].x},y: ${points[i].y}`);
-      //console.log(`x: ${p.x},y: ${p.y}`);    
+      points.push(this.interpolate(i * this.tDiv));  
     }
     return points;
   }

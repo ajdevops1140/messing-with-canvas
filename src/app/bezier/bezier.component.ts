@@ -27,8 +27,8 @@ export class BezierComponent implements OnInit {
 
   ngOnInit() {
      this.ctx = this.cv.nativeElement.getContext('2d'); 
-     this.w = this.cvWidth/2;
-     this.h = this.cvHeight/2;
+     this.w = this.cvWidth/2 - 50;
+     this.h = this.cvHeight/2 + 50;
   }
 
   ngAfterViewInit()
@@ -41,7 +41,7 @@ export class BezierComponent implements OnInit {
     this.c.setSteps(5);
     this.c.setupPoints();
     
-    //this.draw(this.ctx);
+    this.draw(this.ctx);
   }
 
   draw(ctx:CanvasRenderingContext2D)
