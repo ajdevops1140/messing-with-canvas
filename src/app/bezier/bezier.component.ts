@@ -6,10 +6,8 @@ import {
   ElementRef,
   AfterViewInit
 } from "@angular/core";
-import { Basic } from "../util/Basic";
 import { P2D } from "../util/P2D";
-import { CanvasHandlerService } from "../util/canvas-handler.service";
-import { Arrow } from "../Objects/arrow";
+import { Curve } from "../util/Curve";
 
 @Component({
   selector: 'app-bezier',
@@ -17,12 +15,22 @@ import { Arrow } from "../Objects/arrow";
   styleUrls: ['./bezier.component.css']
 })
 export class BezierComponent implements OnInit {
-
-  
+  cvWidth: number = 300;
+  cvHeight: number = 300;
+  @ViewChild("cv", { static: true }) cv: ElementRef;
+  ctx: CanvasRenderingContext2D;
+  c:Curve;
 
   constructor() { }
 
   ngOnInit() {
+     this.ctx = this.cv.nativeElement.getContext('2d'); 
+  }
+
+  ngAfterViewInit()
+  {
+    this.c = new Curve();
+    
   }
 
 }
