@@ -157,6 +157,11 @@ export class Curve {
     
   }
 
+  drawPoints(ctx:CanvasRenderingContext2D)
+  {
+    
+  }
+
   drawFromSteps(ctx:CanvasRenderingContext2D)
   {
     let points = this.translate(this.tX,this.tY,this.points);
