@@ -140,18 +140,15 @@ export class Curve {
     let oX = this.originX;
     let oY = this.originY;
     ctx.beginPath();    
-    for(let i = 0; i < points.length && i < 2;i++)
-    {
-       ctx.moveTo(oX,oY);
-       ctx.lineTo(points[i].x, points[i].y);  
-       console.log(`Created: ${points[i].x},${points[i].y}`);     
-    }
     for(let i = 0; i < dis.length ;i++)
     {
+       ctx.strokeStyle = 'rgb(${100++},0,0)';
        ctx.moveTo(oX,oY);
-       ctx.lineTo(dis[i].x, dis[i].y);      
+       ctx.lineTo(dis[i].x, dis[i].y);
+       console.log(`displaced Draw: ${points[i].x},${points[i].y}`);    
+       ctx.stroke();   
     }
-    ctx.stroke();
+    
   }
 
   drawFromSteps(ctx:CanvasRenderingContext2D)
