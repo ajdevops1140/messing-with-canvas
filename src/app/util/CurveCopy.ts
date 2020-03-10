@@ -7,6 +7,7 @@ export class Curve {
   p1:P2v;
   p2:P2v;
   p3:P2v;
+  p:P2v;
   steps:number;
   tDiv:number;
   originX:number;
@@ -22,19 +23,20 @@ export class Curve {
     this.originX = originX;
     this.originY = originY;    
     this.tX = this.tY = this.rot = 0;
+    this.p = new Array();
     this.setPoints(x0,y0,x1,y1,x2,y2,x3,y3);
   }
 
   setPoints(x0,y0,x1,y1,x2,y2,x3,y3)
   {
-    this.p0 = new P2v(this.originX,this.originY);
-    this.p1 = new P2v(this.originX,this.originY);
-    this.p2 = new P2v(this.originX,this.originY);
-    this.p3 = new P2v(this.originX,this.originY); 
-    this.p0.setPoint(x0,y0);
-    this.p1.setPoint(x1,y1);
-    this.p2.setPoint(x2,y2);
-    this.p3.setPoint(x3,y3);
+    this.p[0] = new P2v(this.originX,this.originY);
+    this.p[1] = new P2v(this.originX,this.originY);
+    this.p[2] = new P2v(this.originX,this.originY);
+    this.p[3] = new P2v(this.originX,this.originY); 
+    this.p[0].setPoint(x0,y0);
+    this.p[1].setPoint(x1,y1);
+    this.p[2].setPoint(x2,y2);
+    this.p[3].setPoint(x3,y3);
   }
 
   copyArr(arr)
@@ -70,14 +72,14 @@ export class Curve {
 
   interpolate(t)
   {
-    let p = this.p0.copy();
+    let p = this.p[0].copy();
     let c0 = (1 - t) * (1 - t) * (1 - t);
     let c1 = (3 * t) * ((1-t) * (1-t));
     let c2 = ((3 * t) * (3 * t)) * (1-t);
     let c3 = t * t * t;
   
-    p.x = (c0 * this.p0.x) + (c1 * this.p1.x) + (c2 * this.p2.x) + (c3 * this.p3.x);
-    p.y = (c0 * this.p0.y) + (c1 * this.p1.y) + (c2 * this.p2.y) + (c3 * this.p3.y);
+    p.x = (c0 * this.p[0].x) + (c1 * this.p[1].x) + (c2 * this.p[2].x) + (c3 * this.p[3].x);
+    p.y = (c0 * this.p[0].y) + (c1 * this.p[1].y) + (c2 * this.p[2].y) + (c3 * this.p[3].y);
 
     //console.log(`Interpolated: ${p.oX},${p.oY}`);
 
@@ -175,14 +177,34 @@ export class Curve {
 
   drawPoints(ctx:CanvasRenderingContext2D)
   {
-    
+     let p = this.setFromOrigin(this.p);
+     let pSize = 9;
+     let adjust = Math.ceil(pSize/2);
+
+     ctx.beginPath();
+     ctx.strokeStyle = 'red';
+     ctx.moveTo(p[0].x,p[0].y);
+     ctx.lineTo(p[1].x,p[1].y);
+     ctx.moveTo(p[3].x,p[3].y);
+     ctx.lineTo(p[2].x,p[2].y);
+     ctx.stroke();
+
+     ctx.fillStyle = 'green';
+     ctx.moveTo(p[1].x ,p[1].y );
+     ctx.fillRect(p[1].x - adjust,p[1].y - adjust,pSize,pSize);   
+     ctx.fillStyle = 'blue';  
+     ctx.moveTo(p[2].x ,p[2].y );     
+     ctx.fillRect(p[2].x - adjust,p[2].y - adjust,pSize,pSize);
+
+     
   }
 
   drawFromSteps(ctx:CanvasRenderingContext2D)
   {
     let points = this.createPoints();// = this.translate(this.tX,this.tY,this.points);
     points = this.setFromOrigin(points);
-    
+    this.drawPoints(ctx);
+
     ctx.beginPath();
     ctx.strokeStyle = 'black';
     ctx.moveTo(points[0].x,points[0].y);
