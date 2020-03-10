@@ -27,23 +27,26 @@ export class BezierComponent implements OnInit {
 
   ngOnInit() {
      this.ctx = this.cv.nativeElement.getContext('2d'); 
-     this.w = this.cvWidth/2 - 50;
-     this.h = this.cvHeight/2 + 50;
+     this.w = this.cvWidth/2;
+     this.h = this.cvHeight/2;
   }
 
   ngAfterViewInit()
   {   
-    this.c = new Curve(0,0,0,-50,40,-20,120,0,this.w,this.h);
-    this.c.setSteps(10);
+    this.c = new Curve(20,0,0,-50,40,-20,120,0,this.w,this.h);
+    this.c.setSteps(3);
     this.c.setupPoints();   
-   // this.c.setDisplacements();
+    this.c.setDisplacements();
     
-    //this.draw(this.ctx);
+    
+    this.draw(this.ctx);
   }
 
   draw(ctx:CanvasRenderingContext2D)
   {
     ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
+    this.c.drawDisplacement(this.ctx);   
+    this.c.tX = 0; 
     this.c.drawFromSteps(this.ctx);
     this.c.rot += 0.0;
     this.c.tX += 0.0;

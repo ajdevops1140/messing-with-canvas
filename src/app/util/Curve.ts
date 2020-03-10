@@ -45,19 +45,10 @@ export class Curve {
       for(let i =1;i < this.points.length;i++)
       {
          //let p = this.points[]
-         let p = this.points[i].getOriginDisplacement(this.points[0]);
+         let p = this.points[i].getOriginDisplacement(this.points[i-1]);
          console.log(`Displaced: ${p.oX},${p.oY}`);
          this.displaced.push(p);
-      }
-      
-      for(let i =1;i < this.displaced.length;i++)
-      {
-         //let p = this.points[]
-         let x = this.points[i].oX - this.displaced[i].oX;
-         let y = this.points[i].oY - this.displaced[i].oY;
-         console.log(`Displaced After: ${x},${y}`);
-         
-      }
+      }         
     }
   }
 
@@ -78,7 +69,7 @@ export class Curve {
     p.oX = p.x = (c0 * this.p0.x) + (c1 * this.p1.x) + (c2 * this.p2.x) + (c3 * this.p3.x);
     p.oY = p.y = (c0 * this.p0.y) + (c1 * this.p1.y) + (c2 * this.p2.y) + (c3 * this.p3.y);
 
-    console.log(`Interpolated: ${p.oX},${p.oY}`);
+    //console.log(`Interpolated: ${p.oX},${p.oY}`);
 
     return p;
   }
@@ -133,16 +124,38 @@ export class Curve {
     
   }
 
+  drawDisplacement(ctx:CanvasRenderingContext2D)
+  {
+    let points = this.setFromOrigin(this.points);
+    let dis = this.setFromOrigin(this.displaced);
+    let oX = this.originX;
+    let oY = this.originY;
+    ctx.beginPath();
+    ctx.moveTo(oX,oY);
+    for(let i = 0; i < points.length && i < 2;i++)
+    {
+       ctx.lineTo(this.points[i].x, this.points[i].y);
+       ctx.moveTo(oX,oY);
+    }
+    for(let i = 0; i < dis.length ;i++)
+    {
+       ctx.lineTo(dis[i].x, dis[i].y);
+       ctx.moveTo(oX,oY);
+    }
+    ctx.stroke();
+  }
+
   drawFromSteps(ctx:CanvasRenderingContext2D)
   {
-    //this.points = this.setFromOrigin(this.points);
+    let points = this.points;//this.setFromOrigin(this.points);
+    points = this.translate(this.tX,this.tY,this.points);
     ctx.beginPath();
-    ctx.moveTo(this.points[0].x,this.points[0].y);
-    console.log(`x: ${this.points[0].x},y: ${this.points[0].y}`);
-    for(let i = 1;i < this.points.length; i++)
+    ctx.moveTo(points[0].x,points[0].y);
+    console.log(`x: ${points[0].x},y: ${points[0].y}`);
+    for(let i = 1;i < points.length; i++)
     {
-      ctx.lineTo(this.points[i].x, this.points[i].y);
-      console.log(`x: ${this.points[i].x},y: ${this.points[i].y}`);
+      ctx.lineTo(points[i].x, points[i].y);
+      console.log(`x: ${points[i].x},y: ${points[i].y}`);
     }
     ctx.stroke();
   }

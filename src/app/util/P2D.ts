@@ -63,8 +63,8 @@ export class P2D
   getOriginDisplacement(p2:P2D)
   {
     let displaced = this.copy();
-    displaced.oX = this.oX - p2.oX;
-    displaced.oY = this.oY - p2.oY;
+    displaced.oX = displaced.x = this.oX - p2.oX;
+    displaced.oY = displaced.y = this.oY - p2.oY;
     return displaced;
   }
 
