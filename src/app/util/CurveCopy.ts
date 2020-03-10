@@ -49,7 +49,7 @@ export class Curve {
     return n;
   }
 
-  setDisplacements(points)
+  setDisplacements(points,scale = 1)
   {
     let dis = new Array();
     if(points != undefined)
@@ -57,6 +57,8 @@ export class Curve {
       for(let i =1;i < points.length;i++)
       {         
          let p = points[i].getDisplacement(points[i-1]);
+         p.x *= scale;
+         p.y *= scale;
          console.log(`Displaced: ${p.x},${p.y}`);
          dis.push(p);
       }         
@@ -153,8 +155,12 @@ export class Curve {
 
   drawDisplacement(ctx:CanvasRenderingContext2D)
   {
-    let points = this.setFromOriginNoTrans(this.points);
-    let dis = this.setFromOriginNoTrans(this.displaced);
+    let scale = 8;
+    let points = this.createPoints();
+    points = this.setFromOriginNoTrans(points);
+
+    let dis = this.setDisplacements(points,scale);
+    dis = this.setFromOriginNoTrans(dis);
     let oX = this.originX;
     let oY = this.originY;
     ctx.beginPath(); 
@@ -168,8 +174,8 @@ export class Curve {
        b = (Math.random() * 100000) % 255;
        ctx.strokeStyle = `rgb(${r},${g},${b})`;
        ctx.moveTo(oX,oY);
-       ctx.lineTo(dis[i].x, dis[i].y);
-       console.log(`displaced Draw: ${points[i].x},${points[i].y}`);    
+       ctx.lineTo(dis[i].x,dis[i].y);
+       console.log(`displaced Draw: ${dis[i].x},${dis[i].y}`);    
        ctx.stroke();   
     }
     

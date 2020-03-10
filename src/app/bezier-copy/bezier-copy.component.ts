@@ -45,7 +45,7 @@ export class BezierCopyComponent implements OnInit {
   draw(ctx:CanvasRenderingContext2D)
   {
     ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
-    //this.c.drawDisplacement(this.ctx);   
+    this.c.drawDisplacement(this.ctx);   
     this.c.tX = 0; 
     this.c.drawFromSteps(this.ctx);
     this.c.rot += 0.0;
