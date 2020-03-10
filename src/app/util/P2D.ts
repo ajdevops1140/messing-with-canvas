@@ -54,7 +54,7 @@ export class P2D
 
   getDisplacement(p2:P2D)
   {
-    let displaced = new P2D();
+    let displaced = this.copy();
     displaced.x = this.x - p2.x;
     displaced.y = this.y - p2.y;
     return displaced;

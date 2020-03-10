@@ -49,6 +49,15 @@ export class Curve {
          console.log(`Displaced: ${p.oX},${p.oY}`);
          this.displaced.push(p);
       }
+      
+      for(let i =1;i < this.displaced.length;i++)
+      {
+         //let p = this.points[]
+         let x = this.points[i].oX - this.displaced[i].oX;
+         let y = this.points[i].oY - this.displaced[i].oY;
+         console.log(`Displaced After: ${x},${y}`);
+         
+      }
     }
   }
 
