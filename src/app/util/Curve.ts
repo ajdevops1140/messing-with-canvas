@@ -34,7 +34,7 @@ export class Curve {
     this.p0.setPoint(x0,y0);
     this.p1.setPoint(x1,y1);
     this.p2.setPoint(x2,y2);
-    this.p3.setPoint(x3,y2);
+    this.p3.setPoint(x3,y3);
   }
 
   setDisplacements()
