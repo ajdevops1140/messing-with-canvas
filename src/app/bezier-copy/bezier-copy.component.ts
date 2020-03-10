@@ -7,7 +7,7 @@ import {
   AfterViewInit
 } from "@angular/core";
 import { P2v } from "../util/P2DCopy";
-import { Curve } from "../util/Curve";
+import { Curve } from "../util/CurveCopy";
 
 @Component({
   selector: 'app-bezier-copy',
@@ -36,7 +36,7 @@ export class BezierCopyComponent implements OnInit {
     this.c = new Curve(0,200,0,0,0,0,200,200,this.w,this.h);
     this.c.setSteps(5);
     this.c.setupPoints();   
-    this.c.setDisplacements();
+    //this.c.setDisplacements();
     
     
     this.draw(this.ctx);
@@ -45,7 +45,7 @@ export class BezierCopyComponent implements OnInit {
   draw(ctx:CanvasRenderingContext2D)
   {
     ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
-    this.c.drawDisplacement(this.ctx);   
+    //this.c.drawDisplacement(this.ctx);   
     this.c.tX = 100; 
     this.c.drawFromSteps(this.ctx);
     this.c.rot += 0.0;
