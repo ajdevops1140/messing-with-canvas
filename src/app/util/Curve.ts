@@ -145,9 +145,9 @@ export class Curve {
     let b = 0;   
     for(let i = 0; i < dis.length ;i++)
     {
-       r = (Math.random() * 1000) % 255;
-       g = (Math.random() * 1000) % 255;
-       b = (Math.random() * 1000) % 255;
+       r = (Math.random() * 10000) % 255;
+       g = (Math.random() * 10000) % 255;
+       b = (Math.random() * 10000) % 255;
        ctx.strokeStyle = `rgb(${r},${g},${b})`;
        ctx.moveTo(oX,oY);
        ctx.lineTo(dis[i].x, dis[i].y);
