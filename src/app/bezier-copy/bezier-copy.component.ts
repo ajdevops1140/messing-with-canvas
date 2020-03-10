@@ -33,8 +33,8 @@ export class BezierCopyComponent implements OnInit {
 
   ngAfterViewInit()
   {   
-    this.c = new Curve(0,0,-30,-100,210,-80,200,0,this.w,this.h);
-    this.c.setSteps(20);
+    this.c = new Curve(0,0,-30,100,210,80,200,0,this.w,this.h);
+    this.c.setSteps(10);
     //this.c.setupPoints();   
     //this.c.setDisplacements();
     
