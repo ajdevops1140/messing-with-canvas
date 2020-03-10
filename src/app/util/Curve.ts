@@ -105,9 +105,18 @@ export class Curve {
 
   setFromOrigin(points)
   {
-     for(let i = 0;i < points.length; i++)
+    for(let i = 0;i < points.length; i++)
     {
       points[i].setFromOrigin(this.originX, this.originY);      
+    }
+    return points;
+  }
+
+  setFromOriginNoTrans(points)
+  {
+    for(let i = 0;i < points.length; i++)
+    {
+      points[i].setFromOriginNoTrans(this.originX, this.originY);      
     }
     return points;
   }
@@ -126,29 +135,30 @@ export class Curve {
 
   drawDisplacement(ctx:CanvasRenderingContext2D)
   {
-    let points = this.setFromOrigin(this.points);
-    let dis = this.setFromOrigin(this.displaced);
+    let points = this.setFromOriginNoTrans(this.points);
+    let dis = this.setFromOriginNoTrans(this.displaced);
     let oX = this.originX;
     let oY = this.originY;
-    ctx.beginPath();
-    ctx.moveTo(oX,oY);
+    ctx.beginPath();    
     for(let i = 0; i < points.length && i < 2;i++)
     {
-       ctx.lineTo(this.points[i].x, this.points[i].y);
        ctx.moveTo(oX,oY);
+       ctx.lineTo(points[i].x, points[i].y);  
+       console.log(`Created: ${points[i].x},${points[i].y}`);     
     }
     for(let i = 0; i < dis.length ;i++)
     {
-       ctx.lineTo(dis[i].x, dis[i].y);
        ctx.moveTo(oX,oY);
+       ctx.lineTo(dis[i].x, dis[i].y);      
     }
     ctx.stroke();
   }
 
   drawFromSteps(ctx:CanvasRenderingContext2D)
   {
-    let points = this.points;//this.setFromOrigin(this.points);
-    points = this.translate(this.tX,this.tY,this.points);
+    let points = this.translate(this.tX,this.tY,this.points);
+    points = this.setFromOrigin(points);
+    
     ctx.beginPath();
     ctx.moveTo(points[0].x,points[0].y);
     console.log(`x: ${points[0].x},y: ${points[0].y}`);

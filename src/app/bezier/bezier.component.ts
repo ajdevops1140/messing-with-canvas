@@ -46,7 +46,7 @@ export class BezierComponent implements OnInit {
   {
     ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     this.c.drawDisplacement(this.ctx);   
-    this.c.tX = 0; 
+    this.c.tX = 100; 
     this.c.drawFromSteps(this.ctx);
     this.c.rot += 0.0;
     this.c.tX += 0.0;

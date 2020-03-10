@@ -106,8 +106,16 @@ export class P2D
   {
     this.originX = originX;
     this.originY = originY;
-    this.x = this.prec((this.x + this.tX + this.originX),6);
-    this.y = this.prec((this.y + this.tY + this.originY),6);
+    this.x = this.prec((this.oX + this.tX + this.originX),6);
+    this.y = this.prec((this.oY + this.tY + this.originY),6);
+  }
+
+  setFromOriginNoTrans(originX, originY)
+  {
+    this.originX = originX;
+    this.originY = originY;
+    this.x = this.prec((this.oX + this.originX),6);
+    this.y = this.prec((this.oY + this.originY),6);
   }
 
   mag()
