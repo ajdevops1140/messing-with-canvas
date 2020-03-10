@@ -33,8 +33,8 @@ export class BezierComponent implements OnInit {
 
   ngAfterViewInit()
   {   
-    this.c = new Curve(20,0,0,-50,40,-20,120,0,this.w,this.h);
-    this.c.setSteps(3);
+    this.c = new Curve(-200,0,40,-50,40,-20,200,0,this.w,this.h);
+    this.c.setSteps(10);
     this.c.setupPoints();   
     this.c.setDisplacements();
     
