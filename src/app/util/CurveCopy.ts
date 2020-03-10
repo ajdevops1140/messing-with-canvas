@@ -75,7 +75,7 @@ export class Curve {
     let p = this.p[0].copy();
     let c0 = (1 - t) * (1 - t) * (1 - t);
     let c1 = (3 * t) * ((1-t) * (1-t));
-    let c2 = ((3 * t) * (3 * t)) * (1-t);
+    let c2 = (3* (1-t)) * (t * t);
     let c3 = t * t * t;
   
     p.x = (c0 * this.p[0].x) + (c1 * this.p[1].x) + (c2 * this.p[2].x) + (c3 * this.p[3].x);
