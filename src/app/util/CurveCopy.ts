@@ -90,7 +90,7 @@ export class Curve {
     for(let i = 0;i < this.steps +1; i++)
     {
       points.push(this.interpolate(i * this.tDiv));  
-      console.log(`Created: ${points[i].oX},${points[i].oY}`);
+      console.log(`Created: ${points[i].x},${points[i].y}`);
     }
     return points;
   }
@@ -180,7 +180,7 @@ export class Curve {
 
   drawFromSteps(ctx:CanvasRenderingContext2D)
   {
-    let points = this.translate(this.tX,this.tY,this.points);
+    let points = this.createPoints();// = this.translate(this.tX,this.tY,this.points);
     points = this.setFromOrigin(points);
     
     ctx.beginPath();
