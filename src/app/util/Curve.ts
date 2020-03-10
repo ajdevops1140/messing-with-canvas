@@ -27,10 +27,10 @@ export class Curve {
 
   setPoints(x0,y0,x1,y1,x2,y2,x3,y3)
   {
-    this.p0 = new P2D();
-    this.p1 = new P2D();
-    this.p2 = new P2D();
-    this.p3 = new P2D(); 
+    this.p0 = new P2D(this.originX,this.originY);
+    this.p1 = new P2D(this.originX,this.originY);
+    this.p2 = new P2D(this.originX,this.originY);
+    this.p3 = new P2D(this.originX,this.originY); 
     this.p0.setPoint(x0,y0);
     this.p1.setPoint(x1,y1);
     this.p2.setPoint(x2,y2);
