@@ -139,10 +139,16 @@ export class Curve {
     let dis = this.setFromOriginNoTrans(this.displaced);
     let oX = this.originX;
     let oY = this.originY;
-    ctx.beginPath();    
+    ctx.beginPath(); 
+    let r = 0;
+    let g = 0;
+    let b = 0;   
     for(let i = 0; i < dis.length ;i++)
     {
-       ctx.strokeStyle = 'rgb(${100++},0,0)';
+       r = (Math.random() * 1000) % 255;
+       g = (Math.random() * 1000) % 255;
+       b = (Math.random() * 1000) % 255;
+       ctx.strokeStyle = `rgb(${r},${g},${b})`;
        ctx.moveTo(oX,oY);
        ctx.lineTo(dis[i].x, dis[i].y);
        console.log(`displaced Draw: ${points[i].x},${points[i].y}`);    
@@ -157,6 +163,7 @@ export class Curve {
     points = this.setFromOrigin(points);
     
     ctx.beginPath();
+    ctx.strokeStyle = 'black';
     ctx.moveTo(points[0].x,points[0].y);
     console.log(`x: ${points[0].x},y: ${points[0].y}`);
     for(let i = 1;i < points.length; i++)
