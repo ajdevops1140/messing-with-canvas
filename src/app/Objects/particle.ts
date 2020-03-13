@@ -28,10 +28,11 @@ export class Particle extends base2D
       super.points[1] = new P2v(oX,oY,-4,-2);  //Lower left
       super.points[2] = new P2v(oX,oY,4,2);    //Upper Right
       super.points[3] = new P2v(oX,oY,4,-2);   //Lower Right
-      super.points[4] = new P2v(oX,oY,2,0);    //Front Point to measure
+      super.points[4] = new P2v(oX,oY,0,0);    //Center of Particle
+      super.points[5] = new P2v(oX,oY,2,0);    //Front Point to measure
    }
 
-   
+
 
 
 }
