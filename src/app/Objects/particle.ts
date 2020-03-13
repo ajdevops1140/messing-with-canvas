@@ -37,40 +37,40 @@ export class Particle extends base2D
 
    setRotation(r)
    {
-     super.rotation = r;
+     this.rotation = r;
    }
 
    setTranslate(tX,tY)
    {
-     super.tX = tX;
-     super.tY = tY;
+     this.tX = tX;
+     this.tY = tY;
    }
 
    getTimeStep()
    {
-     return super.t;
+     return this.t;
    }
 
    setTimeStep(t)
    {
-     super.t = t;
+     this.t = t;
    }
 
    draw(ctx:CanvasRenderingContext2D)
    {
      let p;
 
-     super.rotate(super.rotation);
-     p = this.curve.interpolate(super.t);
-     super.translate(p.x,p.y);
-     super.setFromOrigin();
+     this.rotate(this.rotation);
+     p = this.curve.interpolate(this.t);
+     this.translate(p.x,p.y);
+     this.setFromOrigin();
 
      ctx.beginPath();
      ctx.fillStyle = 'blue';
-     ctx.moveTo(super.points[0].x,super.points[0].y);
-     ctx.lineTo(super.points[1].x,super.points[1].y);
-     ctx.lineTo(super.points[2].x,super.points[2].y);
-     ctx.lineTo(super.points[3].x,super.points[3].y);
+     ctx.moveTo(this.points[0].x,this.points[0].y);
+     ctx.lineTo(this.points[1].x,this.points[1].y);
+     ctx.lineTo(this.points[2].x,this.points[2].y);
+     ctx.lineTo(this.points[3].x,this.points[3].y);
      ctx.fill();
      ctx.closePath();     
    }
