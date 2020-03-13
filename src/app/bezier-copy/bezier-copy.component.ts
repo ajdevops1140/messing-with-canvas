@@ -23,6 +23,7 @@ export class BezierCopyComponent implements OnInit {
   c:Curve;
   w:number;
   h:number;
+  part:Particle;
 
   constructor() { }
 
@@ -30,6 +31,7 @@ export class BezierCopyComponent implements OnInit {
      this.ctx = this.cv.nativeElement.getContext('2d'); 
      this.w = this.cvWidth/2;
      this.h = this.cvHeight/2;
+     this.part = new Particle(this.w,this.h);
   }
 
   ngAfterViewInit()

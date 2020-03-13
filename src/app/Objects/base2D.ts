@@ -1,3 +1,4 @@
+import { P2v } from "../util/P2DCopy";
 
 export class base2D
 {
@@ -28,7 +29,6 @@ export class base2D
   translate(x,y)
   {
     //Get the displacement between vectors after step t
-
     for(let i =0;i < this.points.length; i++)
     {
       this.points[i].translate(x,y);

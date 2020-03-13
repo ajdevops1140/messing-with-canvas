@@ -13,8 +13,9 @@ export class Particle extends base2D
     t:number;
     rotation:number;
   */
+  
    
-   constructor(oX:number = 0,oY:number = 0,size = 0)
+   constructor(oX:number = 0,oY:number = 0,size = 6)
    {
      super(oX,oY,size);     
      this.initializePoints();
@@ -30,6 +31,18 @@ export class Particle extends base2D
       super.points[3] = new P2v(oX,oY,4,-2);   //Lower Right
       super.points[4] = new P2v(oX,oY,0,0);    //Center of Particle
       super.points[5] = new P2v(oX,oY,2,0);    //Front Point to measure
+   }
+
+   draw(ctx:CanvasRenderingContext2D)
+   {
+     super.rotate(super.rotation);
+     super.translate(super.tX,super.tY);
+     super.setFromOrigin();
+
+     ctx.beginPath();
+     //ctx.moveTo(super.)
+
+     
    }
 
 
