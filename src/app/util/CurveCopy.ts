@@ -59,7 +59,7 @@ export class Curve {
          let p = points[i].getDisplacement(points[i-1]);
          p.x *= scale;
          p.y *= scale;
-         console.log(`Displaced: ${p.x},${p.y}`);
+         //console.log(`Displaced: ${p.x},${p.y}`);
          dis.push(p);
       }         
     }
@@ -94,7 +94,7 @@ export class Curve {
     for(let i = 0;i < this.steps +1; i++)
     {
       points.push(this.interpolate(i * this.tDiv));  
-      console.log(`Created: ${points[i].x},${points[i].y}`);
+      //console.log(`Created: ${points[i].x},${points[i].y}`);
     }
     return points;
   }
@@ -175,7 +175,7 @@ export class Curve {
        ctx.strokeStyle = `rgb(${r},${g},${b})`;
        ctx.moveTo(oX,oY);
        ctx.lineTo(dis[i].x,dis[i].y);
-       console.log(`displaced Draw: ${dis[i].x},${dis[i].y}`);    
+       //console.log(`displaced Draw: ${dis[i].x},${dis[i].y}`);    
        ctx.stroke();   
     }
     
@@ -214,11 +214,11 @@ export class Curve {
     ctx.beginPath();
     ctx.strokeStyle = 'black';
     ctx.moveTo(points[0].x,points[0].y);
-    console.log(`x: ${points[0].x},y: ${points[0].y}`);
+    //console.log(`x: ${points[0].x},y: ${points[0].y}`);
     for(let i = 1;i < points.length; i++)
     {
       ctx.lineTo(points[i].x, points[i].y);
-      console.log(`x: ${points[i].x},y: ${points[i].y}`);
+      //console.log(`x: ${points[i].x},y: ${points[i].y}`);
     }
     ctx.stroke();
   }
