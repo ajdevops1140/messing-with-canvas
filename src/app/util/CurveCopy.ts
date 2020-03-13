@@ -18,7 +18,7 @@ export class Curve {
   points:P2v[];
   displaced:P2v[];
 
-  constructor(x0,y0,x1,y1,x2,y2,x3,y3,/*p0 , p1 , p2 , p3,*/originX = 0, originY = 0) 
+  constructor(x0 = 0,y0 = 0,x1 = 0,y1 = 0,x2 = 0,y2 = 0,x3 = 0,y3 = 0,/*p0 , p1 , p2 , p3,*/originX = 0, originY = 0) 
   {
     this.originX = originX;
     this.originY = originY;    

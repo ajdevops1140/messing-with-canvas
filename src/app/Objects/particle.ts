@@ -14,12 +14,13 @@ export class Particle extends base2D
     t:number;
     rotation:number;
   */
-  curve:Curve;
+   curve:Curve;
    
    constructor(oX:number = 0,oY:number = 0,size = 6)
    {
      super(oX,oY,size);     
      this.initializePoints();
+     this.curve = new Curve(0,0,-30,100,210,80,200,0,oX,oY);
    }
 
    initializePoints()
