@@ -54,6 +54,25 @@ export class Particle extends base2D
    setTimeStep(t)
    {
      this.t = t;
+
+     if(t >= 1)
+     {
+       this.t = 1;
+       this.t *= -1;
+     }else if(t <= 0)
+     {
+       this.t = 0;
+     }    
+   }
+
+   computeStep()
+   {
+     let t = this.t;
+     let c1 = this.curve.interpolate(t); //Get the point
+     t += 0.01;
+     let c2 = this.curve.interpolate(t);
+
+
    }
 
    draw(ctx:CanvasRenderingContext2D)
