@@ -7,7 +7,7 @@ export class Curve {
   p1:P2v;
   p2:P2v;
   p3:P2v;
-  p:P2v;
+  p:P2v[];
   steps:number;
   tDiv:number;
   originX:number;
