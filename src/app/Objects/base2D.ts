@@ -32,19 +32,27 @@ export class base2D
 
   translate(x,y)
   {
+    let p;
+    let pts = new Array();
     //Get the displacement between vectors after step t
     for(let i =0;i < this.points.length; i++)
     {
-      this.points[i].translate(x,y);
+      p = this.points[i].translate(x,y);
+      pts.push(p);
     }
+    return pts;
   }
 
   rotate(deg:number)
   {
+    let p;
+    let pts = new Array();
     for(let i =0;i < this.points.length; i++)
     {
-      this.points[i].rotate(deg);
+      p = this.points[i].rotate(deg);
+      pts.push(p);
     }
+    return pts;
   }
 
 
