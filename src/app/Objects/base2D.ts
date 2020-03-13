@@ -9,7 +9,7 @@ export class base2D
   t:number;
   rotation:number;
 
-  constructor(oX:number,oY:number)
+  constructor(oX:number = 0,oY:number = 0)
   {
     this.points = new Array();
     this.originX = oX;
