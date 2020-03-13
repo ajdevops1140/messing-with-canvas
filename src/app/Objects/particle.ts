@@ -19,20 +19,20 @@ export class Particle extends base2D
    constructor(oX:number = 0,oY:number = 0,size = 6)
    {
      super(oX,oY,size);     
-     this.initializePoints();
+     //this.initializePoints();
      this.curve = new Curve(0,0,-30,100,210,80,200,0,oX,oY);
    }
 
    initializePoints()
    {
-      let oX = super.originX;
-      let oY = super.originY;
-      super.points[0] = new P2v(oX,oY,-4,2);   //Upper left
-      super.points[1] = new P2v(oX,oY,-4,-2);  //Lower left
-      super.points[2] = new P2v(oX,oY,4,2);    //Upper Right
-      super.points[3] = new P2v(oX,oY,4,-2);   //Lower Right
-      super.points[4] = new P2v(oX,oY,0,0);    //Center of Particle
-      super.points[5] = new P2v(oX,oY,2,0);    //Front Point to measure
+      let oX = this.originX;
+      let oY = this.originY;
+      this.points[0] = new P2v(oX,oY,-4,2);   //Upper left
+      this.points[1] = new P2v(oX,oY,-4,-2);  //Lower left
+      this.points[2] = new P2v(oX,oY,4,2);    //Upper Right
+      this.points[3] = new P2v(oX,oY,4,-2);   //Lower Right
+      this.points[4] = new P2v(oX,oY,0,0);    //Center of Particle
+      this.points[5] = new P2v(oX,oY,2,0);    //Front Point to measure
    }
 
    setRotation(r)

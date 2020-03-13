@@ -2,13 +2,13 @@ import { P2v } from "../util/P2DCopy";
 
 export class base2D
 {
-  protected points:any[];
-  protected tX:number;    //Translation
-  protected tY:number;
-  protected originX:number;  //Shift origin value
-  protected originY:number;
-  protected t:number;
-  protected rotation:number;
+  points:P2v[];
+  tX:number;    //Translation
+  tY:number;
+  originX:number;  //Shift origin value
+  originY:number;
+  t:number;
+  rotation:number;
 
   constructor(oX:number = 0,oY:number = 0,size = 0)
   {
@@ -22,7 +22,7 @@ export class base2D
   {
     for(let i = 0; i < this.points.length;i++)
     {
-      this.points[i].setFromCanvasOrigin();
+      this.points[i].setFromOrigin(this.originX,this.originY);
     }     
   }
 
