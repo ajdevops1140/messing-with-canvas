@@ -14,15 +14,15 @@ export class Particle extends base2D
     rotation:number;
   */
    
-   constructor(oX:number = 0,oY:number = 0)
+   constructor(oX:number = 0,oY:number = 0,size = 0)
    {
-     super(oX,oY);     
+     super(oX,oY,size);     
      this.initializePoints();
    }
 
    initializePoints()
    {
-      this.
+      super.points
    }
 
 

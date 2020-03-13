@@ -9,9 +9,9 @@ export class base2D
   protected t:number;
   protected rotation:number;
 
-  constructor(oX:number = 0,oY:number = 0)
+  constructor(oX:number = 0,oY:number = 0,size = 0)
   {
-    this.points = new Array();
+    this.points = new Array(size);
     this.originX = oX;
     this.originY = oY;
     this.tX = this.tY = this.rotation = this.t = 0;
