@@ -22,8 +22,16 @@ export class Particle extends base2D
 
    initializePoints()
    {
-      super.points
+      let oX = super.originX;
+      let oY = super.originY;
+      super.points[0] = new P2v(oX,oY,-4,2);   //Upper left
+      super.points[1] = new P2v(oX,oY,-4,-2);  //Lower left
+      super.points[2] = new P2v(oX,oY,4,2);    //Upper Right
+      super.points[3] = new P2v(oX,oY,4,-2);   //Lower Right
+      super.points[4] = new P2v(oX,oY,2,0);    //Front Point to measure
    }
+
+   
 
 
 }
