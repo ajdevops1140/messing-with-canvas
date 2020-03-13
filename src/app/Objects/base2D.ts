@@ -1,13 +1,13 @@
 
 export class base2D
 {
-  points:any[];
-  tX:number;    //Translation
-  tY:number;
-  originX:number;  //Shift origin value
-  originY:number;
-  t:number;
-  rotation:number;
+  protected points:any[];
+  protected tX:number;    //Translation
+  protected tY:number;
+  protected originX:number;  //Shift origin value
+  protected originY:number;
+  protected t:number;
+  protected rotation:number;
 
   constructor(oX:number = 0,oY:number = 0)
   {

@@ -4,11 +4,26 @@ import { base2D } from './base2D';
 
 export class Particle extends base2D
 {
+  /*
+    points:any[];
+    tX:number;    //Translation
+    tY:number;
+    originX:number;  //Shift origin value
+    originY:number;
+    t:number;
+    rotation:number;
+  */
    
    constructor(oX:number = 0,oY:number = 0)
    {
-     super();
-
-
+     super(oX,oY);     
+     this.initializePoints();
    }
+
+   initializePoints()
+   {
+      this.
+   }
+
+
 }
