@@ -58,20 +58,21 @@ export class Particle extends base2D
 
    draw(ctx:CanvasRenderingContext2D)
    {
-     let p;
+     let p, p1;
 
-     this.rotate(this.rotation);
-     //p = this.curve.interpolate(this.t);
-     //this.translate(p.x,p.y);
-     this.setFromOrigin();
+     p = this.rotate(this.rotation);
+     p1 = this.curve.interpolate(this.t);
+     p = this.translate(p1.x,p1.y);
+     p = this.setFromOrigin();
 
      ctx.beginPath();
      ctx.fillStyle = 'blue';
-     ctx.moveTo(this.points[0].x,this.points[0].y);
-     ctx.lineTo(this.points[1].x,this.points[1].y);
-     ctx.lineTo(this.points[2].x,this.points[2].y);
-     ctx.lineTo(this.points[3].x,this.points[3].y);
+     ctx.moveTo(p[0].x,p[0].y);
+     ctx.lineTo(p[1].x,p[1].y);
+     ctx.lineTo(p[3].x,p[3].y);
+     ctx.lineTo(p[2].x,p[2].y);
+     ctx.lineTo(p[0].x,p[0].y);
      ctx.fill();
-     ctx.closePath();     
+     ctx.stroke();
    }
 }

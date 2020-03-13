@@ -70,8 +70,10 @@ export class P2v
 
   translate(tX,tY)
   {    
-    this.tX = tX;
-    this.tY = tY;     
+    let p = this.copy();
+    p.tX = tX;
+    p.tY = tY;     
+    return p;
   }
 
   setPoint(x,y)

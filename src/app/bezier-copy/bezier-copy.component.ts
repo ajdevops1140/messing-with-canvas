@@ -62,7 +62,7 @@ export class BezierCopyComponent implements OnInit {
     t += 0.01;
     this.part.setTimeStep(t);
 
-    //window.requestAnimationFrame(()=>{this.draw(ctx)});
+    window.requestAnimationFrame(()=>{this.draw(ctx)});
   }
 
 }

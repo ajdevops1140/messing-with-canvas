@@ -20,10 +20,14 @@ export class base2D
 
   setFromOrigin()
   {
+    let p;
+    let pts = new Array();
     for(let i = 0; i < this.points.length;i++)
     {
-      this.points[i].setFromOrigin(this.originX,this.originY);
-    }     
+      p = this.points[i].setFromOrigin(this.originX,this.originY);
+      pts.push(p);
+    } 
+    return pts;    
   }
 
   translate(x,y)
