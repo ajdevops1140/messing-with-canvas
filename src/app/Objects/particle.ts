@@ -19,7 +19,7 @@ export class Particle extends base2D
    constructor(oX:number = 0,oY:number = 0,size = 6)
    {
      super(oX,oY,size);     
-     //this.initializePoints();
+     this.initializePoints();
      this.curve = new Curve(0,0,-30,100,210,80,200,0,oX,oY);
    }
 
@@ -61,8 +61,8 @@ export class Particle extends base2D
      let p;
 
      this.rotate(this.rotation);
-     p = this.curve.interpolate(this.t);
-     this.translate(p.x,p.y);
+     //p = this.curve.interpolate(this.t);
+     //this.translate(p.x,p.y);
      this.setFromOrigin();
 
      ctx.beginPath();
