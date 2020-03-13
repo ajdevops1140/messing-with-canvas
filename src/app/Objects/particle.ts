@@ -35,9 +35,28 @@ export class Particle extends base2D
       super.points[5] = new P2v(oX,oY,2,0);    //Front Point to measure
    }
 
+   setRotation(r)
+   {
+     super.rotation = r;
+   }
+
+   setTranslate(tX,tY)
+   {
+     super.tX = tX;
+     super.tY = tY;
+   }
+
+   setTimeStep(t)
+   {
+     super.t = t;
+   }
+
    draw(ctx:CanvasRenderingContext2D)
    {
+     let p;
+
      super.rotate(super.rotation);
+     p = this.curve.interpolate(super.t);
      super.translate(super.tX,super.tY);
      super.setFromOrigin();
 
