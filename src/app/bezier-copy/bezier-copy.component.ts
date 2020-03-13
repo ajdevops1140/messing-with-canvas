@@ -8,6 +8,7 @@ import {
 } from "@angular/core";
 import { P2v } from "../util/P2DCopy";
 import { Curve } from "../util/CurveCopy";
+import { Particle } from "../Objects/particle"
 
 @Component({
   selector: 'app-bezier-copy',
