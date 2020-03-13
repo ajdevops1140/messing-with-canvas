@@ -24,6 +24,7 @@ export class BezierCopyComponent implements OnInit {
   w:number;
   h:number;
   part:Particle;
+  t:number;
 
   constructor() { }
 
@@ -38,8 +39,10 @@ export class BezierCopyComponent implements OnInit {
   {   
     this.c = new Curve(0,0,-30,100,210,80,200,0,this.w,this.h);
     this.c.setSteps(10);
+    //this.part.curve.setSteps(10);
     //this.c.setupPoints();   
     //this.c.setDisplacements();
+
     
     
     this.draw(this.ctx);
@@ -53,6 +56,12 @@ export class BezierCopyComponent implements OnInit {
     this.c.drawFromSteps(this.ctx);
     this.c.rot += 0.0;
     this.c.tX += 0.0;
+
+    this.part.draw(this.ctx);
+    let t = this.part.getTimeStep();
+    t += 0.1;
+    this.part.setTimeStep(t);
+
     //window.requestAnimationFrame(()=>{this.draw(ctx)});
   }
 

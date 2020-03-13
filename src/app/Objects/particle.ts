@@ -14,7 +14,7 @@ export class Particle extends base2D
     t:number;
     rotation:number;
   */
-   curve:Curve;
+   curve:Curve;   
    
    constructor(oX:number = 0,oY:number = 0,size = 6)
    {
@@ -46,6 +46,11 @@ export class Particle extends base2D
      super.tY = tY;
    }
 
+   getTimeStep()
+   {
+     return super.t;
+   }
+
    setTimeStep(t)
    {
      super.t = t;
@@ -57,7 +62,7 @@ export class Particle extends base2D
 
      super.rotate(super.rotation);
      p = this.curve.interpolate(super.t);
-     super.translate(super.tX,super.tY);
+     super.translate(p.x,p.y);
      super.setFromOrigin();
 
      ctx.beginPath();
