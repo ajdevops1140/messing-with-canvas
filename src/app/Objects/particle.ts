@@ -40,12 +40,12 @@ export class Particle extends base2D
      super.setFromOrigin();
 
      ctx.beginPath();
-     //ctx.moveTo(super.)
-
-     
+     ctx.fillStyle = 'blue';
+     ctx.moveTo(super.points[0].x,super.points[0].y);
+     ctx.lineTo(super.points[1].x,super.points[1].y);
+     ctx.lineTo(super.points[2].x,super.points[2].y);
+     ctx.lineTo(super.points[3].x,super.points[3].y);
+     ctx.fill();
+     ctx.closePath();     
    }
-
-
-
-
 }
