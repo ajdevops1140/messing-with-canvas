@@ -85,31 +85,28 @@ export class Curve {
     return points;
   }
 
-  rotate(deg:number,points)
+  rotate(deg:number)
   {
-    for(let i =0;i < points.length; i++)
+    for(let i =0;i < this.points.length; i++)
     {
-      points[i].rotate(deg);
-    }
-    return points;
+      this.points[i].rotate(deg);
+    }   
   } 
 
-  translate(tX,tY,points)
+  translate(tX,tY)
   {
-    for(let i =0;i < points.length; i++)
+    for(let i =0;i < this.points.length; i++)
     {
-      points[i].translate(tX,tY);
-    }
-    return points;
+      this.points[i].translate(tX,tY);
+    }    
   }
 
-  setFromOrigin(points)
+  setFromOrigin()
   {
-    for(let i = 0;i < points.length; i++)
+    for(let i = 0;i < this.points.length; i++)
     {
-      points[i].setFromOrigin(this.originX, this.originY);      
-    }
-    return points;
+      this.points[i].setFromCanvasOrigin();      
+    }    
   }
 
   setFromOriginNoTrans(points)
@@ -128,14 +125,13 @@ export class Curve {
 
   setValues(rot,tX,tY)
   {
-    this.points = this.rotate(this.rot,this.points);
-    this.points = this.translate(this.tX,this.tY,this.points);
-    
+    this.rotate(this.rot);
+    this.translate(this.tX,this.tY);
   }
 
   drawDisplacement(ctx:CanvasRenderingContext2D)
   {
-    let points = this.setFromOriginNoTrans(this.points);
+    this.setFromOriginNoTrans(this.points);
     let dis = this.setFromOriginNoTrans(this.displaced);
     let oX = this.originX;
     let oY = this.originY;
@@ -151,7 +147,7 @@ export class Curve {
        ctx.strokeStyle = `rgb(${r},${g},${b})`;
        ctx.moveTo(oX,oY);
        ctx.lineTo(dis[i].x, dis[i].y);
-       console.log(`displaced Draw: ${points[i].x},${points[i].y}`);    
+          
        ctx.stroke();   
     }
     
@@ -164,17 +160,17 @@ export class Curve {
 
   drawFromSteps(ctx:CanvasRenderingContext2D)
   {
-    let points = this.translate(this.tX,this.tY,this.points);
-    points = this.setFromOrigin(points);
+    this.translate(this.tX,this.tY);
+    this.setFromOrigin();
     
     ctx.beginPath();
     ctx.strokeStyle = 'black';
-    ctx.moveTo(points[0].x,points[0].y);
-    console.log(`x: ${points[0].x},y: ${points[0].y}`);
-    for(let i = 1;i < points.length; i++)
+    ctx.moveTo(this.points[0].x,this.points[0].y);
+    console.log(`x: ${this.points[0].x},y: ${this.points[0].y}`);
+    for(let i = 1;i < this.points.length; i++)
     {
-      ctx.lineTo(points[i].x, points[i].y);
-      console.log(`x: ${points[i].x},y: ${points[i].y}`);
+      ctx.lineTo(this.points[i].x, this.points[i].y);
+      console.log(`x: ${this.points[i].x},y: ${this.points[i].y}`);
     }
     ctx.stroke();
   }

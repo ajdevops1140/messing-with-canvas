@@ -7,7 +7,7 @@ import {
   AfterViewInit
 } from "@angular/core";
 import { P2D } from "../util/P2D";
-import { Curve } from "../util/CurveCopy";
+import { Curve } from "../util/Curve";
 import { Particle } from "../Objects/particle"
 
 @Component({
