@@ -77,7 +77,6 @@ export class Particle extends base2D
    computeStep()
    {
      this.setTimeStep();
-     let p = this.points[5];
      let t = this.t;         
      let c1 = this.curve.interpolateTangent(t); //Get the first point
 
