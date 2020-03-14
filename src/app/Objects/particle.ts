@@ -78,25 +78,23 @@ export class Particle extends base2D
    {
      this.setTimeStep();
      let p = this.points[5];
-     let t = this.t;
-     let c = this.curve.interpolate(t);
-     t+=0.01;
-     let c1 = this.curve.interpolate(t); //Get the first point
+     let t = this.t;         
+     let c1 = this.curve.interpolateTangent(t); //Get the first point
      //console.log(`c1 ${c1.x},${c1.y}`);     
      //c1.normalize();   
      //p.normalize();
      //console.log(`c1 ${c1.x},${c1.y}`);
-     let dis = c1.getDisplacement(c);
-     let angle = c1.getAngleBetweenPoints(dis,p);
+     //let dis = c1.getDisplacement(c);
+     //let angle = c1.getAngleBetweenPoints(dis,p);
      
-     return angle;
+     return Math.atan2(c1.x,c1.y) + (Math.PI /2);
    }
 
    draw(ctx:CanvasRenderingContext2D)
    {
      let p, c, n, c1,cn;
      n = this.computeStep();
-     this.rotate(0);
+     this.rotate(n);
      c = this.curve.interpolate(this.t);
      
      //c.normalize();
