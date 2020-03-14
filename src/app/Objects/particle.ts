@@ -104,7 +104,7 @@ export class Particle extends base2D
 
      //ctx.beginPath();
      ctx.fillStyle = 'blue';
-     ctx.fillRect(p[0].x,p[0].y,5,5);
+     ctx.fillRect(this.points[0].x,this.points[0].y,5,5);
      //console.log(`${p[0].x},${p[0].y}`);
      //console.log(`theta : ${p[0].theta}`);
      //ctx.moveTo(p[0].x,p[0].y);

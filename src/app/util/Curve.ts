@@ -46,7 +46,7 @@ export class Curve {
       {
          //let p = this.points[]
          let p = this.points[i].getOriginDisplacement(this.points[i-1]);
-         console.log(`Displaced: ${p.oX},${p.oY}`);
+         //console.log(`Displaced: ${p.oX},${p.oY}`);
          this.displaced.push(p);
       }         
     }
@@ -76,14 +76,14 @@ export class Curve {
 
   interpolateTangent(t)
   {
-    let p = this.p[0].copy();
+    let p = new P2D(this.originX, this.originY);
     let c0 = ((1 - t) * (1 - t)) * -3;
     let c1 = 3 * ((1-t) * (1-t));
     let c2 = (6 * t) * (1-t);
     let c3 = 3 * (t * t);
     
-    p.x = (c0 * this.p[0].x) + (c1 * this.p[1].x) - (c2 * this.p[1].x) - (c3 * this.p[2].x) + (c2 * this.p[2].x) + (c3 * this.p[3].x);
-    p.y = (c0 * this.p[0].y) + (c1 * this.p[1].y) - (c2 * this.p[1].y) - (c3 * this.p[2].y) + (c2 * this.p[2].y) + (c3 * this.p[3].y);
+    p.x = (c0 * this.p0.x) + (c1 * this.p1.x) - (c2 * this.p1.x) - (c3 * this.p2.x) + (c2 * this.p2.x) + (c3 * this.p3.x);
+    p.y = (c0 * this.p0.y) + (c1 * this.p1.y) - (c2 * this.p1.y) - (c3 * this.p2.y) + (c2 * this.p2.y) + (c3 * this.p3.y);
 
     return p;
   }
@@ -94,7 +94,7 @@ export class Curve {
     for(let i = 0;i < this.steps +1; i++)
     {
       points.push(this.interpolate(i * this.tDiv));  
-      console.log(`Created: ${points[i].oX},${points[i].oY}`);
+      //console.log(`Created: ${points[i].oX},${points[i].oY}`);
     }
     return points;
   }
@@ -174,17 +174,18 @@ export class Curve {
 
   drawFromSteps(ctx:CanvasRenderingContext2D)
   {
+    this.setupPoints();
     this.translate(this.tX,this.tY);
     this.setFromOrigin();
     
     ctx.beginPath();
     ctx.strokeStyle = 'black';
     ctx.moveTo(this.points[0].x,this.points[0].y);
-    console.log(`x: ${this.points[0].x},y: ${this.points[0].y}`);
+    //console.log(`x: ${this.points[0].x},y: ${this.points[0].y}`);
     for(let i = 1;i < this.points.length; i++)
     {
       ctx.lineTo(this.points[i].x, this.points[i].y);
-      console.log(`x: ${this.points[i].x},y: ${this.points[i].y}`);
+      //console.log(`x: ${this.points[i].x},y: ${this.points[i].y}`);
     }
     ctx.stroke();
   }
