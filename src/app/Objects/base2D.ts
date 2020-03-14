@@ -1,8 +1,8 @@
-import { P2v } from "../util/P2DCopy";
+import { P2D } from "../util/P2D";
 
 export class base2D
 {
-  points:P2v[];
+  points:P2D[];
   tX:number;    //Translation
   tY:number;
   originX:number;  //Shift origin value
@@ -18,42 +18,42 @@ export class base2D
     this.tX = this.tY = this.rotation = this.t = 0;
   }
 
+  
+
   setFromOrigin()
   {
-    let p;
-    let pts = new Array();
     for(let i = 0; i < this.points.length;i++)
     {
-      p = this.points[i].setFromOrigin(this.originX,this.originY);
-      pts.push(p);
-    } 
-    return pts;    
+      this.points[i].setFromCanvasOrigin();      
+    }      
   }
 
   translate(x,y)
   {
-    let p;
-    let pts = new Array();
     //Get the displacement between vectors after step t
     for(let i =0;i < this.points.length; i++)
     {
-      p = this.points[i].translate(x,y);
-      pts.push(p);
-    }
-    return pts;
+      this.points[i].translate(x,y);
+    }    
   }
 
   rotate(deg:number)
-  {
-    let p;
-    let pts = new Array();
+  {   
     for(let i =0;i < this.points.length; i++)
     {
-      p = this.points[i].rotate(deg);
-      pts.push(p);
-    }
-    return pts;
+      this.points[i].rotate(deg);
+     
+    }   
   }
+
+  /*rotateRad(deg:number)
+  {   
+    for(let i =0;i < this.points.length; i++)
+    {
+      this.points[i].rotateRad(deg);      
+    }
+    
+  }*/
 
 
 }

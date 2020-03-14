@@ -6,7 +6,7 @@ import {
   ElementRef,
   AfterViewInit
 } from "@angular/core";
-import { P2v } from "../util/P2DCopy";
+import { P2D } from "../util/P2D";
 import { Curve } from "../util/CurveCopy";
 import { Particle } from "../Objects/particle"
 
@@ -26,6 +26,7 @@ export class BezierCopyComponent implements OnInit {
   part:Particle;
   t:number;
 
+
   constructor() { }
 
   ngOnInit() {
@@ -42,9 +43,14 @@ export class BezierCopyComponent implements OnInit {
     //this.part.curve.setSteps(10);
     //this.c.setupPoints();   
     //this.c.setDisplacements();
-    this.part.setRate(0.05);
+    this.part.setRate(0.001);
     
     
+    this.draw(this.ctx);
+  }
+
+  step()
+  {
     this.draw(this.ctx);
   }
 
@@ -53,11 +59,11 @@ export class BezierCopyComponent implements OnInit {
     ctx.clearRect(0,0,this.cvWidth,this.cvHeight);
     //this.c.drawDisplacement(this.ctx);   
     this.c.tX = 0; 
-    this.c.drawFromSteps(this.ctx);
+    this.c.drawFromSteps(ctx);
     this.c.rot += 0.0;
     this.c.tX += 0.0;
-
-    this.part.draw(this.ctx);
+    this.part.rotation += 0.5;
+    this.part.draw(ctx);
     
     
 

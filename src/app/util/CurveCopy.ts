@@ -88,6 +88,20 @@ export class Curve {
     return p;
   }
 
+  interpolateTangent(t)
+  {
+    let p = this.p[0].copy();
+    let c0 = ((1 - t) * (1 - t)) * -3;
+    let c1 = 3 * ((1-t) * (1-t));
+    let c2 = (6 * t) * (1-t);
+    let c3 = 3 * (t * t);
+    
+    p.x = (c0 * this.p[0].x) + (c1 * this.p[1].x) - (c2 * this.p[1].x) - (c3 * this.p[2].x) + (c2 * this.p[2].x) + (c3 * this.p[3].x);
+    p.y = (c0 * this.p[0].y) + (c1 * this.p[1].y) - (c2 * this.p[1].y) - (c3 * this.p[2].y) + (c2 * this.p[2].y) + (c3 * this.p[3].y);
+
+    return p;
+  }
+
   createPoints()
   {
     let points = new Array();

@@ -118,9 +118,8 @@ export class P2v
     return p;
   }
 
-  getAngleBetweenDisplacedPoints(p2:P2v)
+  getAngleBetweenPoints(p1:P2v, p2:P2v)
   {
-     let p1 = new P2v(0,0,1,0);  //Just need point to compute rotation angle
      let p1Mag = p1.mag();
      let p2Mag = p2.mag();
      let pDot = p1.dot(p2.x,p2.y);
@@ -172,6 +171,25 @@ export class P2v
     return p;
     //this.setFromCanvasOrigin();
   }
+
+/*
+  rotateRad(deg:number)
+  {
+    //this.setToCanvasOrigin();
+    let p = this.copy();    
+    this.rot = deg;
+    //x = x*cos - y*sin
+    //y = y*cos + x*sin
+
+    let theta = this.theta = deg;
+    //theta /=2;
+    p.x = this.prec((p.x * Math.cos(theta)) + (p.y * Math.sin(theta)));
+    p.y = this.prec((p.y * Math.cos(theta)) - (p.x * Math.sin(theta)));
+
+    return p;
+    //this.setFromCanvasOrigin();
+  }
+  */
 
 
   
