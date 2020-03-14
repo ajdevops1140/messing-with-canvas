@@ -118,6 +118,17 @@ export class P2v
     return p;
   }
 
+  getAngleBetweenDisplacedPoints(p2:P2v)
+  {
+     let p1 = new P2v(0,0,1,0);  //Just need point to compute rotation angle
+     let p1Mag = p1.mag();
+     let p2Mag = p2.mag();
+     let pDot = p1.dot(p2.x,p2.y);
+     let angle = pDot/(p1Mag * p2Mag);
+     angle = Math.acos(angle);
+     return angle;     
+  }
+
   linearInterpolate(P1,P2,t)
   {
     // P(t)=(1-t)P1 + tP2

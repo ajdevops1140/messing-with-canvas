@@ -15,6 +15,7 @@ export class Particle extends base2D
     rotation:number;
   */
    curve:Curve;   
+   rate:number;
    
    constructor(oX:number = 0,oY:number = 0,size = 6)
    {
@@ -51,35 +52,44 @@ export class Particle extends base2D
      return this.t;
    }
 
-   setTimeStep(t)
+   setRate(r)
    {
-     this.t = t;
+     this.rate = r;
+   }
 
-     if(t >= 1)
+   setTimeStep()
+   {
+     this.t += this.rate;
+
+     if(this.t >=1)
      {
+       this.rate = this.rate * -1;
        this.t = 1;
-       this.t *= -1;
-     }else if(t <= 0)
+     }
+     else if(this.t <= 0)
      {
+       this.rate = this.rate * -1;
        this.t = 0;
-     }    
+     }
    }
 
    computeStep()
    {
+     this.setTimeStep();
      let t = this.t;
-     let c1 = this.curve.interpolate(t); //Get the point
+     let c1 = this.curve.interpolate(t); //Get the first point
      t += 0.01;
-     let c2 = this.curve.interpolate(t);
-
-
+     let c2 = this.curve.interpolate(t); //Get a second close point
+     let dis = c2.getDisplacement(c1);
+     let angle = c2.getAngleBetweenDisplacedPoints(c2) % Math.PI;
+     return angle;
    }
 
    draw(ctx:CanvasRenderingContext2D)
    {
-     let p, c;
-
-     p = this.rotate(this.rotation);
+     let p, c, angle;
+     angle = this.computeStep();
+     p = this.rotate(angle);
      c = this.curve.interpolate(this.t);
      this.tX = c.x;
      this.tY = c.y;

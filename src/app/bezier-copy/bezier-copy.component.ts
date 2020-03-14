@@ -42,7 +42,7 @@ export class BezierCopyComponent implements OnInit {
     //this.part.curve.setSteps(10);
     //this.c.setupPoints();   
     //this.c.setDisplacements();
-
+    this.part.setRate(0.05);
     
     
     this.draw(this.ctx);
@@ -58,9 +58,8 @@ export class BezierCopyComponent implements OnInit {
     this.c.tX += 0.0;
 
     this.part.draw(this.ctx);
-    let t = this.part.getTimeStep();
-    t += 0.01;
-    this.part.setTimeStep(t);
+    
+    
 
     window.requestAnimationFrame(()=>{this.draw(ctx)});
   }
