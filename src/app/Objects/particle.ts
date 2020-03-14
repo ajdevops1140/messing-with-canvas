@@ -33,7 +33,7 @@ export class Particle extends base2D
       this.points[2] = new P2D(oX,oY,4,-2);    //Upper Right
       this.points[3] = new P2D(oX,oY,4,2);   //Lower Right
       this.points[4] = new P2D(oX,oY,0,0);    //Center of Particle
-      this.points[5] = new P2D(oX,oY,2,0);    //Front Point to measure
+      this.points[5] = new P2D(oX,oY,10,0);    //Front Point to measure
    }
 
    setRotation(r)
@@ -114,5 +114,13 @@ export class Particle extends base2D
      ctx.lineTo(this.points[0].x,this.points[0].y);
      ctx.fill();
      ctx.stroke();
+     ctx.closePath();
+
+     ctx.beginPath();
+     ctx.strokeStyle = 'red';
+     ctx.moveTo(this.points[4].x,this.points[4].y);
+     ctx.lineTo(this.points[5].x,this.points[5].y);
+     ctx.stroke();
+     ctx.closePath();
    }
 }
