@@ -87,7 +87,7 @@ export class Particle extends base2D
      //console.log(`c1 ${c1.x},${c1.y}`);
      //let dis = c1.getDisplacement(c);
      //let angle = c1.getAngleBetweenPoints(dis,p);
-     
+    
      return Math.atan2(c1.x,c1.y);
    }
 
