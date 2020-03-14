@@ -41,7 +41,7 @@ export class BezierCopyComponent implements OnInit {
     this.c = new Curve(0,0,-30,100,210,80,200,0,this.w,this.h);
     this.c.setSteps(10);
     //this.part.curve.setSteps(10);
-    //this.c.setupPoints();   
+    this.c.setupPoints();   
     //this.c.setDisplacements();
     this.part.setRate(0.001);
     

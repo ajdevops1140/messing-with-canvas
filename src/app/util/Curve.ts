@@ -63,7 +63,7 @@ export class Curve {
     let p = new P2D(this.originX, this.originY);
     let c0 = (1 - t) * (1 - t) * (1 - t);
     let c1 = (3 * t) * ((1-t) * (1-t));
-    let c2 = ((3 * t) * (3 * t)) * (1-t);
+    let c2 = (3* (1-t)) * (t * t);
     let c3 = t * t * t;
   
     p.oX = p.x = (c0 * this.p0.x) + (c1 * this.p1.x) + (c2 * this.p2.x) + (c3 * this.p3.x);
