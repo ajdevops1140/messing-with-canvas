@@ -62,7 +62,7 @@ export class BezierCopyComponent implements OnInit {
     this.c.drawFromSteps(ctx);
     this.c.rot += 0.0;
     this.c.tX += 0.0;
-    this.part.rotation += 0.5;
+    //this.part.rotation += 0.5;
     this.part.draw(ctx);
     
     

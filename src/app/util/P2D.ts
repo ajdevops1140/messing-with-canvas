@@ -150,6 +150,16 @@ export class P2D
     return deg * Math.PI/180;
   }
 
+  getAngleBetweenPoints(p1:P2D, p2:P2D)
+  {
+     let p1Mag = p1.mag();
+     let p2Mag = p2.mag();
+     let pDot = p1.dot(p2.x,p2.y);
+     let angle = pDot/(p1Mag * p2Mag);
+     angle = Math.acos(angle);
+     return angle;     
+  }
+
   //Parse the number and return the precision
   prec(n:number,p:number = this.precision)
   {
@@ -165,7 +175,7 @@ export class P2D
     //x = x*cos - y*sin
     //y = y*cos + x*sin
 
-    let theta = this.theta = this.degToRad(this.rot);
+    let theta = deg;//this.theta = this.degToRad(this.rot);
     //theta /=2;
     let sx = this.prec((x * Math.cos(theta)) + (y * Math.sin(theta)));
     let sy = this.prec((y * Math.cos(theta)) - (x * Math.sin(theta)));

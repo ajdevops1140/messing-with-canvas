@@ -28,8 +28,8 @@ export class Particle extends base2D
    {
       let oX = this.originX;
       let oY = this.originY;
-      this.points[0] = new P2D(oX,oY,0,40);   //Lower left
-      this.points[1] = new P2D(oX,oY,-10,-2);  //Upper left
+      this.points[0] = new P2D(oX,oY,-4,2);   //Lower left
+      this.points[1] = new P2D(oX,oY,-4,-2);  //Upper left
       this.points[2] = new P2D(oX,oY,4,-2);    //Upper Right
       this.points[3] = new P2D(oX,oY,4,2);   //Lower Right
       this.points[4] = new P2D(oX,oY,0,0);    //Center of Particle
@@ -73,7 +73,7 @@ export class Particle extends base2D
      }
    }
 
-/*
+
    computeStep()
    {
      this.setTimeStep();
@@ -81,38 +81,38 @@ export class Particle extends base2D
      let t = this.t;
      let c1 = this.curve.interpolateTangent(t); //Get the first point
      //console.log(`c1 ${c1.x},${c1.y}`);     
-     c1 = c1.normalize();   
-
-     console.log(`c1 ${c1.x},${c1.y}`);
+     c1.normalize();   
+     p.normalize();
+     //console.log(`c1 ${c1.x},${c1.y}`);
      let angle = c1.getAngleBetweenPoints(c1,p);
      
      return angle;
-   }*/
+   }
 
    draw(ctx:CanvasRenderingContext2D)
    {
      let p, c, n;
-    // n = this.computeStep();
-     this.rotate(this.rotation);
-     //c = this.curve.interpolate(this.t);
-     //this.tX = c.x;
-     //this.tY = c.y;
+     n = this.computeStep();
+     this.rotate(n);
+     c = this.curve.interpolate(this.t);
+     this.tX = c.x;
+     this.tY = c.y;
      //this.points = p;
-     //p = this.translate(c.x,c.y,p);
+     this.translate(c.x,c.y);
      //this.points = p;
      this.setFromOrigin();
 
-     //ctx.beginPath();
+     ctx.beginPath();
      ctx.fillStyle = 'blue';
-     ctx.fillRect(this.points[0].x,this.points[0].y,5,5);
+     //ctx.fillRect(this.points[0].x,this.points[0].y,5,5);
      //console.log(`${p[0].x},${p[0].y}`);
      //console.log(`theta : ${p[0].theta}`);
-     //ctx.moveTo(p[0].x,p[0].y);
-     //ctx.lineTo(p[1].x,p[1].y);
-     //ctx.lineTo(p[2].x,p[2].y);
-     //ctx.lineTo(p[3].x,p[3].y);
-     //ctx.lineTo(p[0].x,p[0].y);
-     
-     //ctx.stroke();
+     ctx.moveTo(this.points[0].x,this.points[0].y);
+     ctx.lineTo(this.points[1].x,this.points[1].y);
+     ctx.lineTo(this.points[2].x,this.points[2].y);
+     ctx.lineTo(this.points[3].x,this.points[3].y);
+     ctx.lineTo(this.points[0].x,this.points[0].y);
+     ctx.fill();
+     ctx.stroke();
    }
 }
