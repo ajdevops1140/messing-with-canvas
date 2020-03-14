@@ -142,6 +142,8 @@ export class P2D
     return P0;
   }
 
+  
+
   dot(x,y)
   {
     return (this.x * x) + (this.y * y);

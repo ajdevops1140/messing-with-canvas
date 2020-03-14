@@ -28,12 +28,12 @@ export class Particle extends base2D
    {
       let oX = this.originX;
       let oY = this.originY;
-      this.points[0] = new P2D(oX,oY,-4,2);   //Lower left
-      this.points[1] = new P2D(oX,oY,-4,-2);  //Upper left
-      this.points[2] = new P2D(oX,oY,4,-2);    //Upper Right
-      this.points[3] = new P2D(oX,oY,4,2);   //Lower Right
+      this.points[0] = new P2D(oX,oY,-2,4);   //Lower left
+      this.points[1] = new P2D(oX,oY,-2,-4);  //Upper left
+      this.points[2] = new P2D(oX,oY,2,-4);    //Upper Right
+      this.points[3] = new P2D(oX,oY,2,4);   //Lower Right
       this.points[4] = new P2D(oX,oY,0,0);    //Center of Particle
-      this.points[5] = new P2D(oX,oY,2,0);    //Front Point to measure
+      this.points[5] = new P2D(oX,oY,0,10);    //Front Point to measure
    }
 
    setRotation(r)
@@ -80,6 +80,7 @@ export class Particle extends base2D
      let p = this.points[5];
      let t = this.t;         
      let c1 = this.curve.interpolateTangent(t); //Get the first point
+
      //console.log(`c1 ${c1.x},${c1.y}`);     
      //c1.normalize();   
      //p.normalize();
@@ -87,7 +88,7 @@ export class Particle extends base2D
      //let dis = c1.getDisplacement(c);
      //let angle = c1.getAngleBetweenPoints(dis,p);
      
-     return Math.atan2(c1.x,c1.y) + (Math.PI /2);
+     return Math.atan2(c1.x,c1.y);
    }
 
    draw(ctx:CanvasRenderingContext2D)
