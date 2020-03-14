@@ -27,6 +27,8 @@ export class P2D
     this.tY = 0;
     this.theta = 0;
     this.rot = 0;
+    this.x = x;
+    this.y = y;
   }
 
   copy()

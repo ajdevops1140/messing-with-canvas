@@ -33,7 +33,7 @@ export class Particle extends base2D
       this.points[2] = new P2D(oX,oY,4,-2);    //Upper Right
       this.points[3] = new P2D(oX,oY,4,2);   //Lower Right
       this.points[4] = new P2D(oX,oY,0,0);    //Center of Particle
-      this.points[5] = new P2D(oX,oY,10,0);    //Front Point to measure
+      this.points[5] = new P2D(oX,oY,2,0);    //Front Point to measure
    }
 
    setRotation(r)
@@ -79,22 +79,29 @@ export class Particle extends base2D
      this.setTimeStep();
      let p = this.points[5];
      let t = this.t;
-     let c1 = this.curve.interpolateTangent(t); //Get the first point
+     let c = this.curve.interpolate(t);
+     t+=0.01;
+     let c1 = this.curve.interpolate(t); //Get the first point
      //console.log(`c1 ${c1.x},${c1.y}`);     
-     c1.normalize();   
-     p.normalize();
+     //c1.normalize();   
+     //p.normalize();
      //console.log(`c1 ${c1.x},${c1.y}`);
-     let angle = c1.getAngleBetweenPoints(c1,p);
+     let dis = c1.getDisplacement(c);
+     let angle = c1.getAngleBetweenPoints(dis,p);
      
      return angle;
    }
 
    draw(ctx:CanvasRenderingContext2D)
    {
-     let p, c, n;
+     let p, c, n, c1,cn;
      n = this.computeStep();
-     this.rotate(n);
+     this.rotate(0);
      c = this.curve.interpolate(this.t);
+     
+     //c.normalize();
+     //cn.normalize();
+     //c1.normalize();
      this.tX = c.x;
      this.tY = c.y;
      //this.points = p;
@@ -122,5 +129,6 @@ export class Particle extends base2D
      ctx.lineTo(this.points[5].x,this.points[5].y);
      ctx.stroke();
      ctx.closePath();
+     
    }
 }
